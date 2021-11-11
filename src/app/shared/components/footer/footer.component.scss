@@ -1,0 +1,59 @@
+@import "../../../../styles/variables.scss";
+
+:host {
+  display: block;
+  padding-top: 20px;
+  color: #fff;
+  background-color: $primary;
+
+  a {
+    color: $color-light-3;
+    text-decoration: none;
+  }
+
+  .container {
+    margin: 0 auto;
+
+    .firstColumn {
+      > h5 {
+        margin: 0;
+      }
+    }
+
+    .links {
+      list-style-type: none;
+      padding: 0;
+      > li {
+        list-style-type: none;
+      }
+    }
+  }
+
+  .footer-copyright {
+    overflow: hidden;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 44px;
+    color: $color-light-1;
+    background-color: $primary-dark;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .container {
+    width: 85%;
+  }
+  .secondColumn {
+    margin-left: 16%;
+  }
+}
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 70%;
+  }
+  .secondColumn {
+    margin-left: 33%;
+  }
+}

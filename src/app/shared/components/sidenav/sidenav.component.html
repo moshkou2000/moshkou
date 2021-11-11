@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let a of sidenavItems" [ngClass]="a?.class!">
+    <a href="#" [routerLink]="a?.link">{{ a?.label }}</a>
+  </li>
+</ul>

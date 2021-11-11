@@ -1,0 +1,66 @@
+<mat-toolbar class="header">
+  <mat-toolbar-row>
+    <button
+      *ngIf="showSidebar"
+      mat-icon-button
+      aria-label="icon-button"
+      (click)="toggle()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img
+      class="logo"
+      src="https://material.angular.io/assets/img/homepage/angular-white-transparent.svg"
+    />
+    <div class="animate" onclick="location.href = '/';" style="cursor: pointer">
+      <span>M</span><span>O</span><span>S</span><span>H</span><span>K</span
+      ><span>O</span><span>U</span>
+    </div>
+    <div class="divider"></div>
+    <div class="breadcrumbs">
+      <div>
+        <div
+          *ngFor="let crumb of breadcrumbs?.parents!"
+          class="breadcrumb mat-small"
+        >
+          <a [routerLink]="crumb.link" ng-show="!$last">{{
+            crumb.label | uppercase
+          }}</a>
+          <mat-icon ng-show="!$last" class="next" aria-label="heart icon"
+            >chevron_right</mat-icon
+          >
+        </div>
+        <h3 class="current">{{ breadcrumbs?.label! }}</h3>
+      </div>
+    </div>
+    <span class="spacer"></span>
+    <button mat-icon-button aria-label="icon-button">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="icon-button">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="icon-button with a menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voice mail</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="exit()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Exit</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
