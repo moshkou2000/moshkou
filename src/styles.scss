@@ -10,7 +10,19 @@ html {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-// body {
-//   display: flex;
-//   flex-direction: column;
-// }
+body {
+  header,
+  footer {
+    flex: 0;
+    flex-shrink: 0;
+  }
+  main {
+    display: flex;
+    flex: 1;
+    flex-grow: 1;
+    > * {
+      flex: 1;
+      flex-grow: 1;
+    }
+  }
+}

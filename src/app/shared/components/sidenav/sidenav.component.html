@@ -1,5 +1,4 @@
-<ul>
-  <li *ngFor="let a of sidenavItems" [ngClass]="a?.class!">
-    <a href="#" [routerLink]="a?.link">{{ a?.label }}</a>
-  </li>
-</ul>
+<mat-nav-list>
+  <a *ngFor="let a of sidenavItems" mat-list-item [routerLink]="a?.link"> {{ a?.label }} </a>
+  <mat-divider></mat-divider>
+</mat-nav-list>

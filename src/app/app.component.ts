@@ -1,4 +1,5 @@
-import { AfterViewInit, OnInit, Component } from '@angular/core';
+import { AfterViewInit, OnInit, Component, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ISidenav } from './core/interfaces/isidenav';
@@ -6,6 +7,7 @@ import { LayoutModel } from './core/models/layout.model';
 import { GeneralService } from './core/services/general/general.service';
 import { AlertModel } from './shared/components/alert/alert.model';
 import { AlertService } from './shared/components/alert/alert.service';
+import { SidenavService } from './shared/components/sidenav/sidenav.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,9 @@ import { AlertService } from './shared/components/alert/alert.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  @ViewChild(MatDrawer) drawer: MatDrawer | undefined;
   routerEventsSubscription: Subscription | undefined;
+  drawerSubscription: Subscription | undefined;
   layout: LayoutModel = new LayoutModel();
   sidenavItems?: ISidenav[];
   alert: AlertModel = new AlertModel(
@@ -27,7 +31,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private generalService: GeneralService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private sidenavService: SidenavService
   ) {
     this.routerEventsSubscription = this.router.events.subscribe(
       (event: any) => {
@@ -41,6 +46,12 @@ export class AppComponent implements OnInit, AfterViewInit {
         }
       }
     );
+    this.drawerSubscription = this.sidenavService
+      .get()
+      .subscribe((flag: boolean) => {
+        if (flag) this.drawer?.open();
+        else this.drawer?.close();
+      });
   }
   ngOnInit(): void {
     this.sidenavItems = this.generalService.sidenavItems;
@@ -49,6 +60,15 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.initMaterializeComponents();
+  }
+
+  ngOnDestroy() {
+    if (this.routerEventsSubscription) {
+      this.routerEventsSubscription.unsubscribe();
+    }
+    if (this.drawerSubscription) {
+      this.drawerSubscription.unsubscribe();
+    }
   }
 
   initMaterializeComponents() {}

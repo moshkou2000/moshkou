@@ -12,9 +12,6 @@ export abstract class Services {
   sidenavItems: ISidenav[] | undefined;
 
   abstract getUser(): UserModel;
-  abstract initMaterializeDropdown(): void;
-  abstract initMaterializeSidenav(): void;
-  abstract initMaterializeTabs(): void;
 
   /*
   in tocken :
@@ -35,14 +32,5 @@ class ServicesImplement implements Services {
 
   getUser(): UserModel {
     return this.generalService.getUser();
-  }
-  initMaterializeDropdown(): void {
-    this.generalService.initMaterializeDropdown();
-  }
-  initMaterializeSidenav(): void {
-    this.generalService.initMaterializeSidenav();
-  }
-  initMaterializeTabs(): void {
-    this.generalService.initMaterializeTabs();
   }
 }

@@ -2,8 +2,16 @@
   <app-header fxLayout="column"></app-header>
   <app-alert *ngIf="layout.hasAlert" fxLayout="column"></app-alert>
 </header>
+
 <main>
-  <router-outlet></router-outlet>
+  <mat-drawer-container fxLayout="row" fxFlex="100" autosize>
+    <mat-drawer #drawer mode="side" style="width: 250px;">
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-container>
 </main>
 <footer>
   <app-footer *ngIf="layout.hasFooter" fxLayout="column"></app-footer>

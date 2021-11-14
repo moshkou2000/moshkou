@@ -6,6 +6,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -35,6 +37,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     MatButtonModule,
     LayoutModule,
     FlexLayoutModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   exports: [
     SharedPipe,

@@ -15,9 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent,
-    // loadChildren: () =>
-    //   import('./core/components/home/home.module').then((m) => m.HomeModule),
+    loadChildren: () =>
+      import('./core/components/home/home.module').then((m) => m.HomeModule),
     canActivate: [AuthGuard],
     data: {
       hasAlert: true,
@@ -27,16 +26,14 @@ const routes: Routes = [
   },
   {
     path: 'error',
-    component: ErrorComponent,
-    // loadChildren: () =>
-    //   import('./core/components/error/error.module').then((m) => m.ErrorModule),
+    loadChildren: () =>
+      import('./core/components/error/error.module').then((m) => m.ErrorModule),
     data: {},
   },
   {
     path: 'login',
-    component: LoginComponent,
-    // loadChildren: () =>
-    //   import('./core/components/login/login.module').then((m) => m.LoginModule),
+    loadChildren: () =>
+      import('./core/components/login/login.module').then((m) => m.LoginModule),
     canActivate: [UnauthGuard],
     data: {},
   },

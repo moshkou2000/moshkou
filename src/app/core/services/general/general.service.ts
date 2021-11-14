@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { keys } from 'src/environments/environment';
 import { ISidenav } from '../../interfaces/isidenav';
-import { IBreadcrumb } from '../../interfaces/isidenav copy';
+import { IBreadcrumb } from '../../interfaces/ibreadcrumb';
 import { UserModel } from '../../models/users.model';
 
 const sidenavItems: ISidenav[] = [
@@ -30,6 +30,7 @@ const sidenavItems: ISidenav[] = [
 const breadcrumbs: IBreadcrumb[] = [
   { link: 'home', label: 'Home' },
   { link: 'settings', label: 'Settings' },
+  { link: 'tips', label: 'Tips' },
   { link: 'documents', label: 'Documents' },
   { link: 'users/field_assistant', label: 'Field Assistant' },
   { link: 'users/admins', label: 'Admins' },
@@ -91,8 +92,4 @@ export class GeneralService {
     const _user: any = localStorage.getItem(keys.USER);
     return _user ? JSON.parse(_user) : undefined;
   }
-
-  initMaterializeDropdown() {}
-  initMaterializeSidenav() {}
-  initMaterializeTabs() {}
 }

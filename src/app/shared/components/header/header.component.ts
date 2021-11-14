@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
-import { IBreadcrumb } from 'src/app/core/interfaces/isidenav copy';
+import { IBreadcrumb } from 'src/app/core/interfaces/ibreadcrumb';
 import { GeneralService } from 'src/app/core/services/general/general.service';
 import { Subscription } from 'rxjs';
+import { SidenavService } from '../sidenav/sidenav.service';
 
 @Component({
   selector: 'app-header',
@@ -11,14 +12,16 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  logoutSubscription: Subscription | undefined;
   routerEventsSubscription: Subscription | undefined;
+  logoutSubscription: Subscription | undefined;
   breadcrumbs?: IBreadcrumb;
-  showSidebar = true;
+  hasSidenav: boolean = true;
+  isSidenavOpen: boolean = false;
   constructor(
     private router: Router,
     private location: Location,
-    private generalService: GeneralService
+    private generalService: GeneralService,
+    private sidenavService: SidenavService
   ) {
     this.routerEventsSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -32,6 +35,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnDestroy() {
+    if (this.routerEventsSubscription) {
+      this.routerEventsSubscription.unsubscribe();
+    }
     if (this.logoutSubscription) {
       this.logoutSubscription.unsubscribe();
     }
@@ -44,6 +50,9 @@ export class HeaderComponent implements OnInit {
     return location;
   }
 
-  toggle() {}
+  toggle() {
+    this.isSidenavOpen = !this.isSidenavOpen;
+    this.sidenavService.set(this.isSidenavOpen);
+  }
   exit() {}
 }
