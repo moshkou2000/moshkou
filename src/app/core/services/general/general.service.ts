@@ -11,6 +11,11 @@ const sidenavItems: ISidenav[] = [
     imageIcon: 'assets/logo.png',
   },
   {
+    label: 'Settings',
+    link: 'settings',
+    icon: 'backup',
+  },
+  {
     label: 'Tips',
     link: 'tips',
     icon: 'backup',

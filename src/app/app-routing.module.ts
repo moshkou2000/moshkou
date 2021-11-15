@@ -19,10 +19,17 @@ const routes: Routes = [
       import('./core/components/home/home.module').then((m) => m.HomeModule),
     canActivate: [AuthGuard],
     data: {
-      hasAlert: true,
       hasHeader: true,
       hasFooter: true,
     },
+  },
+  {
+    path: 'settings',
+    loadChildren: () =>
+      import('./core/components/settings/settings.module').then(
+        (m) => m.SettingsModule
+      ),
+    data: {},
   },
   {
     path: 'error',

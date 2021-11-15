@@ -5,8 +5,6 @@ import { Subscription } from 'rxjs';
 import { ISidenav } from './core/interfaces/isidenav';
 import { LayoutModel } from './core/models/layout.model';
 import { GeneralService } from './core/services/general/general.service';
-import { AlertModel } from './shared/components/alert/alert.model';
-import { AlertService } from './shared/components/alert/alert.service';
 import { SidenavService } from './shared/components/sidenav/sidenav.service';
 
 @Component({
@@ -20,25 +18,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   drawerSubscription: Subscription | undefined;
   layout: LayoutModel = new LayoutModel();
   sidenavItems?: ISidenav[];
-  alert: AlertModel = new AlertModel(
-    '678687687687687687',
-    1,
-    'This is a message...',
-    [{ text: 'NNNN', data: 123456789 }]
-  );
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private generalService: GeneralService,
-    private alertService: AlertService,
     private sidenavService: SidenavService
   ) {
     this.routerEventsSubscription = this.router.events.subscribe(
       (event: any) => {
         if (event instanceof NavigationEnd) {
-          this.layout.hasAlert =
-            this.activatedRoute.firstChild?.snapshot.data.hasAlert === true;
           this.layout.hasHeader =
             this.activatedRoute.firstChild?.snapshot.data.hasHeader === true;
           this.layout.hasFooter =
@@ -55,7 +44,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
   ngOnInit(): void {
     this.sidenavItems = this.generalService.sidenavItems;
-    this.alertService.set(this.alert);
   }
 
   ngAfterViewInit() {

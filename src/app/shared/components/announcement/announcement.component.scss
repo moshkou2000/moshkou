@@ -1,0 +1,25 @@
+@import "../../../../styles/variables.scss";
+
+:host {
+  display: block;
+  background: $primary-dark;
+  color: $color-light-1;
+  padding: 0;
+  font-size: 14px;
+
+  > div {
+    padding: 4px 16px;
+    display: flex;
+    align-items: center;
+  }
+  a {
+    .mat-icon {
+      color: $primary-dark;
+      margin-top: 4px;
+      margin-left: 4px;
+      font-size: 20px;
+      height: 20px;
+      width: 20px;
+    }
+  }
+}

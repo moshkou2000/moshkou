@@ -7,10 +7,8 @@
 
   > div {
     padding: 16px;
-    min-height: 16px;
 
     > div {
-      display: inline-block;
       float: right;
     }
   }
@@ -18,7 +16,6 @@
 
 button {
   font: 400 14px Roboto, "Helvetica Neue", sans-serif;
-  max-height: 16px;
 }
 
 .default {

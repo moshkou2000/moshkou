@@ -13,7 +13,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { SharedPipe } from './pipes/shared.pipe';
 import { SharedDirective } from './directives/shared.directive';
-import { AlertComponent } from './components/alert/alert.component';
+import { AnnouncementComponent } from './components/announcement/announcement.component';
+import { NotificationComponent } from './components/notification/notification.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -22,7 +23,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
   declarations: [
     SharedPipe,
     SharedDirective,
-    AlertComponent,
+    AnnouncementComponent,
+    NotificationComponent,
     HeaderComponent,
     FooterComponent,
     SidenavComponent,
@@ -43,7 +45,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
   exports: [
     SharedPipe,
     SharedDirective,
-    AlertComponent,
+    AnnouncementComponent,
+    NotificationComponent,
     HeaderComponent,
     FooterComponent,
     SidenavComponent,

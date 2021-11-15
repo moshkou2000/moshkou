@@ -1,0 +1,11 @@
+<div *ngIf="announcement != null" class="">
+  {{ announcement.message }}
+  <a
+    flex="15"
+    color="primary"
+    [href]="announcement.url"
+    target="blanck"
+  >
+  <mat-icon>play_circle_filled</mat-icon>
+</a>
+</div>

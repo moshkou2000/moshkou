@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { AlertModel, Options } from './alert.model';
+import {
+  NotificationLevel,
+  NotificationModel,
+  Options,
+} from './notification.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AlertService {
-  private subject = new Subject<AlertModel>();
+export class NotificationService {
+  private subject = new Subject<NotificationModel>();
   private buttonClick = new Subject<Options>();
 
   constructor() {}
 
-  set(alert: AlertModel) {
-    this.subject.next(alert);
+  set(notification: NotificationModel) {
+    this.subject.next(notification);
   }
 
-  get(): Observable<AlertModel> {
+  get(): Observable<NotificationModel> {
     return this.subject.asObservable();
   }
 
@@ -24,8 +28,8 @@ export class AlertService {
     this.buttonClick.next();
   }
 
-  setButtonClick(alertId: string, option: Options) {
-    option.alertId = alertId;
+  setButtonClick(notificationId: string, option: Options) {
+    option.notificationId = notificationId;
     this.buttonClick.next(option);
   }
 

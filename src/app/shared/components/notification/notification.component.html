@@ -1,0 +1,14 @@
+<div *ngIf="notification != null" class="{{ notification.level }}">
+  {{ notification.message }}
+  <div>
+    <button
+      *ngFor="let option of notification.options"
+      mat-button
+      flex="15"
+      color="primary"
+      (click)="notificationClick(notification.id, option)"
+    >
+      {{ option.text }}
+    </button>
+  </div>
+</div>
