@@ -1,4 +1,26 @@
-<mat-nav-list>
-  <a *ngFor="let a of sidenavItems" mat-list-item [routerLink]="a?.link"> {{ a?.label }} </a>
-  <mat-divider></mat-divider>
-</mat-nav-list>
+<mat-expansion-panel
+  *ngFor="let items of sidenavItems; let k = index"
+  [hideToggle]="items.children === undefined"
+>
+  <mat-expansion-panel-header
+    [routerLink]="items.children === undefined ? items?.link : null"
+    [ngClass]="items.selected ? 'active' : ''"
+    (click)="itemClick(items)"
+  >
+    <mat-icon *ngIf="items.icon && !items.imageIcon">{{ items.icon }}</mat-icon>
+    <img *ngIf="!items.icon && items.imageIcon" [src]="items.imageIcon" />
+    {{ items.label }}
+  </mat-expansion-panel-header>
+  <ng-container *ngIf="items.children">
+    <a
+      *ngFor="let item of items.children; let i = index"
+      [ngClass]="item.selected ? 'item active' : 'item'"
+      [routerLink]="item?.link"
+      (click)="itemClick(item)"
+    >
+      <mat-icon *ngIf="item.icon && !item.imageIcon">{{ item.icon }}</mat-icon>
+      <img *ngIf="!item.icon && item.imageIcon" [src]="item.imageIcon" />
+      {{ item.label }}
+    </a>
+  </ng-container>
+</mat-expansion-panel>

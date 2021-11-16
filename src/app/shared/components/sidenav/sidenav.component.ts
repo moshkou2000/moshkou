@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ISidenav } from 'src/app/core/interfaces/isidenav';
 import { GeneralService } from 'src/app/core/services/general/general.service';
 
@@ -14,5 +14,15 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit(): void {
     this.sidenavItems = this.generalService.sidenavItems;
+  }
+
+  itemClick(item: ISidenav): void {
+    this.sidenavItems?.forEach((i) => {
+      if (i.children) {
+        i.children?.forEach((i) => (i.selected = false));
+      }
+      i.selected = false;
+    });
+    item.selected = true;
   }
 }

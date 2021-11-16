@@ -5,18 +5,22 @@ import {
   ChangeDetectorRef,
   ViewRef,
 } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { AnnouncementModel } from 'src/app/shared/components/announcement/announcement.model';
 import { AnnouncementService } from 'src/app/shared/components/announcement/announcement.service';
+import { ConfirmationComponent } from 'src/app/shared/components/confirmation/confirmation.component';
+import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
 
 import { environment } from '../../../../environments/environment';
 
 import {
   NotificationModel,
-  NotificationLevel,
   Options,
 } from '../../../shared/components/notification/notification.model';
 import { NotificationService } from '../../../shared/components/notification/notification.service';
+import { StatusLevel } from '../../constants/status-level';
 
 @Component({
   selector: 'app-settings',
@@ -35,21 +39,70 @@ export class SettingsComponent implements AfterViewInit, OnDestroy {
   notification: NotificationModel = new NotificationModel({
     id: '678687687687687687',
     message: 'This is notification...',
-    level: NotificationLevel.success,
+    level: StatusLevel.warning,
     options: [new Options({ text: 'NNNN', data: 123456789 })],
   });
+
+  confirmationRef: any = null;
+  confirmationSubscription: Subscription | undefined;
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
     private announcementService: AnnouncementService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private snackbar: MatSnackBar,
+    public dialog: MatDialog
   ) {}
 
-  ngAfterViewInit() {}
+  ngAfterViewInit(): void {
+    if (!this.confirmationRef) {
+      let that: any = this;
 
-  ngOnDestroy() {}
+      const confirmationRef: MatDialogRef<ConfirmationComponent, any> =
+        this.dialog.open(ConfirmationComponent, {
+          disableClose: true,
+          width: '250px',
+          data: {
+            title: 'Delete Records',
+            message:
+              'This is data message, This is data message, This is data message, This is data message',
+            button1: {
+              title: 'Cancel',
+              click: function () {
+                confirmationRef.close();
+              },
+            },
+            button2: {
+              title: 'Delete',
+              click: function () {
+                // TODO: do your action
 
-  generateNotification() {
+                confirmationRef.close();
+                // alert
+              },
+            },
+          },
+        });
+
+      this.confirmationSubscription = confirmationRef
+        .afterClosed()
+        .subscribe(() => {
+          !environment.production && console.log('The dialog was closed');
+          this.confirmationRef = null;
+          that = null;
+        });
+
+      this.confirmationRef = confirmationRef;
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.confirmationSubscription) {
+      this.confirmationSubscription.unsubscribe();
+    }
+  }
+
+  generateNotification(): void {
     this.notificationService.set(this.notification);
     this.notificationOptionSubscription = this.notificationService
       .getButtonClick()
@@ -58,10 +111,24 @@ export class SettingsComponent implements AfterViewInit, OnDestroy {
           console.log('user clicked notification button ', option);
 
         if (option) {
-          // it has clicked
+          // TODO: it has clicked
           if (option.data === 2) {
             // it is an example
             this.removeNotification();
+          } else {
+            !environment.production &&
+              this.snackbar.openFromComponent(SnackbarComponent, {
+                data: {
+                  message: 'This snakbar message.',
+                  action: 'Undo',
+                  actionClick: () => {
+                    console.log('SettingsComponent.Snackbar.clicked');
+                  },
+                },
+                duration: 399000,
+                horizontalPosition: 'center',
+                verticalPosition: 'top',
+              });
           }
         }
 
@@ -71,7 +138,7 @@ export class SettingsComponent implements AfterViewInit, OnDestroy {
       });
   }
 
-  removeNotification() {
+  removeNotification(): void {
     this.notificationService.remove();
 
     if (this.notificationOptionSubscription) {
@@ -79,11 +146,11 @@ export class SettingsComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  generateAnnouncement() {
+  generateAnnouncement(): void {
     this.announcementService.set(this.announcement);
   }
 
-  removeAnnouncement() {
+  removeAnnouncement(): void {
     this.announcementService.remove();
 
     if (this.announcementOptionSubscription) {

@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  OnDestroy,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { AnnouncementModel } from './announcement.model';
@@ -15,7 +9,7 @@ import { AnnouncementService } from './announcement.service';
   templateUrl: './announcement.component.html',
   styleUrls: ['./announcement.component.scss'],
 })
-export class AnnouncementComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AnnouncementComponent implements OnDestroy {
   announcement: AnnouncementModel | undefined;
   subscription: Subscription | undefined;
 
@@ -31,11 +25,7 @@ export class AnnouncementComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  ngOnInit() {}
-
-  ngAfterViewInit() {}
-
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }

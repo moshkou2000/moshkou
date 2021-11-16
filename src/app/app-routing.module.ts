@@ -29,7 +29,9 @@ const routes: Routes = [
       import('./core/components/settings/settings.module').then(
         (m) => m.SettingsModule
       ),
-    data: {},
+    data: {
+      hasHeader: true,
+    },
   },
   {
     path: 'error',

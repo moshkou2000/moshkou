@@ -1,7 +1,9 @@
+import { StatusLevel } from 'src/app/core/constants/status-level';
+
 type NotificationArguments = {
   id: string;
   message: string;
-  level?: String;
+  level?: string;
   options?: [Options];
 };
 
@@ -10,7 +12,7 @@ type OptionsArguments = { text: string; data?: any; notificationId?: string };
 export class NotificationModel {
   public id: string;
   public message: string;
-  public level?: String = NotificationLevel.default;
+  public level?: string = StatusLevel.default;
   public options?: [Options];
 
   constructor(args: NotificationArguments) {
@@ -27,23 +29,7 @@ export class Options {
     this.data = args.data;
     this.notificationId = args.notificationId;
   }
-  public text: String = '';
+  public text: string = '';
   public data?: any;
-  public notificationId?: String = '';
+  public notificationId?: string = '';
 }
-
-export interface INotificationLevel {
-  default: String;
-  error: String;
-  info: String;
-  success: String;
-  warning: String;
-}
-
-export const NotificationLevel: INotificationLevel = {
-  default: 'default',
-  error: 'error',
-  info: 'info',
-  success: 'success',
-  warning: 'warning',
-};

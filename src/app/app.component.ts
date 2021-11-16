@@ -1,4 +1,4 @@
-import { AfterViewInit, OnInit, Component, ViewChild } from '@angular/core';
+import { OnInit, Component, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { SidenavService } from './shared/components/sidenav/sidenav.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   @ViewChild(MatDrawer) drawer: MatDrawer | undefined;
   routerEventsSubscription: Subscription | undefined;
   drawerSubscription: Subscription | undefined;
@@ -46,11 +46,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.sidenavItems = this.generalService.sidenavItems;
   }
 
-  ngAfterViewInit() {
-    this.initMaterializeComponents();
-  }
-
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.routerEventsSubscription) {
       this.routerEventsSubscription.unsubscribe();
     }
@@ -58,6 +54,4 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.drawerSubscription.unsubscribe();
     }
   }
-
-  initMaterializeComponents() {}
 }

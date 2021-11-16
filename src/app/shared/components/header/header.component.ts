@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Location } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { IBreadcrumb } from 'src/app/core/interfaces/ibreadcrumb';
@@ -11,12 +11,13 @@ import { SidenavService } from '../sidenav/sidenav.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnDestroy {
   routerEventsSubscription: Subscription | undefined;
   logoutSubscription: Subscription | undefined;
   breadcrumbs?: IBreadcrumb;
   hasSidenav: boolean = true;
   isSidenavOpen: boolean = false;
+
   constructor(
     private router: Router,
     private location: Location,
@@ -32,9 +33,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.routerEventsSubscription) {
       this.routerEventsSubscription.unsubscribe();
     }
@@ -43,16 +42,16 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  toLink(location: string) {
+  toLink(location: string): string {
     if (location.length > 0 && location[0] === '/') {
       location = location.substring(1);
     }
     return location;
   }
 
-  toggle() {
+  toggle(): void {
     this.isSidenavOpen = !this.isSidenavOpen;
     this.sidenavService.set(this.isSidenavOpen);
   }
-  exit() {}
+  exit(): void {}
 }

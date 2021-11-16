@@ -9,7 +9,7 @@ export class SidenavService {
 
   constructor() {}
 
-  set(flag: boolean) {
+  set(flag: boolean): void {
     this.subject.next(flag);
   }
 
@@ -17,7 +17,7 @@ export class SidenavService {
     return this.subject.asObservable();
   }
 
-  remove() {
+  remove(): void {
     this.subject.next();
   }
 }

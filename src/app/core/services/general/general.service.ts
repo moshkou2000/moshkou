@@ -9,24 +9,27 @@ const sidenavItems: ISidenav[] = [
     label: 'Home',
     link: 'home',
     imageIcon: 'assets/logo.png',
+    children: [
+      {
+        label: 'Settings',
+        link: 'settings',
+        selected: true,
+      },
+      {
+        label: 'Tips',
+        link: 'tips',
+      },
+    ],
   },
   {
     label: 'Settings',
     link: 'settings',
-    icon: 'backup',
-  },
-  {
-    label: 'Tips',
-    link: 'tips',
-    icon: 'backup',
-  },
-  {
-    class: 'divider',
   },
   {
     label: 'Login',
     link: 'login',
-    icon: 'backup',
+    icon: 'login',
+    selected: true,
   },
 ];
 
@@ -35,7 +38,7 @@ const sidenavItems: ISidenav[] = [
 const breadcrumbs: IBreadcrumb[] = [
   { link: 'home', label: 'Home' },
   { link: 'settings', label: 'Settings' },
-  { link: 'tips', label: 'Tips' },
+  { link: 'tips', label: 'Tips', parents: [{ link: 'home', label: 'Home' }] },
   { link: 'documents', label: 'Documents' },
   { link: 'users/field_assistant', label: 'Field Assistant' },
   { link: 'users/admins', label: 'Admins' },
@@ -60,7 +63,7 @@ const breadcrumbs: IBreadcrumb[] = [
   providedIn: 'root',
 })
 export class GeneralService {
-  breadcrumb: any = null;
+  breadcrumb: IBreadcrumb | undefined;
   constructor() {}
 
   get sidenavItems(): ISidenav[] {
@@ -79,22 +82,23 @@ export class GeneralService {
 
     return this.breadcrumb;
   }
-  getBreadcrumb(link: string) {
-    let breadcrumb = breadcrumbs.find((item) => {
+  getBreadcrumb(link: string): IBreadcrumb | undefined {
+    let breadcrumb: IBreadcrumb | undefined = breadcrumbs.find((item) => {
       return item.link === link;
     });
 
     if (breadcrumb?.parents) {
-      this.breadcrumb.parents.push(
-        this.getBreadcrumb(breadcrumb.parents[0].link)
+      const b: IBreadcrumb | undefined = this.getBreadcrumb(
+        breadcrumb.parents[0].link
       );
+      if (b) this.breadcrumb!.parents!.push(b);
     }
 
     return breadcrumb;
   }
 
   getUser(): UserModel {
-    const _user: any = localStorage.getItem(keys.USER);
-    return _user ? JSON.parse(_user) : undefined;
+    const user: any = localStorage.getItem(keys.USER);
+    return user ? JSON.parse(user) : undefined;
   }
 }

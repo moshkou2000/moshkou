@@ -1,9 +1,8 @@
 <header>
   <app-announcement fxLayout="column"></app-announcement>
-  <app-header fxLayout="column"></app-header>
+  <app-header *ngIf="layout.hasHeader" fxLayout="column"></app-header>
   <app-notification fxLayout="column"></app-notification>
 </header>
-
 <main>
   <mat-drawer-container fxLayout="row" fxFlex="100" autosize>
     <mat-drawer #drawer mode="side" style="width: 250px;">
@@ -17,33 +16,3 @@
 <footer>
   <app-footer *ngIf="layout.hasFooter" fxLayout="column"></app-footer>
 </footer>
-<!-- <aside id="main-sidenav" class="sidenav sidenav-fixed">
-  <app-sidenav></app-sidenav>
-</aside>
-<main>
-  <router-outlet></router-outlet>
-</main>
-<footer *ngIf="layout.hasFooter" class="page-footer">
-  <app-footer></app-footer>
-</footer> -->
-
-<!-- <mat-toolbar  class="back">
-  <mat-toolbar-row>
-    <button mat-icon-button aria-label="icon-button"><mat-icon>keyboard_backspace</mat-icon></button>
-    <span class="text-m">sssddddssss</span>
-  </mat-toolbar-row>
-</mat-toolbar> -->
-
-<!-- <main>
-  <ul id="main-sidenav" class="sidenav">
-    <li *ngFor="let a of sidenavItems" [ngClass]="a?.class!">
-      <a href="#" [routerLink]="a?.link">{{ a?.label }}</a>
-    </li>
-  </ul>
-  <main>
-    <router-outlet></router-outlet>
-    <footer *ngIf="layout.hasFooter" class="page-footer">
-      <app-footer></app-footer>
-    </footer>
-  </main>
-</main> -->

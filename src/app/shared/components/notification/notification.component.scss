@@ -1,9 +1,9 @@
 @import "../../../../styles/variables.scss";
 
 :host {
-  color: #fff;
   padding: 0;
   font-size: 14px;
+  display: block;
 
   > div {
     padding: 16px;
@@ -12,29 +12,33 @@
       float: right;
     }
   }
-}
 
-button {
-  font: 400 14px Roboto, "Helvetica Neue", sans-serif;
-}
+  button {
+    font: 400 14px Roboto, "Helvetica Neue", sans-serif;
+  }
 
-.default {
-  background: $default;
-}
+  .default {
+    background: $default;
+    color: #fff;
+  }
 
-.info {
-  background: $info;
-}
+  .info {
+    background: $info;
+    color: #fff;
+  }
 
-.error {
-  background: $error;
-}
+  .error {
+    background: $error;
+    color: #fff;
+  }
 
-.success {
-  background: $success;
-}
+  .success {
+    background: $success;
+    color: #fff;
+  }
 
-.warning {
-  background: $warning;
-  color: $color-dark-1;
+  .warning {
+    background: $warning;
+    color: $color-dark-1;
+  }
 }

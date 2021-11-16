@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -37,6 +38,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     MatDividerModule,
     MatMenuModule,
     MatButtonModule,
+    MatExpansionModule,
     LayoutModule,
     FlexLayoutModule,
     MatSidenavModule,

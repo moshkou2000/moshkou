@@ -1,13 +1,13 @@
 type AnnouncementArguments = {
-  id: String;
-  message: String;
-  url: String;
+  id: string;
+  message: string;
+  url: string;
 };
 
 export class AnnouncementModel {
-  public id: String;
-  public message: String;
-  public url: String;
+  public id: string;
+  public message: string;
+  public url: string;
 
   constructor(args: AnnouncementArguments) {
     this.id = args.id;

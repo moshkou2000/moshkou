@@ -1,17 +1,7 @@
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  OnDestroy,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import {
-  NotificationModel,
-  NotificationLevel,
-  Options,
-} from './notification.model';
+import { NotificationModel, Options } from './notification.model';
 import { NotificationService } from './notification.service';
 
 @Component({
@@ -19,7 +9,7 @@ import { NotificationService } from './notification.service';
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss'],
 })
-export class NotificationComponent implements OnInit, AfterViewInit, OnDestroy {
+export class NotificationComponent implements OnDestroy {
   notification: NotificationModel | undefined;
   subscription: Subscription | undefined;
 
@@ -35,17 +25,13 @@ export class NotificationComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  ngOnInit() {}
-
-  ngAfterViewInit() {}
-
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
 
-  notificationClick(notification_id: string, option: Options) {
+  notificationClick(notification_id: string, option: Options): void {
     this.notificationService.setButtonClick(notification_id, option);
   }
 }
