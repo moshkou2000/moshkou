@@ -1,5 +1,8 @@
 ::ng-deep {
+  .mat-tab-group {
+    height: 100%;
+  }
   .mat-tab-body-wrapper {
-    height: 800px;
+    flex: 1;
   }
 }

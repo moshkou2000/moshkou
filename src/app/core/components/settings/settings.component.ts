@@ -20,7 +20,7 @@ import {
   Options,
 } from '../../../shared/components/notification/notification.model';
 import { NotificationService } from '../../../shared/components/notification/notification.service';
-import { StatusLevel } from '../../constants/status-level';
+import { STATUS_LEVEL } from '../../constants/status-level';
 
 @Component({
   selector: 'app-settings',
@@ -39,7 +39,7 @@ export class SettingsComponent implements AfterViewInit, OnDestroy {
   notification: NotificationModel = new NotificationModel({
     id: '678687687687687687',
     message: 'This is notification...',
-    level: StatusLevel.warning,
+    level: STATUS_LEVEL.warning,
     options: [new Options({ text: 'NNNN', data: 123456789 })],
   });
 
@@ -55,45 +55,7 @@ export class SettingsComponent implements AfterViewInit, OnDestroy {
   ) {}
 
   ngAfterViewInit(): void {
-    if (!this.confirmationRef) {
-      let that: any = this;
-
-      const confirmationRef: MatDialogRef<ConfirmationComponent, any> =
-        this.dialog.open(ConfirmationComponent, {
-          disableClose: true,
-          width: '250px',
-          data: {
-            title: 'Delete Records',
-            message:
-              'This is data message, This is data message, This is data message, This is data message',
-            button1: {
-              title: 'Cancel',
-              click: function () {
-                confirmationRef.close();
-              },
-            },
-            button2: {
-              title: 'Delete',
-              click: function () {
-                // TODO: do your action
-
-                confirmationRef.close();
-                // alert
-              },
-            },
-          },
-        });
-
-      this.confirmationSubscription = confirmationRef
-        .afterClosed()
-        .subscribe(() => {
-          !environment.production && console.log('The dialog was closed');
-          this.confirmationRef = null;
-          that = null;
-        });
-
-      this.confirmationRef = confirmationRef;
-    }
+    // this.generateDialog();
   }
 
   ngOnDestroy(): void {
@@ -155,6 +117,44 @@ export class SettingsComponent implements AfterViewInit, OnDestroy {
 
     if (this.announcementOptionSubscription) {
       this.announcementOptionSubscription.unsubscribe();
+    }
+  }
+
+  generateDialog(): void {
+    if (!this.confirmationRef) {
+      let that: any = this;
+      const confirmationRef: MatDialogRef<ConfirmationComponent, any> =
+        this.dialog.open(ConfirmationComponent, {
+          disableClose: true,
+          width: '250px',
+          data: {
+            title: 'Delete Records',
+            message:
+              'This is data message, This is data message, This is data message, This is data message',
+            button1: {
+              title: 'Cancel',
+              click: function () {
+                confirmationRef.close();
+              },
+            },
+            button2: {
+              title: 'Delete',
+              click: function () {
+                // TODO: do your action
+                confirmationRef.close();
+                // alert
+              },
+            },
+          },
+        });
+      this.confirmationSubscription = confirmationRef
+        .afterClosed()
+        .subscribe(() => {
+          !environment.production && console.log('The dialog was closed');
+          this.confirmationRef = null;
+          that = null;
+        });
+      this.confirmationRef = confirmationRef;
     }
   }
 }

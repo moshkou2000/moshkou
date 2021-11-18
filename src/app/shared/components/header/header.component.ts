@@ -1,5 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Location } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { IBreadcrumb } from 'src/app/core/interfaces/ibreadcrumb';
 import { GeneralService } from 'src/app/core/services/general/general.service';
@@ -20,14 +19,17 @@ export class HeaderComponent implements OnDestroy {
 
   constructor(
     private router: Router,
-    private location: Location,
     private generalService: GeneralService,
     private sidenavService: SidenavService
   ) {
+    this.breadcrumbs = this.generalService.getBreadcrumbs(
+      this.toLink(this.router.url)
+    );
+
     this.routerEventsSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.breadcrumbs = this.generalService.getBreadcrumbs(
-          this.toLink(this.location.path())
+          this.toLink(this.router.url)
         );
       }
     });

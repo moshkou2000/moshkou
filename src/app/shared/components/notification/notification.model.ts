@@ -1,4 +1,4 @@
-import { StatusLevel } from 'src/app/core/constants/status-level';
+import { STATUS_LEVEL } from 'src/app/core/constants/status-level';
 
 type NotificationArguments = {
   id: string;
@@ -12,7 +12,7 @@ type OptionsArguments = { text: string; data?: any; notificationId?: string };
 export class NotificationModel {
   public id: string;
   public message: string;
-  public level?: string = StatusLevel.default;
+  public level?: string = STATUS_LEVEL.default;
   public options?: [Options];
 
   constructor(args: NotificationArguments) {

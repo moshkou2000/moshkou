@@ -3,8 +3,7 @@
 :host {
   display: block;
   background: $header-bg;
-  box-shadow: inset 0px 2px 4px 0 lighten($color-dark-1, 12%);
-  min-height: 56px;
+  min-height: $header-height;
 
   > mat-toolbar {
     background: transparent;

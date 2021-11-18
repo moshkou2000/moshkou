@@ -1,5 +1,6 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import "https://fonts.googleapis.com/css?family=Material+Icons:400,700";
+@import "./styles/variables.scss";
 
 body,
 html {
@@ -27,6 +28,45 @@ body {
   }
 }
 
+.default-bg {
+  background: $default;
+  color: #fff;
+}
+.info-bg {
+  background: $info;
+  color: #fff;
+}
+.error-bg {
+  background: $error;
+  color: #fff;
+}
+.success-bg {
+  background: $success;
+  color: #fff;
+}
+.warning-bg {
+  background: $warning;
+  color: $color-dark-1;
+}
+.default-bg {
+  background: $default;
+  color: #fff;
+}
+.info-color {
+  color: $info;
+}
+.error-color {
+  color: $error;
+}
+.success-color {
+  color: $success;
+}
+.warning-color {
+  color: $warning;
+}
+.gold-color {
+  color: #ffd700;
+}
 *::-webkit-scrollbar {
   width: 0.4em;
 }

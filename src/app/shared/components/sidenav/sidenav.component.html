@@ -1,11 +1,16 @@
 <mat-expansion-panel
   *ngFor="let items of sidenavItems; let k = index"
   [hideToggle]="items.children === undefined"
+  [disabled]="items?.link === undefined && items?.children === undefined"
 >
   <mat-expansion-panel-header
-    [routerLink]="items.children === undefined ? items?.link : null"
+    [routerLink]="
+      items.children === undefined && items?.link !== undefined
+        ? items?.link
+        : null
+    "
     [ngClass]="items.selected ? 'active' : ''"
-    (click)="itemClick(items)"
+    (click)="itemSelect({ items: items })"
   >
     <mat-icon *ngIf="items.icon && !items.imageIcon">{{ items.icon }}</mat-icon>
     <img *ngIf="!items.icon && items.imageIcon" [src]="items.imageIcon" />
@@ -15,8 +20,8 @@
     <a
       *ngFor="let item of items.children; let i = index"
       [ngClass]="item.selected ? 'item active' : 'item'"
-      [routerLink]="item?.link"
-      (click)="itemClick(item)"
+      [routerLink]="item?.link !== undefined ? item?.link : null"
+      (click)="itemSelect({ item: item })"
     >
       <mat-icon *ngIf="item.icon && !item.imageIcon">{{ item.icon }}</mat-icon>
       <img *ngIf="!item.icon && item.imageIcon" [src]="item.imageIcon" />

@@ -1,0 +1,194 @@
+<div
+  class="example-loading-shade"
+  *ngIf="isLoadingResults || isRateLimitReached"
+>
+  <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+    GitHub's API rate limit has been reached. It will be reset in one minute.
+  </div>
+</div>
+<div class="example-container">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    multiTemplateDataRows
+    recycleRows
+    matSort
+    matSortActive="position"
+    matSortDisableClear
+    matSortDirection="asc"
+  >
+    <!-- header -->
+    <ng-container matColumnDef="header">
+      <td
+        mat-header-cell
+        *matHeaderCellDef
+        [attr.colspan]="dataSource.data.length"
+        style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"
+      >
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="Ex. Mia"
+          #input
+        />
+      </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position" sticky>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      <td mat-footer-cell *matFooterCellDef>No.</td>
+    </ng-container>
+
+    <!-- Online Column -->
+    <ng-container matColumnDef="online">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>online</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon [ngClass]="element.online ? 'success-color' : 'error-color'"
+          >radio_button_checked</mat-icon
+        >
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      <td mat-footer-cell *matFooterCellDef>Name</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
+      <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+      <td mat-footer-cell *matFooterCellDef>Weight</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Symbol</th>
+      <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
+      <td mat-footer-cell *matFooterCellDef>Symbol</td>
+    </ng-container>
+
+    <!-- Popularity Column -->
+    <ng-container matColumnDef="popularity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Popularity</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon *ngFor="let p of arrPopularity" class="gold-color">
+          {{ p === 1 ? "star" : p === 2 ? "star_half" : "star_outline" }}
+        </mat-icon>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-flat-button
+          mat-icon-button
+          class="error-color"
+          (click)="deleteItem(element)"
+        >
+          <mat-icon>delete</mat-icon></button
+        ><button
+          mat-flat-button
+          mat-icon-button
+          class="info-color"
+          (click)="editItem(element)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-flat-button
+          mat-icon-button
+          class="info-color"
+          (click)="
+            expandedItem =
+              expandedItem === element.position ? '' : element.position
+          "
+        >
+          <mat-icon>{{
+            expandedItem === element.position ? "expand_more" : "expand_less"
+          }}</mat-icon>
+        </button>
+      </td>
+      <td mat-footer-cell *matFooterCellDef></td>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef="expandedDetail">
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [attr.colspan]="displayedColumns.length"
+      >
+        <div
+          class="example-element-detail"
+          [@detailExpand]="
+            element.position == expandedItem ? 'expanded' : 'collapsed'
+          "
+        >
+          <div class="example-element-diagram">
+            <div class="example-element-position">{{ element.position }}</div>
+            <div class="example-element-symbol">{{ element.symbol }}</div>
+            <div class="example-element-name">{{ element.position }}</div>
+            <div class="example-element-weight">{{ element.weight }}</div>
+          </div>
+          <div class="example-element-description">
+            {{ element.description }}
+            <span class="example-element-description-attribution">
+              -- Wikipedia
+            </span>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- footer -->
+    <ng-container matColumnDef="footer">
+      <td
+        mat-footer-cell
+        *matFooterCellDef
+        [attr.colspan]="dataSource.data.length"
+      >
+        <mat-paginator
+          [pageSize]="25"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page of tables"
+          showFirstLastButtons
+        ></mat-paginator>
+      </td>
+    </ng-container>
+
+    <!-- header -->
+    <tr
+      mat-header-row
+      *matHeaderRowDef="['header']; sticky: true"
+      class="example-second-header-row"
+    ></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+
+    <!-- body -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <!-- <tr
+      mat-row
+      *matRowDef="let row; columns: ['expandedDetail']"
+      class="example-detail-row"
+    ></tr> -->
+
+    <!-- footer -->
+    <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+    <tr
+      mat-footer-row
+      *matFooterRowDef="['footer']; sticky: true"
+      class="example-second-footer-row"
+    ></tr>
+  </table>
+</div>

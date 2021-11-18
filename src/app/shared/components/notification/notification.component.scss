@@ -6,6 +6,7 @@
   display: block;
 
   > div {
+    box-shadow: inset 0px 3px 3px 0 lighten($color-dark-1, 12%);
     padding: 16px;
 
     > div {
@@ -15,30 +16,5 @@
 
   button {
     font: 400 14px Roboto, "Helvetica Neue", sans-serif;
-  }
-
-  .default {
-    background: $default;
-    color: #fff;
-  }
-
-  .info {
-    background: $info;
-    color: #fff;
-  }
-
-  .error {
-    background: $error;
-    color: #fff;
-  }
-
-  .success {
-    background: $success;
-    color: #fff;
-  }
-
-  .warning {
-    background: $warning;
-    color: $color-dark-1;
   }
 }
