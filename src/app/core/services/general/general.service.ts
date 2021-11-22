@@ -13,9 +13,13 @@ export class GeneralService {
   breadcrumb: IBreadcrumb | undefined;
   constructor() {}
 
+  // Sidenav
   get sidenavItems(): ISidenav[] {
     return SIDENAV_ITEMS;
   }
+
+  // Breadcrumbs
+  // link: current route
   getBreadcrumbs(link: string) {
     let breadcrumb: IBreadcrumb | undefined = BREADCRUMBS.find((item) => {
       return item.link === link;
@@ -44,8 +48,28 @@ export class GeneralService {
     return breadcrumb;
   }
 
+  // User
   getUser(): UserModel {
     const user: string | null = localStorage.getItem(keys.USER);
     return user ? JSON.parse(user) : undefined;
+  }
+
+  // Fullscreen
+  // id: target selector
+  toggleFullscreen(id: string): void {
+    const target = document.getElementById(id);
+    if (target) {
+      const main = document.querySelector('body>app-root>main');
+      if (main) {
+        const isFullscreen: boolean = target.classList.contains('fullscreen');
+        if (isFullscreen) {
+          main.removeAttribute('style');
+          target.className = target.className.replace(' fullscreen', '');
+        } else {
+          main.setAttribute('style', 'z-index: 9');
+          target.className += ' fullscreen';
+        }
+      }
+    }
   }
 }

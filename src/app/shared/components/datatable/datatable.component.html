@@ -1,14 +1,12 @@
-<div
-  class="example-loading-shade"
-  *ngIf="isLoadingResults || isRateLimitReached"
->
+<div class="loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
   <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-  <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+  <div class="rate-limit-reached" *ngIf="isRateLimitReached">
     GitHub's API rate limit has been reached. It will be reset in one minute.
   </div>
 </div>
-<div class="example-container">
+<div class="container">
   <table
+    id="datatable_id"
     mat-table
     [dataSource]="dataSource"
     multiTemplateDataRows
@@ -26,12 +24,71 @@
         [attr.colspan]="dataSource.data.length"
         style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"
       >
-        <input
-          matInput
-          (keyup)="applyFilter($event)"
-          placeholder="Ex. Mia"
-          #input
-        />
+        <div class="toolbar">
+          <button mat-button>
+            <mat-icon>search</mat-icon>
+          </button>
+          <div class="search">
+            <input
+              matInput
+              (keyup)="applyFilter($event)"
+              placeholder="Ex. Mia"
+              #input
+            />
+          </div>
+          <!-- <button>
+            <mat-icon>delete</mat-icon>
+          </button> -->
+          <button mat-button aria-label="icon-button">
+            <mat-icon>add</mat-icon>
+            <div>ADD</div>
+          </button>
+          <!-- <button>
+            <mat-icon>edit</mat-icon>
+          </button> -->
+          <button mat-button aria-label="icon-button">
+            <mat-icon>filter_alt</mat-icon>
+            <div>FILTER</div>
+          </button>
+          <button mat-button aria-label="icon-button">
+            <mat-icon>insert_chart</mat-icon>
+            <div>REPORTS</div>
+          </button>
+          <button mat-button aria-label="icon-button">
+            <img src="../../../../assets/icons/microsoft-excel.svg" />
+            <div>EXCEL</div>
+          </button>
+          <button mat-button aria-label="icon-button">
+            <img src="../../../../assets/icons/pdf.svg" />
+            <div>EXCEL</div>
+          </button>
+          <button mat-button aria-label="icon-button">
+            <mat-icon>file_download</mat-icon>
+            <div>DOWNLOAD</div>
+          </button>
+          <button
+            mat-button
+            aria-label="icon-button"
+            (click)="toggleFullscreen('datatable_id')"
+          >
+            <mat-icon>{{
+              isFullscreen ? "fullscreen_exit" : "fullscreen"
+            }}</mat-icon>
+            <div>{{ isFullscreen ? "COLLAPSE" : "EXPAND" }}</div>
+          </button>
+          <button mat-button aria-label="icon-button">
+            <mat-icon
+              matBadge="{{ updateBadge === 0 ? '' : updateBadge }}"
+              matBadgeColor="warn"
+              >update</mat-icon
+            >
+            <div>UPDATE</div>
+          </button>
+          <button mat-button aria-label="icon-button">
+            <mat-icon>more_vert</mat-icon>
+            <div>MORE</div>
+          </button>
+        </div>
       </td>
     </ng-container>
 
@@ -130,22 +187,20 @@
         [attr.colspan]="displayedColumns.length"
       >
         <div
-          class="example-element-detail"
+          class="element-detail"
           [@detailExpand]="
             element.position == expandedItem ? 'expanded' : 'collapsed'
           "
         >
-          <div class="example-element-diagram">
-            <div class="example-element-position">{{ element.position }}</div>
-            <div class="example-element-symbol">{{ element.symbol }}</div>
-            <div class="example-element-name">{{ element.position }}</div>
-            <div class="example-element-weight">{{ element.weight }}</div>
+          <div class="element-diagram">
+            <div class="element-position">{{ element.position }}</div>
+            <div class="element-symbol">{{ element.symbol }}</div>
+            <div class="element-name">{{ element.position }}</div>
+            <div class="element-weight">{{ element.weight }}</div>
           </div>
-          <div class="example-element-description">
+          <div class="element-description">
             {{ element.description }}
-            <span class="example-element-description-attribution">
-              -- Wikipedia
-            </span>
+            <span class="element-description-attribution"> -- Wikipedia </span>
           </div>
         </div>
       </td>
@@ -171,7 +226,7 @@
     <tr
       mat-header-row
       *matHeaderRowDef="['header']; sticky: true"
-      class="example-second-header-row"
+      class="second-header-row"
     ></tr>
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
 
@@ -180,15 +235,15 @@
     <!-- <tr
       mat-row
       *matRowDef="let row; columns: ['expandedDetail']"
-      class="example-detail-row"
+      class="detail-row"
     ></tr> -->
 
     <!-- footer -->
-    <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+    <!-- <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr> -->
     <tr
       mat-footer-row
       *matFooterRowDef="['footer']; sticky: true"
-      class="example-second-footer-row"
+      class="second-footer-row"
     ></tr>
   </table>
 </div>

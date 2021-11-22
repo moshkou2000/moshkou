@@ -1,7 +1,7 @@
 @import "../../../../styles/variables.scss";
 
 :host {
-  .example-container {
+  .container {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -39,32 +39,32 @@
     line-height: 34px;
   }
 
-  tr.example-detail-row {
+  tr.detail-row {
     height: 0;
   }
 
-  tr.example-expanded-row > td {
+  tr.expanded-row > td {
     border-bottom-color: transparent;
   }
 
-  tr.example-element-row:not(.example-expanded-row):hover {
+  tr.element-row:not(.expanded-row):hover {
     background: whitesmoke;
   }
 
-  tr.example-element-row:not(.example-expanded-row):active {
+  tr.element-row:not(.expanded-row):active {
     background: #efefef;
   }
 
-  .example-element-row td {
+  .element-row td {
     border-bottom-width: 0;
   }
 
-  .example-element-detail {
+  .element-detail {
     overflow: hidden;
     display: flex;
   }
 
-  .example-element-diagram {
+  .element-diagram {
     min-width: 80px;
     border: 2px solid black;
     padding: 8px;
@@ -73,23 +73,23 @@
     height: 104px;
   }
 
-  .example-element-symbol {
+  .element-symbol {
     font-weight: bold;
     font-size: 40px;
     line-height: normal;
   }
 
-  .example-element-description {
+  .element-description {
     padding: 16px;
   }
 
-  .example-element-description-attribution {
+  .element-description-attribution {
     opacity: 0.5;
   }
 
   /*
   column size
-*/
+  */
   // first column
   .mat-column-position {
     width: 60px;
@@ -97,21 +97,20 @@
 
   // last column
   .mat-column-action {
-    width: 140px;
+    width: 120px;
     padding: 0 !important;
   }
 
   /*
   loading & message
-*/
+  */
   // loading
-  .example-loading-shade {
+  .loading-shade {
     position: absolute;
     top: 0;
     left: 0;
     bottom: 56px;
     right: 0;
-    // background: rgba(0, 0, 0, 0.15);
     z-index: 1;
     display: flex;
     align-items: center;
@@ -119,8 +118,52 @@
   }
 
   // message
-  .example-rate-limit-reached {
+  .rate-limit-reached {
     max-width: 360px;
     text-align: center;
+  }
+
+  /*
+    header
+  */
+  .toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    font-size: 12px;
+    height: 53px;
+
+    // buttons
+    button {
+      color: $toolbar-color;
+      border-radius: 0 !important;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      height: 100%;
+      border-radius: 0;
+
+      div {
+        color: rgba(97, 97, 97, 0.8);
+        font-size: 10px;
+        line-height: 1;
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    // search
+    .search {
+      display: flex;
+      flex: 1;
+
+      input {
+        font-size: 18px;
+        color: $toolbar-color;
+      }
+    }
   }
 }

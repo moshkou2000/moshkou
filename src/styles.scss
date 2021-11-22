@@ -10,12 +10,12 @@ html {
   overflow: hidden;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
 body {
   header,
   footer {
     flex: 0;
     flex-shrink: 0;
+    z-index: 9;
   }
   main {
     display: flex;
@@ -28,6 +28,22 @@ body {
   }
 }
 
+.mat-badge-content {
+  width: auto;
+  display: grid;
+  min-width: 32px;
+  min-height: 22px;
+  text-align: center;
+  align-items: center;
+  padding: 5px 3px;
+  top: -20px !important;
+  right: -28px !important;
+  border-radius: 4px;
+}
+
+/*
+  background
+*/
 .default-bg {
   background: $default;
   color: #fff;
@@ -52,6 +68,10 @@ body {
   background: $default;
   color: #fff;
 }
+
+/*
+  color
+*/
 .info-color {
   color: $info;
 }
@@ -67,6 +87,22 @@ body {
 .gold-color {
   color: #ffd700;
 }
+
+/*
+  fullscreen
+*/
+.fullscreen {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  position: fixed;
+}
+
+/*
+  scrollbar
+*/
 *::-webkit-scrollbar {
   width: 0.4em;
 }

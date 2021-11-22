@@ -51,7 +51,7 @@ export class HeaderComponent implements OnDestroy {
     return location;
   }
 
-  toggle(): void {
+  toggleSidenav(): void {
     this.isSidenavOpen = !this.isSidenavOpen;
     this.sidenavService.set(this.isSidenavOpen);
   }
