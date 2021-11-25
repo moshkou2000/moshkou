@@ -12,12 +12,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { GeneralService } from 'src/app/core/services/general/general.service';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
-import { SidenavService } from '../sidenav/sidenav.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
-import { PeriodicElement, SAMPLE_DATA } from './datatable.interface';
-import { DatatableDatasourseModel } from './datatable.model';
+import { PeriodicModel, SAMPLE_DATA } from './datatable.interface';
 
 @Component({
   selector: 'app-datatable',
@@ -47,40 +44,44 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     'popularity',
     'action',
   ];
-  dataSource: MatTableDataSource<PeriodicElement> =
-    new MatTableDataSource<PeriodicElement>(SAMPLE_DATA);
-  // dataSource: DatatableDatasourseModel = new DatatableDatasourseModel();
+  dataSource: MatTableDataSource<PeriodicModel> =
+    new MatTableDataSource<PeriodicModel>(SAMPLE_DATA);
   arrPopularity: number[] = [0, 0, 0, 0, 0];
 
   confirmationRef: any = null;
   confirmationSubscription: Subscription | undefined;
 
-  isFullscreen: boolean = false;
   isLoadingResults: boolean = false;
   isRateLimitReached: boolean = false;
 
-  updateBadge: number = 1990;
+  toolbarUpdateBadge: number = 1990;
 
   isExpansionDetailRow = (i: number, row: Object) =>
     row.hasOwnProperty('detailRow');
 
-  constructor(
-    public dialog: MatDialog,
-    private snackbar: MatSnackBar,
-    private generalService: GeneralService,
-    private sidenavService: SidenavService
-  ) {}
+  constructor(public dialog: MatDialog, private snackbar: MatSnackBar) {}
 
   ngOnInit(): void {
-    // this.dataSource = new MatTableDataSource<PeriodicElement>(SAMPLE_DATA);
-    // this.dataSource.data = SAMPLE_DATA;
-
     this.setPopularity(3.3);
   }
 
   ngAfterViewInit(): void {
     if (this.paginator) this.dataSource.paginator = this.paginator;
     if (this.sort) this.dataSource.sort = this.sort;
+  }
+
+  /*
+    Toolbar events
+  */
+  toolbarButtonClick(event: any): void {
+    switch (event) {
+      case '':
+    }
+    console.log('::toolbarButtonClick', event);
+  }
+
+  toolbarSearchKeyup(event: any): void {
+    console.log('::toolbarSearchKeyup', event);
   }
 
   applyFilter(event: Event): void {
@@ -103,7 +104,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     }
   }
 
-  deleteItem(item: PeriodicElement): void {
+  deleteItem(item: PeriodicModel): void {
     if (!this.confirmationRef) {
       let that: any = this;
       const confirmationRef: MatDialogRef<ConfirmationComponent, any> =
@@ -154,16 +155,7 @@ export class DatatableComponent implements OnInit, AfterViewInit {
     }
   }
 
-  editItem(item: PeriodicElement): void {
+  editItem(item: PeriodicModel): void {
     console.log('editItem', item);
-  }
-
-  // fullscreen target id <toggleFullscreen>
-  // close sidenav <set>
-  // toggle text & icon of fullscreen button <isFullscreen>
-  toggleFullscreen(id: string) {
-    this.isFullscreen = !this.isFullscreen;
-    this.generalService.toggleFullscreen(id);
-    this.sidenavService.set(false);
   }
 }

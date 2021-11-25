@@ -12,8 +12,8 @@ $success: #34a853;
 $warning: #fbbc04;
 
 $color-light-1: rgba(255, 255, 255, 1);
-$color-light-2: rgba(255, 255, 255, 0.6);
-$color-light-3: rgba(255, 255, 255, 0.8);
+$color-light-2: rgba(255, 255, 255, 0.8);
+$color-light-3: rgba(255, 255, 255, 0.6);
 
 $color-dark-1: #000;
 $color-dark-2: #616161;
@@ -28,7 +28,8 @@ $border-radius: 12px;
 */
 // header
 $header-bg: $primary;
-$header-color: $color-light-1;
+$header-color: rgba(255, 255, 255, 1);
+$header-color-secondry: rgba(255, 255, 255, 0.86);
 $header-height: 56px;
 
 // sidenav

@@ -25,3 +25,26 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+# Project Settings
+
+## fixed table column size
+
+app > shared > components > datatable > datatable.component.scss
+
+## Default Angular Breakpoints
+
+- xs: begin: 0, end: 599.9px
+- sm: begin: 600px, end: 959.9px
+  - sm: begin: 720px, end: 959.9px
+- md: begin: 960px, end: 1279.9px
+- lg: begin: 1280px, end: 1919.9px
+- xl: begin: 1920px, end: 4999.99px
+
+### sample
+
+@media only screen and (max-width: 720px) {
+.sample {
+display: block;
+}
+}

@@ -1,4 +1,4 @@
-export interface PeriodicElement {
+export interface PeriodicModel {
   name: string;
   position: number;
   weight: number;
@@ -8,7 +8,7 @@ export interface PeriodicElement {
   popularity: number;
 }
 
-export const SAMPLE_DATA: PeriodicElement[] = [
+export const SAMPLE_DATA: PeriodicModel[] = [
   {
     position: 1,
     name: 'Hydrogen',

@@ -7,6 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
@@ -16,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatatableComponent } from './datatable.component';
 import { DatatableRoutingModule } from './datatable-routing.module';
 import { CdkDetailRowDirective } from './cdk-detail-row.directive';
+import { DatatableToolbarComponent } from './datatable-toolbar/datatable-toolbar.component';
 
 @NgModule({
   imports: [
@@ -30,11 +32,16 @@ import { CdkDetailRowDirective } from './cdk-detail-row.directive';
     MatButtonModule,
     MatButtonToggleModule,
     MatDialogModule,
+    MatMenuModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     DatatableRoutingModule,
   ],
-  declarations: [DatatableComponent, CdkDetailRowDirective],
+  declarations: [
+    DatatableComponent,
+    CdkDetailRowDirective,
+    DatatableToolbarComponent,
+  ],
 })
 export class DatatableModule {}

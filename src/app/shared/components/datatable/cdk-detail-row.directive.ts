@@ -24,7 +24,6 @@ export class CdkDetailRowDirective {
   set cdkDetailRow(value: any) {
     if (value !== this.row) {
       this.row = value;
-      // this.render();
     }
   }
 
@@ -32,15 +31,16 @@ export class CdkDetailRowDirective {
   set template(value: TemplateRef<any>) {
     if (value !== this.tRef) {
       this.tRef = value;
-      // this.render();
     }
   }
 
   constructor(public vcRef: ViewContainerRef) {}
 
-  @HostListener('click')
-  onClick(): void {
-    this.toggle();
+  @HostListener('click', ['$event'])
+  onClick(event: any): void {
+    if (event?.target?.className.indexOf('expandable') > -1) {
+      this.toggle();
+    }
   }
 
   toggle(): void {

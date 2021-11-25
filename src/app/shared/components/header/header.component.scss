@@ -9,7 +9,7 @@
   > mat-toolbar {
     background: transparent;
     min-height: 56px;
-    color: $header-color;
+    color: $header-color-secondry;
 
     > mat-toolbar-row {
       min-height: 56px;
@@ -23,7 +23,7 @@
 
   .header button {
     background: transparent;
-    color: $header-color;
+    color: $header-color-secondry;
   }
 
   .icon {
@@ -43,7 +43,7 @@
     width: 1px;
     height: 60%;
     margin: 14px;
-    background: lighten($header-color, 8%);
+    background: $header-color-secondry;
   }
 
   .breadcrumbs {
@@ -58,7 +58,7 @@
       * {
         font-size: 12px;
         text-decoration: none;
-        color: lighten($header-color, 8%);
+        color: $header-color-secondry;
         display: flex;
         align-items: center;
         justify-content: center;

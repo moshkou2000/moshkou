@@ -1,0 +1,61 @@
+<div class="toolbar">
+  <button mat-button>
+    <mat-icon>search</mat-icon>
+  </button>
+  <div class="search">
+    <input matInput (keyup)="onKeyup($event)" placeholder="Ex. Mia" #input />
+  </div>
+
+  <button
+    *ngFor="let b of toolbarButtons"
+    mat-button
+    aria-label="icon-button"
+    class="all-buttons"
+    (click)="onClick(b.name)"
+  >
+    <mat-icon
+      *ngIf="b.icon"
+      [matBadge]="b.badge"
+      [matBadgeColor]="b.badgeColor"
+      >{{ b.icon }}</mat-icon
+    >
+    <img *ngIf="b.imageIcon" [src]="b.imageIcon" />
+    <div>{{ b.name }}</div>
+  </button>
+
+  <button
+    mat-button
+    aria-label="icon-button"
+    class="all-buttons"
+    (click)="toggleFullscreen('datatable_id')"
+  >
+    <mat-icon>{{ isFullscreen ? "fullscreen_exit" : "fullscreen" }}</mat-icon>
+    <div>{{ isFullscreen ? "COLLAPSE" : "EXPAND" }}</div>
+  </button>
+
+  <button
+    mat-button
+    class="buttun-more"
+    aria-label="icon-button"
+    [matMenuTriggerFor]="menu"
+  >
+    <mat-icon>more_vert</mat-icon>
+    <div></div>
+  </button>
+  <mat-menu #menu="matMenu" class="buttun-more toolba-menu">
+    <button
+      *ngFor="let b of toolbarButtons"
+      mat-menu-item
+      (click)="onClick(b.name)"
+    >
+      <mat-icon
+        *ngIf="b.icon"
+        [matBadge]="b.badge"
+        [matBadgeColor]="b.badgeColor"
+        >{{ b.icon }}</mat-icon
+      >
+      <img *ngIf="b.imageIcon" [src]="b.imageIcon" />
+      <span>{{ b.name }}</span>
+    </button>
+  </mat-menu>
+</div>
