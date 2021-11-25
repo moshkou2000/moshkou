@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DatatableComponent } from './datatable.component';
 import { DatatableRoutingModule } from './datatable-routing.module';
+import { CdkDetailRowDirective } from './cdk-detail-row.directive';
 
 @NgModule({
   imports: [
@@ -34,6 +35,6 @@ import { DatatableRoutingModule } from './datatable-routing.module';
     ReactiveFormsModule,
     DatatableRoutingModule,
   ],
-  declarations: [DatatableComponent],
+  declarations: [DatatableComponent, CdkDetailRowDirective],
 })
 export class DatatableModule {}
