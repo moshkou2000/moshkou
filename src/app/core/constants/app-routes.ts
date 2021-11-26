@@ -33,7 +33,7 @@ export const APP_ROUTES: Routes = [
   {
     path: 'datatable',
     loadChildren: () =>
-      import('../../shared/components/datatable/datatable.module').then(
+      import('../../shared/datatable/datatable.module').then(
         (m) => m.DatatableModule
       ),
     data: {

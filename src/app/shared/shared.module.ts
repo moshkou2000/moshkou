@@ -12,23 +12,23 @@ import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { SharedPipe } from './pipes/shared.pipe';
-import { SharedDirective } from './directives/shared.directive';
-import { AnnouncementComponent } from './components/announcement/announcement.component';
-import { NotificationComponent } from './components/notification/notification.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { SharedDirective } from '../core/directives/shared.directive';
+import { AnnouncementComponent } from './announcement/announcement.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { NotificationComponent } from './notification/notification.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { SidenavInfoComponent } from './sidenav-info/sidenav-info.component';
 
 @NgModule({
   declarations: [
-    SharedPipe,
     SharedDirective,
     AnnouncementComponent,
     NotificationComponent,
     HeaderComponent,
     FooterComponent,
     SidenavComponent,
+    SidenavInfoComponent,
   ],
   imports: [
     CommonModule,
@@ -41,17 +41,18 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     MatExpansionModule,
     LayoutModule,
     FlexLayoutModule,
-    MatSidenavModule,
     MatListModule,
+    MatSidenavModule,
   ],
   exports: [
-    SharedPipe,
-    SharedDirective,
     AnnouncementComponent,
-    NotificationComponent,
-    HeaderComponent,
     FooterComponent,
+    HeaderComponent,
+    NotificationComponent,
+    MatSidenavModule,
     SidenavComponent,
+    SidenavInfoComponent,
+    SharedDirective,
   ],
 })
 export class SharedModule {}

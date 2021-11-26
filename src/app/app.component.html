@@ -4,8 +4,13 @@
   <app-notification fxLayout="column"></app-notification>
 </header>
 <main>
-  <mat-drawer-container fxLayout="row" fxFlex="100" autosize>
-    <mat-drawer #drawer mode="side" style="width: 250px;">
+  <mat-drawer-container
+    hasBackdrop="false"
+    fxLayout="row"
+    fxFlex="100"
+    autosize
+  >
+    <mat-drawer #sidenav id="main-sidenav" mode="side">
       <app-sidenav></app-sidenav>
     </mat-drawer>
     <div class="content">

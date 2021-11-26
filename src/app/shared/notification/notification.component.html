@@ -1,0 +1,12 @@
+<div *ngIf="notification" class="{{ notification.level }}-bg">
+  <div>{{ notification.message }}</div>
+  <div>
+    <button
+      *ngFor="let option of notification.options"
+      mat-button
+      (click)="notificationClick(notification.id, option)"
+    >
+      {{ option.text }}
+    </button>
+  </div>
+</div>

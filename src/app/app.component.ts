@@ -5,7 +5,8 @@ import { Subscription } from 'rxjs';
 import { ISidenav } from './core/interfaces/isidenav';
 import { LayoutModel } from './core/models/layout.model';
 import { GeneralService } from './core/services/general/general.service';
-import { SidenavService } from './shared/components/sidenav/sidenav.service';
+import { SidenavInfoService } from './shared/sidenav-info/sidenav-info.service';
+import { SidenavService } from './shared/sidenav/sidenav.service';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,13 @@ import { SidenavService } from './shared/components/sidenav/sidenav.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  @ViewChild(MatDrawer) drawer: MatDrawer | undefined;
+  @ViewChild(MatDrawer) sidenav: MatDrawer | undefined;
   routerEventsSubscription: Subscription | undefined;
-  drawerSubscription: Subscription | undefined;
+  sidenavSubscription: Subscription | undefined;
+  sidenavInfoSubscription: Subscription | undefined;
+  isSidenavOpen: boolean = false;
+  isSidenavInfoOpen: boolean = false;
+
   layout: LayoutModel = new LayoutModel();
   sidenavItems?: ISidenav[];
 
@@ -23,8 +28,10 @@ export class AppComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private generalService: GeneralService,
-    private sidenavService: SidenavService
+    private sidenavService: SidenavService,
+    private sidenavInfoService: SidenavInfoService
   ) {
+    // router
     this.routerEventsSubscription = this.router.events.subscribe(
       (event: any) => {
         if (event instanceof NavigationEnd) {
@@ -35,13 +42,26 @@ export class AppComponent implements OnInit {
         }
       }
     );
-    this.drawerSubscription = this.sidenavService
+
+    // sidenav
+    this.sidenavSubscription = this.sidenavService
       .get()
-      .subscribe((flag: boolean) => {
-        if (flag) this.drawer?.open();
-        else this.drawer?.close();
+      .subscribe((flag?: boolean) => {
+        this.isSidenavOpen = flag ?? !this.isSidenavOpen;
+        if (this.isSidenavOpen) this.sidenav?.open();
+        else this.sidenav?.close();
       });
+
+    // sidenav-info
+    // this.sidenavInfoSubscription = this.sidenavInfoService
+    //   .get()
+    //   .subscribe((flag?: boolean) => {
+    //     this.isSidenavInfoOpen = flag ?? !this.isSidenavInfoOpen;
+    //     if (this.isSidenavInfoOpen) this.sidenavInfo?.open();
+    //     else this.sidenavInfo?.close();
+    //   });
   }
+
   ngOnInit(): void {
     this.sidenavItems = this.generalService.sidenavItems;
   }
@@ -50,8 +70,8 @@ export class AppComponent implements OnInit {
     if (this.routerEventsSubscription) {
       this.routerEventsSubscription.unsubscribe();
     }
-    if (this.drawerSubscription) {
-      this.drawerSubscription.unsubscribe();
+    if (this.sidenavSubscription) {
+      this.sidenavSubscription.unsubscribe();
     }
   }
 }

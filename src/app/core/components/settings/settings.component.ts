@@ -8,18 +8,18 @@ import {
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
-import { AnnouncementModel } from 'src/app/shared/components/announcement/announcement.model';
-import { AnnouncementService } from 'src/app/shared/components/announcement/announcement.service';
-import { ConfirmationComponent } from 'src/app/shared/components/confirmation/confirmation.component';
-import { SnackbarComponent } from 'src/app/shared/components/snackbar/snackbar.component';
+import { AnnouncementModel } from 'src/app/shared/announcement/announcement.model';
+import { AnnouncementService } from 'src/app/shared/announcement/announcement.service';
+import { ConfirmationComponent } from 'src/app/shared/confirmation/confirmation.component';
+import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 
 import { environment } from '../../../../environments/environment';
 
 import {
   NotificationModel,
   Options,
-} from '../../../shared/components/notification/notification.model';
-import { NotificationService } from '../../../shared/components/notification/notification.service';
+} from '../../../shared/notification/notification.model';
+import { NotificationService } from '../../../shared/notification/notification.service';
 import { STATUS_LEVEL } from '../../constants/status-level';
 
 @Component({

@@ -1,0 +1,8 @@
+@import "../../../styles/variables.scss";
+
+:host {
+  background: $sidenav-bg;
+  display: grid;
+  font-family: sans-serif;
+  height: 100%;
+}

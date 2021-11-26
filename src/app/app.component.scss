@@ -12,6 +12,11 @@
   flex-direction: column;
   flex: 1 0 auto;
 
+  #main-sidenav,
+  #main-sidenav-info {
+    width: 250px;
+  }
+
   .content {
     display: block;
     width: 100%;
