@@ -1,12 +1,14 @@
 <!-- loading & center message -->
-<div class="loading-shade" *ngIf="isLoadingResults || isRateLimitReached">
+<div class="loading-and-error" *ngIf="hasError">
   <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
-  <div class="rate-limit-reached" *ngIf="isRateLimitReached">
-    GitHub's API rate limit has been reached. It will be reset in one minute.
+  <div class="error" *ngIf="isRateLimitReached">
+    <mat-icon *ngIf="errorIcon" [ngClass]="errorIconColor">{{errorIcon}}</mat-icon>
+    <img *ngIf="!errorIcon && errorImageIcon" [src]="errorImageIcon" />
+    <div *ngIf="errorMessage">{{errorMessage}}</div>
   </div>
 </div>
 
-<mat-drawer-container hasBackdrop="false" fxLayout="row" fxFlex="100" autosize>
+<mat-drawer-container *ngIf="!hasError" hasBackdrop="false" fxLayout="row" fxFlex="100" autosize>
   <mat-drawer
     #sidenav
     id="main-sidenav-info"

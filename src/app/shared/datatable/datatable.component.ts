@@ -22,6 +22,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { STATUS_LEVEL } from 'src/app/core/constants/status-level';
+import { ViewState } from 'src/app/core/enums/view-state.enum';
 import { environment } from 'src/environments/environment';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
 import { NotificationModel, Options } from '../notification/notification.model';
@@ -73,6 +74,17 @@ export class DatatableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   isLoadingResults: boolean = false;
   isRateLimitReached: boolean = false;
+
+  errorState: ViewState = ViewState.idle;
+  errorIcon: string = 'error';
+  errorIconColor: string = 'error-color';
+  errorImageIcon: string = 'assets/logo.png';
+  errorMessage: string =
+    "GitHub's API rate limit has been reached. It will be reset in one minute.";
+
+  get hasError(): boolean {
+    return this.isLoadingResults || this.isRateLimitReached;
+  }
 
   constructor(
     public dialog: MatDialog,

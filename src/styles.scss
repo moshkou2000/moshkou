@@ -89,6 +89,41 @@ body {
 }
 
 /*
+  state <loading, error, warning, info, idel, empty>
+  */
+// loading
+.loading-and-error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.error {
+  text-align: center;
+
+  > .mat-icon {
+    font-size: 77px;
+    width: 77px;
+    height: 77px;
+    margin-bottom: 16px;
+  }
+  > img {
+    width: 277px;
+    height: 277px;
+    margin-bottom: 16px;
+  }
+  > div {
+    max-width: 360px;
+    text-align: center;
+  }
+}
+
+/*
   fullscreen
 */
 .fullscreen {
