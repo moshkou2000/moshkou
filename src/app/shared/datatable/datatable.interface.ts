@@ -6,6 +6,7 @@ export interface PeriodicModel {
   description: string;
   online: boolean;
   popularity: number;
+  expanded?: boolean;
 }
 
 export const SAMPLE_DATA: PeriodicModel[] = [

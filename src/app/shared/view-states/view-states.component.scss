@@ -1,0 +1,46 @@
+@import "../../../styles/variables.scss";
+
+:host {
+  > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    mat-spinner {
+      margin-bottom: 16px;
+    }
+
+    > div {
+      text-align: center;
+
+      > .mat-icon {
+        font-size: 77px;
+        width: 77px;
+        height: 77px;
+      }
+      > img {
+        width: 555px;
+        margin: 16px 0 0 0;
+      }
+    }
+
+    .title {
+      color: $view-satates-title-color;
+      text-align: center;
+      margin: 16px 0 0 0;
+    }
+    .message {
+      color: $view-satates-message-color;
+      text-align: center;
+      padding: 0 24px;
+      margin: 16px 0 0 0;
+    }
+  }
+}

@@ -12,23 +12,24 @@ import { MatListModule } from '@angular/material/list';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { SharedDirective } from '../core/directives/shared.directive';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { SidenavInfoComponent } from './sidenav-info/sidenav-info.component';
+import { ViewStatesComponent } from './view-states/view-states.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
-    SharedDirective,
     AnnouncementComponent,
     NotificationComponent,
     HeaderComponent,
     FooterComponent,
     SidenavComponent,
     SidenavInfoComponent,
+    ViewStatesComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +44,7 @@ import { SidenavInfoComponent } from './sidenav-info/sidenav-info.component';
     FlexLayoutModule,
     MatListModule,
     MatSidenavModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     AnnouncementComponent,
@@ -52,7 +54,7 @@ import { SidenavInfoComponent } from './sidenav-info/sidenav-info.component';
     MatSidenavModule,
     SidenavComponent,
     SidenavInfoComponent,
-    SharedDirective,
+    ViewStatesComponent,
   ],
 })
 export class SharedModule {}

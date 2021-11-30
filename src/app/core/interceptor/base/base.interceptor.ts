@@ -10,12 +10,8 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, finalize } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-import { GeneralService } from '../services/general/general.service';
-// import { SnackbarComponent } from '../../layout/snackbar/snackbar.component';
-// import { ResponseModel } from '../models/users.model';
-
-import { environment } from '../../../environments/environment';
+import { GeneralService } from '../../services/general/general.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',

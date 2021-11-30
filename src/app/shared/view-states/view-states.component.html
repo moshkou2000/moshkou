@@ -1,0 +1,16 @@
+<div *ngIf="viewStates && !viewStates.isIdle">
+  <mat-spinner *ngIf="viewStates.isBusy"></mat-spinner>
+  <div>
+    <mat-icon *ngIf="viewStates.icon" [ngClass]="viewStates.iconColor">{{
+      viewStates.icon
+    }}</mat-icon>
+    <img
+      *ngIf="!viewStates.icon && viewStates.imageIcon"
+      [src]="viewStates.imageIcon"
+    />
+    <h3 class="title" *ngIf="viewStates.title">{{ viewStates.title }}</h3>
+    <div class="message" *ngIf="viewStates.message">
+      {{ viewStates.message }}
+    </div>
+  </div>
+</div>

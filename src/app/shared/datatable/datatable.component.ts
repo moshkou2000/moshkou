@@ -22,12 +22,13 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { STATUS_LEVEL } from 'src/app/core/constants/status-level';
-import { ViewState } from 'src/app/core/enums/view-state.enum';
+import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
 import { environment } from 'src/environments/environment';
 import { ConfirmationComponent } from '../confirmation/confirmation.component';
 import { NotificationModel, Options } from '../notification/notification.model';
 import { NotificationService } from '../notification/notification.service';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { ViewStatesModel } from '../view-states/view-states.model';
 import { TOOLBAR_BUTTONS_NAME } from './datatable-toolbar/datatable-toolbar.model';
 import { PeriodicModel, SAMPLE_DATA } from './datatable.interface';
 
@@ -51,6 +52,7 @@ export class DatatableComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
   expandedItem: number = -1;
+  _expandedItems: boolean = false;
   displayedColumns: string[] = [
     'position',
     'online',
@@ -66,24 +68,23 @@ export class DatatableComponent implements OnInit, AfterViewInit, OnDestroy {
   // TODO: set arrPopularity for dataSource
   //
   arrPopularity: number[] = [0, 0, 0, 0, 0];
-  toolbarUpdateBadge: number = 1990;
+  toolbarUpdateBadge: number = 2048;
 
   confirmationRef: any = null;
   confirmationSubscription: Subscription | undefined;
   notificationOptionSubscription: Subscription | undefined;
 
-  isLoadingResults: boolean = false;
-  isRateLimitReached: boolean = false;
+  viewStates: ViewStatesModel = new ViewStatesModel({
+    state: ViewStates.idle,
+  });
 
-  errorState: ViewState = ViewState.idle;
-  errorIcon: string = 'error';
-  errorIconColor: string = 'error-color';
-  errorImageIcon: string = 'assets/logo.png';
-  errorMessage: string =
-    "GitHub's API rate limit has been reached. It will be reset in one minute.";
+  get expandedItems(): boolean {
+    return this._expandedItems;
+  }
 
-  get hasError(): boolean {
-    return this.isLoadingResults || this.isRateLimitReached;
+  set expandedItems(value: boolean) {
+    this._expandedItems = value;
+    this.dataSource?.data?.forEach((d) => (d.expanded = value));
   }
 
   constructor(
@@ -128,11 +129,8 @@ export class DatatableComponent implements OnInit, AfterViewInit, OnDestroy {
     Toolbar events
   */
   // toolbar search keyup
-  toolbarSearchKeyup(event: any): void {
-    console.log('::toolbarSearchKeyup', event);
-    const filterValue: string = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
+  toolbarSearchKeyup(value: string): void {
+    this.dataSource.filter = value.trim().toLowerCase();
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -140,11 +138,13 @@ export class DatatableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // toolbar buttons click
   toolbarButtonClick(event: any): void {
-    console.log('::toolbarButtonClick', event);
+    !environment.production && console.log('::toolbarButtonClick', event);
     switch (event) {
       case TOOLBAR_BUTTONS_NAME.ADD:
+        this.sidenav?.open();
         break;
       case TOOLBAR_BUTTONS_NAME.EDIT:
+        this.sidenav?.close();
         break;
       case TOOLBAR_BUTTONS_NAME.DELETE:
         break;
@@ -221,59 +221,63 @@ export class DatatableComponent implements OnInit, AfterViewInit, OnDestroy {
     column action buttons
   */
   // delete
-  deleteItem(item: PeriodicModel): void {
-    if (!this.confirmationRef) {
-      let that: any = this;
-      const confirmationRef: MatDialogRef<ConfirmationComponent, any> =
-        this.dialog.open(ConfirmationComponent, {
-          disableClose: true,
-          width: '250px',
-          data: {
-            title: 'Delete Records',
-            message:
-              'This is data message, This is data message, This is data message, This is data message',
-            button1: {
-              title: 'Cancel',
-              click: function () {
-                confirmationRef.close();
+  deleteItem(item?: PeriodicModel): void {
+    if (item) {
+      if (!this.confirmationRef) {
+        let that: any = this;
+        const confirmationRef: MatDialogRef<ConfirmationComponent, any> =
+          this.dialog.open(ConfirmationComponent, {
+            disableClose: true,
+            width: '250px',
+            data: {
+              title: 'Delete Records',
+              message:
+                'This is data message, This is data message, This is data message, This is data message',
+              button1: {
+                title: 'Cancel',
+                click: function () {
+                  confirmationRef.close();
+                },
               },
-            },
-            button2: {
-              title: 'Delete',
-              click: function () {
-                // TODO: do your action
+              button2: {
+                title: 'Delete',
+                click: function () {
+                  // TODO: do your action
 
-                that.snackbar.openFromComponent(SnackbarComponent, {
-                  data: {
-                    message: 'This snakbar message.',
-                    action: 'Undo',
-                    actionClick: () => {
-                      console.log('SettingsComponent.Snackbar.clicked');
+                  that.snackbar.openFromComponent(SnackbarComponent, {
+                    data: {
+                      message: 'This snakbar message.',
+                      action: 'Undo',
+                      actionClick: () => {
+                        console.log('SettingsComponent.Snackbar.clicked');
+                      },
                     },
-                  },
-                  duration: 399000,
-                  horizontalPosition: 'center',
-                  verticalPosition: 'top',
-                });
+                    duration: 399000,
+                    horizontalPosition: 'center',
+                    verticalPosition: 'top',
+                  });
 
-                confirmationRef.close();
-                // alert
+                  confirmationRef.close();
+                  // alert
+                },
               },
             },
-          },
-        });
-      this.confirmationSubscription = confirmationRef
-        .afterClosed()
-        .subscribe(() => {
-          this.confirmationRef = null;
-          that = null;
-        });
-      this.confirmationRef = confirmationRef;
+          });
+        this.confirmationSubscription = confirmationRef
+          .afterClosed()
+          .subscribe(() => {
+            this.confirmationRef = null;
+            that = null;
+          });
+        this.confirmationRef = confirmationRef;
+      }
     }
   }
 
   // edit
-  editItem(item: PeriodicModel): void {
-    console.log('editItem', item);
+  editItem(item?: PeriodicModel): void {
+    if (item) {
+    } else {
+    }
   }
 }
