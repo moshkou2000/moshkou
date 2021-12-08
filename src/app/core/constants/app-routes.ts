@@ -31,16 +31,6 @@ export const APP_ROUTES: Routes = [
     },
   },
   {
-    path: 'datatable',
-    loadChildren: () =>
-      import('../../shared/datatable/datatable.module').then(
-        (m) => m.DatatableModule
-      ),
-    data: {
-      hasHeader: true,
-    },
-  },
-  {
     path: 'error',
     loadChildren: () =>
       import('../components/error/error.module').then((m) => m.ErrorModule),
@@ -57,6 +47,17 @@ export const APP_ROUTES: Routes = [
     path: 'tips',
     loadChildren: () =>
       import('../components/tips/tips.module').then((m) => m.TipsModule),
+    canActivate: [AuthGuard],
+    data: {
+      hasHeader: true,
+    },
+  },
+  {
+    path: 'planning',
+    loadChildren: () =>
+      import('../../features/planning/planning.module').then(
+        (m) => m.PlanningModule
+      ),
     canActivate: [AuthGuard],
     data: {
       hasHeader: true,

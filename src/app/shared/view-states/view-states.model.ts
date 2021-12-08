@@ -12,7 +12,7 @@ type ViewStatesArguments = {
 };
 
 export class ViewStatesModel {
-  state?: ViewStates = ViewStates.idle;
+  state?: ViewStates = ViewStates.busy;
   title?: string;
   message?: string;
   icon?: string;

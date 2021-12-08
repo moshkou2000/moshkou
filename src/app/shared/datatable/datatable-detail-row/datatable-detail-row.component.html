@@ -1,0 +1,16 @@
+<tr class="mat-row detail-row" [@detailExpand]>
+  <td [attr.colspan]="colspan">
+    <div class="element-detail">
+      <div class="element-diagram">
+        <div class="element-position">{{ element?.position }}</div>
+        <div class="element-symbol">{{ element?.symbol }}</div>
+        <div class="element-name">{{ element?.name }}</div>
+        <div class="element-weight">{{ element?.weight }}</div>
+      </div>
+      <div class="element-description">
+        {{ element?.description }}
+        <span class="element-description-attribution"> -- Wikipedia </span>
+      </div>
+    </div>
+  </td>
+</tr>

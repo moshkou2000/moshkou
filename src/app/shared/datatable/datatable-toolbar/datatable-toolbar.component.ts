@@ -2,9 +2,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { GeneralService } from 'src/app/core/services/general/general.service';
 import { SidenavService } from '../../sidenav/sidenav.service';
-import { CdkBottomSheetComponent } from './cdk-bottom-sheet.component';
-import { IToolbarButton } from './datatable-toolbar.interface';
-import { TOOLBAR_BUTTONS } from './datatable-toolbar.model';
+import { CdkBottomSheetComponent } from '../../bottom-sheet/cdk-bottom-sheet.component';
+import { DatatableToolbarModel } from './datatable-toolbar.model';
+import { CONSTANT_STRINIGS } from '../../../core/constants/constant_strings';
 
 @Component({
   selector: 'app-datatable-toolbar',
@@ -12,12 +12,9 @@ import { TOOLBAR_BUTTONS } from './datatable-toolbar.model';
   styleUrls: ['./datatable-toolbar.component.scss'],
 })
 export class DatatableToolbarComponent implements OnInit {
-  @Input() updateBadge: any;
+  @Input() toolbar: DatatableToolbarModel | undefined;
   @Output() onButtonClick = new EventEmitter();
   @Output() onSearchKeyup = new EventEmitter();
-
-  isFullscreen: boolean = false;
-  toolbarButtons: IToolbarButton[] = TOOLBAR_BUTTONS;
 
   constructor(
     readonly bottomSheet: MatBottomSheet,
@@ -25,21 +22,23 @@ export class DatatableToolbarComponent implements OnInit {
     private sidenavService: SidenavService
   ) {}
 
-  ngOnInit(): void {}
-
-  openBottomSheet(): void {
-    this.bottomSheet.open(CdkBottomSheetComponent, {
-      data: (event?: string) => this.onButtonClick.emit(event),
-    });
+  ngOnInit(): void {
+    if (this.toolbar?.hasFullscreen && this.toolbar?.isFullscreen)
+      this.toggleFullscreen();
   }
 
-  // fullscreen target id <toggleFullscreen>
-  // close sidenav <set>
-  // toggle text & icon of fullscreen button <isFullscreen> 'datatable_id'
-  toggleFullscreen(id: string): void {
-    this.isFullscreen = !this.isFullscreen;
-    this.generalService.toggleFullscreen(id);
+  toggleFullscreen(): void {
+    this.toolbar?.toggleFullscreen();
+    this.generalService.toggleFullscreen(CONSTANT_STRINIGS.datatable_id);
     this.sidenavService.set(false);
+  }
+
+  openBottomSheet(): void {
+    this.generalService.openBottomSheet(
+      this.bottomSheet,
+      this.toolbar?.toolbarButtons,
+      (event?: string) => this.onButtonClick.emit(event)
+    );
   }
 
   onKeyup(event: any): void {

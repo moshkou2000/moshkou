@@ -3,56 +3,52 @@ import {
   IToolbarButtonsName,
 } from './datatable-toolbar.interface';
 
-export const TOOLBAR_BUTTONS_NAME: IToolbarButtonsName = {
-  ADD: 'ADD',
-  EDIT: 'EDIT',
-  DELETE: 'DELETE',
-  FILTER: 'FILTER',
-  REPORTS: 'REPORTS',
-  EXCEL: 'EXCEL',
-  PDF: 'PDF',
-  DOWNLOAD: 'DOWNLOAD',
-  UPDATE: 'UPDATE',
+type ViewStatesArguments = {
+  hasSearch?: boolean;
+  hasFullscreen?: boolean;
+  isFullscreen?: boolean;
+  toolbarButtons?: IToolbarButton[];
+  toolbarButtonsName?: IToolbarButtonsName;
 };
 
-// icon or imageIcon
-export const TOOLBAR_BUTTONS: IToolbarButton[] = [
-  {
-    name: TOOLBAR_BUTTONS_NAME.ADD,
-    icon: 'add',
-  },
-  {
-    name: TOOLBAR_BUTTONS_NAME.EDIT,
-    icon: 'edit',
-  },
-  {
-    name: TOOLBAR_BUTTONS_NAME.DELETE,
-    icon: 'delete',
-  },
-  {
-    name: TOOLBAR_BUTTONS_NAME.FILTER,
-    icon: 'filter_alt',
-  },
-  {
-    name: TOOLBAR_BUTTONS_NAME.REPORTS,
-    icon: 'insert_chart',
-  },
-  {
-    name: TOOLBAR_BUTTONS_NAME.EXCEL,
-    imageIcon: '../../../../assets/icons/microsoft-excel.svg',
-  },
-  {
-    name: TOOLBAR_BUTTONS_NAME.PDF,
-    imageIcon: '../../../../assets/icons/pdf.svg',
-  },
-  {
-    name: TOOLBAR_BUTTONS_NAME.DOWNLOAD,
-    icon: 'file_download',
-  },
-  {
-    name: TOOLBAR_BUTTONS_NAME.UPDATE,
-    icon: 'update',
-    badge: 'RM 324.32',
-    badgeColor: 'warn',
-  },
-];
+export class DatatableToolbarModel {
+  hasSearch: boolean = false;
+  hasFullscreen: boolean = false;
+  isFullscreen: boolean = false;
+  toolbarButtons: IToolbarButton[] | undefined;
+  toolbarButtonsName: IToolbarButtonsName | undefined; //  = TOOLBAR_BUTTONS_NAME;
+
+  constructor(args?: ViewStatesArguments) {
+    if (args?.hasSearch !== undefined && args.hasSearch !== null)
+      this.hasSearch = args.hasSearch;
+    if (args?.hasFullscreen !== undefined && args.hasFullscreen !== null)
+      this.hasFullscreen = args.hasFullscreen;
+    if (args?.isFullscreen !== undefined && args.isFullscreen !== null)
+      this.isFullscreen = args.isFullscreen;
+    if (args?.toolbarButtons !== undefined && args.toolbarButtons !== null)
+      this.toolbarButtons = args.toolbarButtons;
+    if (
+      args?.toolbarButtonsName !== undefined &&
+      args.toolbarButtonsName !== null
+    )
+      this.toolbarButtonsName = args.toolbarButtonsName;
+  }
+
+  toggleFullscreen(): void {
+    this.isFullscreen = !this.isFullscreen;
+  }
+
+  getButton(name: string): IToolbarButton | undefined {
+    return this.toolbarButtons?.find((b) => b.name === name);
+  }
+
+  updateButton(button: IToolbarButton): void {
+    const b: IToolbarButton | undefined = this.getButton(button.name);
+    if (b !== undefined && b !== null) {
+      b.badge = button.badge;
+      b.badgeColor = button.badgeColor;
+      b.icon = button.icon;
+      b.imageIcon = button.imageIcon;
+    }
+  }
+}

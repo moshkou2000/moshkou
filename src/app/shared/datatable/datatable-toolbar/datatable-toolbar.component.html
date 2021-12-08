@@ -1,15 +1,21 @@
 <div class="toolbar">
   <!-- search -->
-  <button mat-button>
+  <button *ngIf="toolbar?.hasSearch" mat-button>
     <mat-icon>search</mat-icon>
   </button>
   <div class="search">
-    <input matInput (keyup)="onKeyup($event)" placeholder="Ex. Mia" #input />
+    <input
+      *ngIf="toolbar?.hasSearch"
+      matInput
+      (keyup)="onKeyup($event)"
+      placeholder="Ex. Mia"
+      #input
+    />
   </div>
 
   <!-- toolbar buttons -->
   <button
-    *ngFor="let b of toolbarButtons"
+    *ngFor="let b of toolbar?.toolbarButtons"
     mat-button
     aria-label="icon-button"
     class="all-buttons"
@@ -27,13 +33,18 @@
 
   <!-- fullscreen -->
   <button
+    *ngIf="toolbar?.hasFullscreen"
     mat-button
     aria-label="icon-button"
     class="all-buttons"
-    (click)="toggleFullscreen('datatable_id')"
+    (click)="toggleFullscreen()"
   >
-    <mat-icon>{{ isFullscreen ? "fullscreen_exit" : "fullscreen" }}</mat-icon>
-    <div>{{ isFullscreen ? "COLLAPSE" : "EXPAND" }}</div>
+    <mat-icon>{{
+      toolbar?.isFullscreen === true ? "fullscreen_exit" : "fullscreen"
+    }}</mat-icon>
+    <div>
+      {{ toolbar?.isFullscreen === true ? "COLLAPSE" : "EXPAND" }}
+    </div>
   </button>
 
   <!-- more -->

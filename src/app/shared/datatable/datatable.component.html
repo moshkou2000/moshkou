@@ -2,7 +2,7 @@
 <app-view-states [viewStates]="viewStates"></app-view-states>
 
 <mat-drawer-container
-  *ngIf="viewStates.isIdle"
+  *ngIf="viewStates?.isIdle"
   hasBackdrop="false"
   fxLayout="row"
   fxFlex="100"
@@ -22,25 +22,27 @@
       id="datatable_id"
       mat-table
       [dataSource]="dataSource"
+      matSortActive="position"
+      matSortDirection="asc"
+      matSortDisableClear
       multiTemplateDataRows
       recycleRows
       matSort
-      matSortActive="position"
-      matSortDisableClear
-      matSortDirection="asc"
+      (matSortChange)="sortTable($event)"
     >
       <!-- header -->
       <ng-container matColumnDef="header">
         <td
           mat-header-cell
           *matHeaderCellDef
-          [attr.colspan]="dataSource.data.length"
+          [attr.colspan]="dataSource?.data?.length ?? 0"
           style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"
         >
           <app-datatable-toolbar
-            [updateBadge]="toolbarUpdateBadge"
+            [toolbar]="toolbar"
             (onButtonClick)="toolbarButtonClick($event)"
             (onSearchKeyup)="toolbarSearchKeyup($event)"
+            (sortClick)="sortTable"
           ></app-datatable-toolbar>
         </td>
       </ng-container>
@@ -145,11 +147,12 @@
         <td
           mat-footer-cell
           *matFooterCellDef
-          [attr.colspan]="dataSource.data.length"
+          [attr.colspan]="dataSource?.data?.length ?? 0"
         >
           <mat-paginator
-            [pageSize]="25"
-            [pageSizeOptions]="[5, 10, 25, 100]"
+            [length]="dataSource?.data?.length ?? 0" 
+            [pageSize]="defaultPageSize"
+            [pageSizeOptions]="paginationSizes"
             aria-label="Select page of tables"
             showFirstLastButtons
           ></mat-paginator>
@@ -158,7 +161,10 @@
 
       <!-- header -->
       <tr mat-header-row *matHeaderRowDef="['header']; sticky: true"></tr>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns; sticky: true"
+      ></tr>
 
       <!-- body -->
       <tr
@@ -183,20 +189,8 @@
 
 <!-- detail-row -->
 <ng-template #tpl let-element>
-  <tr class="mat-row detail-row" [@detailExpand]>
-    <td [attr.colspan]="displayedColumns.length">
-      <div class="element-detail">
-        <div class="element-diagram">
-          <div class="element-position">{{ element?.position }}</div>
-          <div class="element-symbol">{{ element?.symbol }}</div>
-          <div class="element-name">{{ element?.name }}</div>
-          <div class="element-weight">{{ element?.weight }}</div>
-        </div>
-        <div class="element-description">
-          {{ element?.description }}
-          <span class="element-description-attribution"> -- Wikipedia </span>
-        </div>
-      </div>
-    </td>
-  </tr>
+  <app-datatable-detail-row
+    [element]="element"
+    [colspan]="displayedColumns?.length ?? 0"
+  ></app-datatable-detail-row>
 </ng-template>

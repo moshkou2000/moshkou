@@ -5,6 +5,9 @@ import { IBreadcrumb } from '../../interfaces/ibreadcrumb';
 import { UserModel } from '../../models/users.model';
 import { SIDENAV_ITEMS } from '../../constants/sidenav_items';
 import { BREADCRUMBS } from '../../constants/breadcrumbs';
+import { CdkBottomSheetComponent } from 'src/app/shared/bottom-sheet/cdk-bottom-sheet.component';
+import { IToolbarButton } from 'src/app/shared/datatable/datatable-toolbar/datatable-toolbar.interface';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
 @Injectable({
   providedIn: 'root',
@@ -24,27 +27,22 @@ export class GeneralService {
     let breadcrumb: IBreadcrumb | undefined = BREADCRUMBS.find((item) => {
       return item.link === link;
     });
-
     this.breadcrumb = breadcrumb;
-
     if (breadcrumb && breadcrumb.parents) {
       this.getBreadcrumb(breadcrumb.parents[0].link);
     }
-
     return this.breadcrumb;
   }
   getBreadcrumb(link: string): IBreadcrumb | undefined {
     let breadcrumb: IBreadcrumb | undefined = BREADCRUMBS.find((item) => {
       return item.link === link;
     });
-
     if (breadcrumb?.parents) {
       const b: IBreadcrumb | undefined = this.getBreadcrumb(
         breadcrumb.parents[0].link
       );
       if (b) this.breadcrumb!.parents!.push(b);
     }
-
     return breadcrumb;
   }
 
@@ -71,5 +69,22 @@ export class GeneralService {
         }
       }
     }
+  }
+
+  // open BottomSheet
+  // bottomSheet: from view
+  // buttons: list items
+  // buttonClick: item click
+  openBottomSheet(
+    bottomSheet: MatBottomSheet,
+    buttons?: IToolbarButton[],
+    buttonClick?: any
+  ): void {
+    bottomSheet.open(CdkBottomSheetComponent, {
+      data: {
+        buttons: buttons,
+        buttonClick: buttonClick,
+      },
+    });
   }
 }

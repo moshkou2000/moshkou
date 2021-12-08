@@ -1,0 +1,229 @@
+import {
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewRef,
+} from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Sort } from '@angular/material/sort';
+import { Subscription } from 'rxjs';
+import {
+  TOOLBAR_BUTTONS,
+  TOOLBAR_BUTTONS_NAME,
+} from 'src/app/core/constants/datatable-toolbar';
+import { STATUS_LEVEL } from 'src/app/core/constants/status-level';
+import { ConfirmationComponent } from 'src/app/shared/confirmation/confirmation.component';
+import { DatatableToolbarModel } from 'src/app/shared/datatable/datatable-toolbar/datatable-toolbar.model';
+import { SAMPLE_DATA } from 'src/app/shared/datatable/datatable.interface';
+import {
+  NotificationModel,
+  Options,
+} from 'src/app/shared/notification/notification.model';
+import { NotificationService } from 'src/app/shared/notification/notification.service';
+import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
+import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
+import { ViewStatesModel } from 'src/app/shared/view-states/view-states.model';
+import { environment } from 'src/environments/environment';
+
+@Component({
+  selector: 'app-planning',
+  templateUrl: './planning.component.html',
+  styleUrls: ['./planning.component.scss'],
+})
+export class PlanningComponent implements OnInit, OnDestroy {
+  viewStates: ViewStatesModel = new ViewStatesModel({ state: ViewStates.idle });
+  displayedColumns: string[] = [
+    'position',
+    'online',
+    'name',
+    'weight',
+    'symbol',
+    'popularity',
+    'action',
+  ];
+  toolbar: DatatableToolbarModel = new DatatableToolbarModel({
+    hasFullscreen: true,
+    hasSearch: true,
+    toolbarButtons: TOOLBAR_BUTTONS,
+  });
+  data: any = SAMPLE_DATA;
+  paginationSizes: number[] = [5, 10, 15, 25, 100];
+  defaultPageSize: number = this.paginationSizes[3];
+
+  confirmationRef: any = null;
+  confirmationSubscription: Subscription | undefined;
+  notificationOptionSubscription: Subscription | undefined;
+
+  constructor(
+    public dialog: MatDialog,
+    private snackbar: MatSnackBar,
+    private changeDetectorRef: ChangeDetectorRef,
+    private notificationService: NotificationService
+  ) {}
+
+  ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    if (this.confirmationSubscription) {
+      this.confirmationSubscription.unsubscribe();
+    }
+    if (this.notificationOptionSubscription) {
+      this.notificationOptionSubscription.unsubscribe();
+    }
+  }
+
+  onButtonClick(event: any) {
+    !environment.production && console.log('::toolbarButtonClick', event);
+    switch (event) {
+      case TOOLBAR_BUTTONS_NAME.ADD:
+        break;
+      case TOOLBAR_BUTTONS_NAME.EDIT:
+        break;
+      case TOOLBAR_BUTTONS_NAME.DELETE:
+        break;
+      case TOOLBAR_BUTTONS_NAME.FILTER:
+        break;
+      case TOOLBAR_BUTTONS_NAME.REPORTS:
+        break;
+      case TOOLBAR_BUTTONS_NAME.EXCEL:
+        break;
+      case TOOLBAR_BUTTONS_NAME.PDF:
+        break;
+      case TOOLBAR_BUTTONS_NAME.DOWNLOAD:
+        this.doDownload();
+        break;
+      case TOOLBAR_BUTTONS_NAME.UPDATE:
+        break;
+    }
+
+    // this.sidenav?.open();
+    // this.sidenav?.close();
+  }
+
+  onSearchKeyup(event: any) {
+    !environment.production && console.log('::onSearchKeyup', event);
+    // TODO: call api
+  }
+
+  onSortClick(event: Sort) {
+    console.log('onSortClick', event);
+  }
+
+  doDownload(): void {
+    const notification: NotificationModel = new NotificationModel({
+      id: '678687687687687687',
+      message: 'It is downloading...',
+      level: STATUS_LEVEL.warning,
+      options: [new Options({ text: 'Stop', data: 123456789 })],
+    });
+    this.notificationService.set(notification);
+    this.notificationOptionSubscription = this.notificationService
+      .getButtonClick()
+      .subscribe((option) => {
+        !environment.production &&
+          console.log('user clicked notification button ', option);
+
+        if (option) {
+          // TODO: it has clicked
+          if (option.data === 2) {
+            // it is an example
+            this.removeNotification();
+          } else {
+            !environment.production &&
+              this.snackbar.openFromComponent(SnackbarComponent, {
+                data: {
+                  message: 'This snakbar message.',
+                  action: 'Undo',
+                  actionClick: () => {
+                    console.log('SettingsComponent.Snackbar.clicked');
+                    this.removeNotification();
+                  },
+                },
+                duration: 399000,
+                horizontalPosition: 'center',
+                verticalPosition: 'top',
+              });
+          }
+        }
+
+        if (!(this.changeDetectorRef as ViewRef).destroyed) {
+          this.changeDetectorRef.detectChanges();
+        }
+      });
+  }
+  removeNotification(): void {
+    this.notificationService.remove();
+
+    if (this.notificationOptionSubscription) {
+      this.notificationOptionSubscription.unsubscribe();
+    }
+  }
+
+  /*
+    datatable
+    body
+    each row
+    column action buttons
+  */
+  // delete
+  onDeleteItem(event: /*DataModel*/ any): void {
+    console.log('onDeleteItem', event);
+    if (event) {
+      if (!this.confirmationRef) {
+        let that: any = this;
+        const confirmationRef: MatDialogRef<ConfirmationComponent, any> =
+          this.dialog.open(ConfirmationComponent, {
+            disableClose: true,
+            width: '250px',
+            data: {
+              title: 'Delete Records',
+              message:
+                'This is data message, This is data message, This is data message, This is data message',
+              button1: {
+                title: 'Cancel',
+                click: function () {
+                  confirmationRef.close();
+                },
+              },
+              button2: {
+                title: 'Delete',
+                click: function () {
+                  // TODO: do your action
+
+                  that.snackbar.openFromComponent(SnackbarComponent, {
+                    data: {
+                      message: 'This snakbar message.',
+                      action: 'Undo',
+                      actionClick: () => {
+                        console.log('SettingsComponent.Snackbar.clicked');
+                      },
+                    },
+                    duration: 399000,
+                    horizontalPosition: 'center',
+                    verticalPosition: 'top',
+                  });
+
+                  confirmationRef.close();
+                  // alert
+                },
+              },
+            },
+          });
+        this.confirmationSubscription = confirmationRef
+          .afterClosed()
+          .subscribe(() => {
+            this.confirmationRef = null;
+            that = null;
+          });
+        this.confirmationRef = confirmationRef;
+      }
+    }
+  }
+
+  // edit
+  onEditItem(event: /*DataModel*/ any): void {
+    console.log('onEditItem', event);
+  }
+}

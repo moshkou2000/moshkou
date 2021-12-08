@@ -8,7 +8,6 @@ import { SnackbarComponent } from './shared/snackbar/snackbar.component';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DatatableModule } from './shared/datatable/datatable.module';
 
 @NgModule({
   declarations: [AppComponent, ConfirmationComponent, SnackbarComponent],
@@ -16,7 +15,6 @@ import { DatatableModule } from './shared/datatable/datatable.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DatatableModule,
     SharedModule,
     BrowserAnimationsModule,
     MatSnackBarModule,

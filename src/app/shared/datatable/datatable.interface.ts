@@ -1,4 +1,4 @@
-export interface PeriodicModel {
+export interface DataModel {
   name: string;
   position: number;
   weight: number;
@@ -6,10 +6,13 @@ export interface PeriodicModel {
   description: string;
   online: boolean;
   popularity: number;
+
   expanded?: boolean;
 }
 
-export const SAMPLE_DATA: PeriodicModel[] = [
+// TODO: it's sample data
+// it's just for demo
+export const SAMPLE_DATA: DataModel[] = [
   {
     position: 1,
     name: 'Hydrogen',

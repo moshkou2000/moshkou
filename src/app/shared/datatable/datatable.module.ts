@@ -16,14 +16,19 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { DatatableComponent } from './datatable.component';
-import { DatatableRoutingModule } from './datatable-routing.module';
-import { CdkDetailRowDirective } from './cdk-detail-row.directive';
-import { CdkBottomSheetComponent } from './datatable-toolbar/cdk-bottom-sheet.component';
-import { DatatableToolbarComponent } from './datatable-toolbar/datatable-toolbar.component';
 import { SharedModule } from '../shared.module';
+import { CdkDetailRowDirective } from './datatable-detail-row/datatable-detail-row.directive';
+import { DatatableComponent } from './datatable.component';
+import { DatatableToolbarComponent } from './datatable-toolbar/datatable-toolbar.component';
+import { DatatableDetailRowComponent } from './datatable-detail-row/datatable-detail-row.component';
 
 @NgModule({
+  declarations: [
+    CdkDetailRowDirective,
+    DatatableComponent,
+    DatatableToolbarComponent,
+    DatatableDetailRowComponent,
+  ],
   imports: [
     CommonModule,
     MatIconModule,
@@ -42,14 +47,13 @@ import { SharedModule } from '../shared.module';
     MatProgressSpinnerModule,
     MatSidenavModule,
     ReactiveFormsModule,
-    DatatableRoutingModule,
     SharedModule,
   ],
-  declarations: [
-    CdkBottomSheetComponent,
+  exports: [
     CdkDetailRowDirective,
     DatatableComponent,
     DatatableToolbarComponent,
+    DatatableDetailRowComponent,
   ],
 })
 export class DatatableModule {}

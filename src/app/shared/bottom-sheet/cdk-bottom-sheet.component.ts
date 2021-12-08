@@ -1,16 +1,14 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import {
   MatBottomSheetRef,
   MAT_BOTTOM_SHEET_DATA,
 } from '@angular/material/bottom-sheet';
-import { IToolbarButton } from './datatable-toolbar.interface';
-import { TOOLBAR_BUTTONS } from './datatable-toolbar.model';
 
 @Component({
   selector: 'bottom-sheet',
   template: `<mat-nav-list>
     <a
-      *ngFor="let b of toolbarButtons"
+      *ngFor="let b of data.buttons"
       mat-list-item
       (click)="onClick($event, b.name)"
     >
@@ -35,15 +33,15 @@ import { TOOLBAR_BUTTONS } from './datatable-toolbar.model';
   </mat-nav-list>`,
 })
 export class CdkBottomSheetComponent {
-  toolbarButtons: IToolbarButton[] = TOOLBAR_BUTTONS;
-
   constructor(
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
     private _bottomSheetRef: MatBottomSheetRef<CdkBottomSheetComponent>
   ) {}
 
+  // pass click event and
+  // dismiss the botomsheet
   onClick(event: MouseEvent, buttonName?: string): void {
-    this.data(buttonName);
+    this.data.buttonClick(buttonName);
     this._bottomSheetRef.dismiss();
     event.preventDefault();
   }

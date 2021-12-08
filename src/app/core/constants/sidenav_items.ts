@@ -31,6 +31,10 @@ export const SIDENAV_ITEMS: ISidenav[] = [
     link: 'settings',
   },
   {
+    label: 'Planning',
+    link: 'planning',
+  },
+  {
     label: 'Login',
     link: 'login',
     icon: 'login',

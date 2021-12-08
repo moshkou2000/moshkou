@@ -12,6 +12,7 @@ export const BREADCRUMBS: IBreadcrumb[] = [
     label: 'Datatable',
     parents: [{ link: 'home', label: 'Home' }],
   },
+  { link: 'planning', label: 'Planning' },
   { link: 'documents', label: 'Documents' },
   { link: 'users/field_assistant', label: 'Field Assistant' },
   { link: 'users/admins', label: 'Admins' },
