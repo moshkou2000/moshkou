@@ -1,15 +1,13 @@
 export class UserModel {
-
   public _id: string | undefined;
-  public token?: string;
+  public token: string | undefined;
   public email: string | undefined;
   public name: string | undefined;
   public phone: string | undefined;
   public gender: string | undefined;
   public dob: string | undefined;
-  public password: string | undefined;
   public picture: string | undefined;
-  public country: any;
+  public country: any | undefined;
   public about_me: string | undefined;
   public createdAt: string | undefined;
   public updatedAt: string | undefined;
@@ -27,7 +25,6 @@ country : {
   status: "assigned"
 }
 */
-
 
 // address: ""
 // postcode: ""

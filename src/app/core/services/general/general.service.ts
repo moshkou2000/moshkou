@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { keys } from 'src/environments/environment';
 import { ISidenav } from '../../interfaces/isidenav';
 import { IBreadcrumb } from '../../interfaces/ibreadcrumb';
-import { UserModel } from '../../models/users.model';
+import { UserModel } from '../../models/user.model';
 import { SIDENAV_ITEMS } from '../../constants/sidenav_items';
 import { BREADCRUMBS } from '../../constants/breadcrumbs';
 import { CdkBottomSheetComponent } from 'src/app/shared/bottom-sheet/cdk-bottom-sheet.component';
@@ -23,7 +23,7 @@ export class GeneralService {
 
   // Breadcrumbs
   // link: current route
-  getBreadcrumbs(link: string) {
+  getBreadcrumbs(link: string): IBreadcrumb | undefined {
     let breadcrumb: IBreadcrumb | undefined = BREADCRUMBS.find((item) => {
       return item.link === link;
     });
@@ -33,7 +33,7 @@ export class GeneralService {
     }
     return this.breadcrumb;
   }
-  getBreadcrumb(link: string): IBreadcrumb | undefined {
+  private getBreadcrumb(link: string): IBreadcrumb | undefined {
     let breadcrumb: IBreadcrumb | undefined = BREADCRUMBS.find((item) => {
       return item.link === link;
     });
@@ -86,5 +86,11 @@ export class GeneralService {
         buttonClick: buttonClick,
       },
     });
+  }
+
+  // clear localStorage
+  // you can clear cach, session & ...
+  clear(): void {
+    localStorage.clear();
   }
 }

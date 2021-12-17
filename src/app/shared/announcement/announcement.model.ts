@@ -1,8 +1,4 @@
-type AnnouncementArguments = {
-  id: string;
-  message: string;
-  url: string;
-};
+import { AnnouncementArguments } from 'src/app/core/arguments/arguments';
 
 export class AnnouncementModel {
   public id: string;

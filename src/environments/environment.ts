@@ -4,14 +4,15 @@
 
 const base_url = 'http://localhost:3000/api/';
 
-const default_api = {
+const default_url = {
+  sample: 'https://api.github.com/search/issues', // TODO: it's just for dmeo
   logout: base_url + 'auths/logout',
   profile: base_url + 'users/profile',
   upload_single: base_url + 'files/single',
   upload_multiple: base_url + 'files/multiple',
 };
 
-const tokenless_api = {
+const tokenless_url = {
   login: base_url + 'auths/login',
   verify: base_url + 'auths/verify',
   register: base_url + 'auths/register',
@@ -23,8 +24,8 @@ export const environment = {
   production: false,
   app_key: 'cbsdnbhd',
   base_url: base_url,
-  default_api: default_api,
-  tokenless_api: tokenless_api,
+  default_url: default_url,
+  tokenless_url: tokenless_url,
 };
 
 /*

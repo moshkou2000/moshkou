@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SidenavArguments } from 'src/app/core/arguments/arguments';
 import { INITIIAL_ROUTE } from 'src/app/core/constants/app-routes';
-import { ISidenav, SidenavArguments } from 'src/app/core/interfaces/isidenav';
+import { ISidenav } from 'src/app/core/interfaces/isidenav';
 import { GeneralService } from 'src/app/core/services/general/general.service';
 
 @Component({

@@ -1,13 +1,8 @@
+import {
+  NotificationArguments,
+  OptionsArguments,
+} from 'src/app/core/arguments/arguments';
 import { STATUS_LEVEL } from 'src/app/core/constants/status-level';
-
-type NotificationArguments = {
-  id: string;
-  message: string;
-  level?: string;
-  options?: [Options];
-};
-
-type OptionsArguments = { text: string; data?: any; notificationId?: string };
 
 export class NotificationModel {
   public id: string;

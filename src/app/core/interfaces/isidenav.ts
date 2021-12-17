@@ -1,8 +1,3 @@
-export type SidenavArguments = {
-  item?: ISidenav;
-  items?: ISidenav;
-};
-
 // icon or imageIcon
 export interface ISidenav {
   label: string;

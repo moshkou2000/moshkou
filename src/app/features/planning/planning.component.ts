@@ -9,14 +9,15 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Sort } from '@angular/material/sort';
 import { Subscription } from 'rxjs';
+import { CONSTANT_NUMBERS } from 'src/app/core/constants/constant_numbers';
 import {
   TOOLBAR_BUTTONS,
   TOOLBAR_BUTTONS_NAME,
 } from 'src/app/core/constants/datatable-toolbar';
 import { STATUS_LEVEL } from 'src/app/core/constants/status-level';
+import { Services } from 'src/app/core/services/services.service';
 import { ConfirmationComponent } from 'src/app/shared/confirmation/confirmation.component';
 import { DatatableToolbarModel } from 'src/app/shared/datatable/datatable-toolbar/datatable-toolbar.model';
-import { SAMPLE_DATA } from 'src/app/shared/datatable/datatable.interface';
 import {
   NotificationModel,
   Options,
@@ -48,22 +49,26 @@ export class PlanningComponent implements OnInit, OnDestroy {
     hasSearch: true,
     toolbarButtons: TOOLBAR_BUTTONS,
   });
-  data: any = SAMPLE_DATA;
-  paginationSizes: number[] = [5, 10, 15, 25, 100];
-  defaultPageSize: number = this.paginationSizes[3];
+  data: any;
+  paginationSizes: number[] = CONSTANT_NUMBERS.paginationSizes;
+  defaultPageSize: number = CONSTANT_NUMBERS.defaultPageSize;
 
   confirmationRef: any = null;
   confirmationSubscription: Subscription | undefined;
   notificationOptionSubscription: Subscription | undefined;
+  dataSubscription: Subscription | undefined;
 
   constructor(
     public dialog: MatDialog,
-    private snackbar: MatSnackBar,
+    public snackbar: MatSnackBar,
     private changeDetectorRef: ChangeDetectorRef,
+    private service: Services,
     private notificationService: NotificationService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getData();
+  }
 
   ngOnDestroy(): void {
     if (this.confirmationSubscription) {
@@ -72,8 +77,18 @@ export class PlanningComponent implements OnInit, OnDestroy {
     if (this.notificationOptionSubscription) {
       this.notificationOptionSubscription.unsubscribe();
     }
+    if (this.dataSubscription) {
+      this.dataSubscription.unsubscribe();
+    }
   }
 
+  getData() {
+    this.dataSubscription = this.service
+      .getSample()
+      .subscribe((data) => (this.data = data.body.result));
+  }
+
+  // toolbar buttons click
   onButtonClick(event: any) {
     !environment.production && console.log('::toolbarButtonClick', event);
     switch (event) {
@@ -102,6 +117,7 @@ export class PlanningComponent implements OnInit, OnDestroy {
     // this.sidenav?.close();
   }
 
+  // search
   onSearchKeyup(event: any) {
     !environment.production && console.log('::onSearchKeyup', event);
     // TODO: call api
@@ -153,6 +169,7 @@ export class PlanningComponent implements OnInit, OnDestroy {
         }
       });
   }
+
   removeNotification(): void {
     this.notificationService.remove();
 

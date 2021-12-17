@@ -6,11 +6,9 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-import { environment } from '../../../environments/environment';
-
-import { GeneralService } from '../services/general/general.service';
-import { UserModel } from '../models/users.model';
+import { GeneralService } from '../../services/general/general.service';
+import { environment } from 'src/environments/environment';
+import { UserModel } from '../../models/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -44,7 +42,7 @@ export class JwtInterceptor implements HttpInterceptor {
       headers['app-key'] = environment.app_key;
     }
 
-    if (Object.values(environment.default_api).indexOf(request.url) > -1) {
+    if (Object.values(environment.default_url).indexOf(request.url) > -1) {
       let user: UserModel | undefined = this.generalService.getUser();
       if (user && user.token) {
         headers['Authorization'] = `Bearer ${user.token}`;

@@ -1,15 +1,8 @@
+import { DatatableToolbarArguments } from 'src/app/core/arguments/arguments';
 import {
   IToolbarButton,
   IToolbarButtonsName,
 } from './datatable-toolbar.interface';
-
-type ViewStatesArguments = {
-  hasSearch?: boolean;
-  hasFullscreen?: boolean;
-  isFullscreen?: boolean;
-  toolbarButtons?: IToolbarButton[];
-  toolbarButtonsName?: IToolbarButtonsName;
-};
 
 export class DatatableToolbarModel {
   hasSearch: boolean = false;
@@ -18,7 +11,7 @@ export class DatatableToolbarModel {
   toolbarButtons: IToolbarButton[] | undefined;
   toolbarButtonsName: IToolbarButtonsName | undefined; //  = TOOLBAR_BUTTONS_NAME;
 
-  constructor(args?: ViewStatesArguments) {
+  constructor(args?: DatatableToolbarArguments) {
     if (args?.hasSearch !== undefined && args.hasSearch !== null)
       this.hasSearch = args.hasSearch;
     if (args?.hasFullscreen !== undefined && args.hasFullscreen !== null)

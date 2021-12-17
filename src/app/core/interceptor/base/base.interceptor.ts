@@ -12,6 +12,9 @@ import { catchError, map, finalize } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GeneralService } from '../../services/general/general.service';
 import { environment } from 'src/environments/environment';
+import { ResponseModel } from '../../models/response.model';
+import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
+import { Temp } from '../../temp/temp';
 
 @Injectable({
   providedIn: 'root',
@@ -33,32 +36,32 @@ export class BaseInterceptor implements HttpInterceptor {
       map((data: HttpEvent<any>) => {
         if (data instanceof HttpResponse) {
           data = data.clone({
-            body: 118, // new ResponseModel(data)
+            body: Temp.modifyGithubResponse(data),
           });
         }
         return data;
       }),
       catchError((error) => {
-        if (error.status == 401) {
-          // !environment.production && this.snackbar.openFromComponent(SnackbarComponent, {
-          //   data: "The authentication session has expired. please sign-in again.",
-          //   duration: 3000,
-          //   horizontalPosition: "center",
-          //   verticalPosition: "top"
-          // });
+        if ([401, 403].includes(error.status)) {
+          !environment.production &&
+            this.snackbar.openFromComponent(SnackbarComponent, {
+              data: 'The authentication session has expired. please sign-in again.',
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+            });
 
-          // this.generalService.clear();
+          this.generalService.clear();
           this.router.navigate(['/login']);
         }
 
-        // return throwError(new ResponseModel(error));
-        return throwError(error);
+        return throwError(new ResponseModel(error));
       }),
       finalize(() => {
         const elapsed = Date.now() - started;
         const msg = `${request.method} ${request.url} ${request.params} ${elapsed} ms.`;
         !environment.production &&
-          console.log('BaseInterceptor: ', msg, request);
+          console.log('::BaseInterceptor: ', msg, request);
       })
     );
   }

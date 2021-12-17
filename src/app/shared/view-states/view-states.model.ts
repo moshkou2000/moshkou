@@ -1,15 +1,5 @@
+import { ViewStatesArguments } from 'src/app/core/arguments/arguments';
 import { ViewStates } from './view-states.enum';
-
-type ViewStatesArguments = {
-  state?: ViewStates;
-  title?: string;
-  message?: string;
-  icon?: string;
-  iconColor?: string;
-  imageIcon?: string;
-  backgroundColor?: string;
-  backgroundImage?: string;
-};
 
 export class ViewStatesModel {
   state?: ViewStates = ViewStates.busy;
