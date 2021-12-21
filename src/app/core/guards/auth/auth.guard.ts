@@ -7,13 +7,13 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { GeneralService } from '../../services/general/general.service';
+import { Util } from '../../utils/util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private generalService: GeneralService) {}
+  constructor(private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -23,12 +23,10 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.generalService.getUser()) {
+    if (Util.user) {
       return true;
     }
 
-    // not logged in so redirect to login page
-    this.router.navigate(['/login']);
-    return false;
+    return this.router.navigate(['/login']);
   }
 }

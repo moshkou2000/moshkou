@@ -1,0 +1,2064 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>moshkou documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">moshkou documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  DatatableComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/datatable/datatable.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-datatable</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./datatable.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./datatable.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#arrPopularity" >arrPopularity</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dataSource" >dataSource</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialog" >dialog</a>
+                            </li>
+                            <li>
+                                <a href="#paginator" >paginator</a>
+                            </li>
+                            <li>
+                                <a href="#sidenav" >sidenav</a>
+                            </li>
+                            <li>
+                                <a href="#sort" >sort</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deleteItem" >deleteItem</a>
+                            </li>
+                            <li>
+                                <a href="#editItem" >editItem</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterViewInit" >ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#setPopularity" >setPopularity</a>
+                            </li>
+                            <li>
+                                <a href="#sortTable" >sortTable</a>
+                            </li>
+                            <li>
+                                <a href="#toolbarButtonClick" >toolbarButtonClick</a>
+                            </li>
+                            <li>
+                                <a href="#toolbarSearchKeyup" >toolbarSearchKeyup</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#data" >data</a>
+                            </li>
+                            <li>
+                                <a href="#defaultPageSize" >defaultPageSize</a>
+                            </li>
+                            <li>
+                                <a href="#displayedColumns" >displayedColumns</a>
+                            </li>
+                            <li>
+                                <a href="#paginationSizes" >paginationSizes</a>
+                            </li>
+                            <li>
+                                <a href="#toolbar" >toolbar</a>
+                            </li>
+                            <li>
+                                <a href="#viewStates" >viewStates</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onButtonClick" >onButtonClick</a>
+                            </li>
+                            <li>
+                                <a href="#onDeleteItem" >onDeleteItem</a>
+                            </li>
+                            <li>
+                                <a href="#onEditItem" >onEditItem</a>
+                            </li>
+                            <li>
+                                <a href="#onSearchKeyup" >onSearchKeyup</a>
+                            </li>
+                            <li>
+                                <a href="#onSortClick" >onSortClick</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#data" >data</a>
+                                </li>
+                                <li>
+                                    <a href="#expandedItems" >expandedItems</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(dialog: MatDialog)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:64</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="data"></a>
+                        <b>data</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:40</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="defaultPageSize"></a>
+                        <b>defaultPageSize</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:46</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="displayedColumns"></a>
+                        <b>displayedColumns</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:44</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="paginationSizes"></a>
+                        <b>paginationSizes</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:45</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="toolbar"></a>
+                        <b>toolbar</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/DatatableToolbarModel.html" target="_self" >DatatableToolbarModel</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:39</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="viewStates"></a>
+                        <b>viewStates</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/ViewStatesModel.html" target="_self" >ViewStatesModel</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:43</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onButtonClick"></a>
+                        <b>onButtonClick</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:48</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onDeleteItem"></a>
+                        <b>onDeleteItem</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:51</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onEditItem"></a>
+                        <b>onEditItem</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:52</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onSearchKeyup"></a>
+                        <b>onSearchKeyup</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:49</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onSortClick"></a>
+                        <b>onSortClick</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:50</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteItem"></a>
+                    <span class="name">
+                        <span ><b>deleteItem</b></span>
+                        <a href="#deleteItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteItem(item?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">src/app/shared/datatable/datatable.component.ts:128</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editItem"></a>
+                    <span class="name">
+                        <span ><b>editItem</b></span>
+                        <a href="#editItem"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editItem(item?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="133"
+                            class="link-to-prism">src/app/shared/datatable/datatable.component.ts:133</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>item</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterViewInit</b></span>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">src/app/shared/datatable/datatable.component.ts:72</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">src/app/shared/datatable/datatable.component.ts:77</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">src/app/shared/datatable/datatable.component.ts:82</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/shared/datatable/datatable.component.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setPopularity"></a>
+                    <span class="name">
+                        <span ><b>setPopularity</b></span>
+                        <a href="#setPopularity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setPopularity(popularity: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/app/shared/datatable/datatable.component.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>popularity</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sortTable"></a>
+                    <span class="name">
+                        <span ><b>sortTable</b></span>
+                        <a href="#sortTable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sortTable(sortParameters: Sort)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">src/app/shared/datatable/datatable.component.ts:101</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sortParameters</td>
+                                    <td>
+                                            <code>Sort</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toolbarButtonClick"></a>
+                    <span class="name">
+                        <span ><b>toolbarButtonClick</b></span>
+                        <a href="#toolbarButtonClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toolbarButtonClick(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">src/app/shared/datatable/datatable.component.ts:117</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toolbarSearchKeyup"></a>
+                    <span class="name">
+                        <span ><b>toolbarSearchKeyup</b></span>
+                        <a href="#toolbarSearchKeyup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toolbarSearchKeyup(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/app/shared/datatable/datatable.component.ts:106</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="arrPopularity"></a>
+                    <span class="name">
+                        <span ><b>arrPopularity</b></span>
+                        <a href="#arrPopularity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[0, 0, 0, 0, 0]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataSource"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>dataSource</b></span>
+                        <a href="#dataSource"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatTableDataSource&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new MatTableDataSource&lt;any&gt;([])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialog"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>dialog</b></span>
+                        <a href="#dialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatDialog</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="paginator"></a>
+                    <span class="name">
+                        <span ><b>paginator</b></span>
+                        <a href="#paginator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatPaginator | undefined</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(MatPaginator)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sidenav"></a>
+                    <span class="name">
+                        <span ><b>sidenav</b></span>
+                        <a href="#sidenav"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatDrawer | undefined</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(MatDrawer)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sort"></a>
+                    <span class="name">
+                        <span ><b>sort</b></span>
+                        <a href="#sort"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatSort | undefined</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(MatSort)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="data"></a>
+                        <span class="name"><b>data</b><a href="#data"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>data(data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:40</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>data</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="expandedItems"></a>
+                        <span class="name"><b>expandedItems</b><a href="#expandedItems"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>expandedItems()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:59</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>expandedItems(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/shared/datatable/datatable.component.ts:62</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  OnDestroy,
+  Input,
+  Output,
+  OnChanges,
+  EventEmitter,
+  SimpleChanges,
+} from &#x27;@angular/core&#x27;;
+import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
+import { MatPaginator } from &#x27;@angular/material/paginator&#x27;;
+import { MatDrawer } from &#x27;@angular/material/sidenav&#x27;;
+import { MatSort, Sort } from &#x27;@angular/material/sort&#x27;;
+import { MatTableDataSource } from &#x27;@angular/material/table&#x27;;
+import { ViewStatesModel } from &#x27;../view-states/view-states.model&#x27;;
+import { DatatableToolbarModel } from &#x27;./datatable-toolbar/datatable-toolbar.model&#x27;;
+
+//
+// TODO : paginator &amp; sort
+//
+
+@Component({
+  selector: &#x27;app-datatable&#x27;,
+  templateUrl: &#x27;./datatable.component.html&#x27;,
+  styleUrls: [&#x27;./datatable.component.scss&#x27;],
+})
+export class DatatableComponent
+  implements OnInit, AfterViewInit, OnDestroy, OnChanges
+{
+  public dataSource: MatTableDataSource&lt;any&gt; &#x3D; new MatTableDataSource&lt;any&gt;([]);
+
+  @ViewChild(MatDrawer) sidenav: MatDrawer | undefined;
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild(MatSort) sort: MatSort | undefined;
+
+  @Input() toolbar?: DatatableToolbarModel;
+  @Input() set data(data: any) {
+    this.dataSource &#x3D; new MatTableDataSource&lt;any&gt;(data);
+  }
+  @Input() viewStates?: ViewStatesModel;
+  @Input() displayedColumns?: string[] &#x3D; [];
+  @Input() paginationSizes: number[] &#x3D; [];
+  @Input() defaultPageSize: number &#x3D; 0;
+
+  @Output() onButtonClick &#x3D; new EventEmitter();
+  @Output() onSearchKeyup &#x3D; new EventEmitter();
+  @Output() onSortClick &#x3D; new EventEmitter();
+  @Output() onDeleteItem &#x3D; new EventEmitter();
+  @Output() onEditItem &#x3D; new EventEmitter();
+
+  //
+  // TODO: set arrPopularity for dataSource
+  //
+  arrPopularity: number[] &#x3D; [0, 0, 0, 0, 0];
+
+  get expandedItems(): boolean {
+    return this.dataSource?.data?.every((d) &#x3D;&gt; d.expanded) &#x3D;&#x3D;&#x3D; true;
+  }
+  set expandedItems(value: boolean) {
+    this.dataSource?.data?.forEach((d) &#x3D;&gt; (d.expanded &#x3D; value));
+  }
+
+  constructor(public dialog: MatDialog) {}
+
+  ngOnInit(): void {
+    this.setPopularity(3.3);
+  }
+
+  ngAfterViewInit(): void {
+    if (this.paginator) this.dataSource.paginator &#x3D; this.paginator;
+    if (this.sort) this.dataSource.sort &#x3D; this.sort;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.paginator) this.dataSource.paginator &#x3D; this.paginator;
+    if (this.sort) this.dataSource.sort &#x3D; this.sort;
+  }
+
+  ngOnDestroy(): void {}
+
+  setPopularity(popularity: number): void {
+    let i &#x3D; 0;
+    for (; i &lt; popularity; i++) {
+      this.arrPopularity[i] &#x3D; 1;
+    }
+    const intPopularity &#x3D; Math.ceil(popularity);
+    if (popularity !&#x3D;&#x3D; intPopularity) {
+      this.arrPopularity[i - 1] &#x3D; 2;
+    }
+  }
+
+  /*
+    datatable
+    header
+    Toolbar events
+  */
+  // sort
+  sortTable(sortParameters: Sort): void {
+    this.onSortClick.emit(sortParameters);
+  }
+
+  // toolbar search keyup
+  toolbarSearchKeyup(value: string): void {
+    // TODO: filtering client data, remove it if call api
+    this.dataSource.filter &#x3D; value.trim().toLowerCase();
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+
+    this.onSearchKeyup.emit(value);
+  }
+
+  // toolbar buttons click
+  toolbarButtonClick(event: any): void {
+    this.onButtonClick.emit(event);
+  }
+
+  /*
+    datatable
+    body
+    each row
+    column action buttons
+  */
+  // delete
+  deleteItem(item?: /*DataModel*/ any): void {
+    this.onDeleteItem.emit(item);
+  }
+
+  // edit
+  editItem(item?: /*DataModel*/ any): void {
+    this.onEditItem.emit(item);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!-- view state --&gt;
+&lt;app-view-states [viewStates]&#x3D;&quot;viewStates&quot;&gt;&lt;/app-view-states&gt;
+
+&lt;mat-drawer-container
+  *ngIf&#x3D;&quot;viewStates?.isIdle&quot;
+  hasBackdrop&#x3D;&quot;false&quot;
+  fxLayout&#x3D;&quot;row&quot;
+  fxFlex&#x3D;&quot;100&quot;
+  autosize
+&gt;
+  &lt;mat-drawer
+    #sidenav
+    id&#x3D;&quot;main-sidenav-info&quot;
+    mode&#x3D;&quot;side&quot;
+    disableClose&#x3D;&quot;true&quot;
+    position&#x3D;&quot;end&quot;
+  &gt;
+    &lt;app-sidenav-info&gt;&lt;/app-sidenav-info&gt;
+  &lt;/mat-drawer&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;table
+      id&#x3D;&quot;datatable_id&quot;
+      mat-table
+      [dataSource]&#x3D;&quot;dataSource&quot;
+      matSortActive&#x3D;&quot;position&quot;
+      matSortDirection&#x3D;&quot;asc&quot;
+      matSortDisableClear
+      multiTemplateDataRows
+      recycleRows
+      matSort
+      (matSortChange)&#x3D;&quot;sortTable($event)&quot;
+    &gt;
+      &lt;!-- header --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;header&quot;&gt;
+        &lt;td
+          mat-header-cell
+          *matHeaderCellDef
+          [attr.colspan]&#x3D;&quot;dataSource?.data?.length ?? 0&quot;
+          style&#x3D;&quot;border-bottom: 1px solid rgba(0, 0, 0, 0.12)&quot;
+        &gt;
+          &lt;app-datatable-toolbar
+            [toolbar]&#x3D;&quot;toolbar&quot;
+            (onButtonClick)&#x3D;&quot;toolbarButtonClick($event)&quot;
+            (onSearchKeyup)&#x3D;&quot;toolbarSearchKeyup($event)&quot;
+            (sortClick)&#x3D;&quot;sortTable&quot;
+          &gt;&lt;/app-datatable-toolbar&gt;
+        &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Position Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;position&quot; sticky&gt;
+        &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt;No.&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;{{ element.position }}&lt;/td&gt;
+        &lt;td mat-footer-cell *matFooterCellDef&gt;No.&lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Online Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;online&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt;online&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+          &lt;mat-icon [ngClass]&#x3D;&quot;element.online ? &#x27;success-color&#x27; : &#x27;error-color&#x27;&quot;
+            &gt;radio_button_checked&lt;/mat-icon
+          &gt;
+        &lt;/td&gt;
+        &lt;td mat-footer-cell *matFooterCellDef&gt;&lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Name Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;name&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt;Name&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;{{ element.position }}&lt;/td&gt;
+        &lt;td mat-footer-cell *matFooterCellDef&gt;Name&lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Weight Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;weight&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt;Weight&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;{{ element.weight }}&lt;/td&gt;
+        &lt;td mat-footer-cell *matFooterCellDef&gt;Weight&lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Symbol Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;symbol&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef mat-sort-header&gt;Symbol&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;{{ element.symbol }}&lt;/td&gt;
+        &lt;td mat-footer-cell *matFooterCellDef&gt;Symbol&lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Popularity Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;popularity&quot;&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt;Popularity&lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+          &lt;mat-icon *ngFor&#x3D;&quot;let p of arrPopularity&quot; class&#x3D;&quot;gold-color&quot;&gt;
+            {{ p &#x3D;&#x3D;&#x3D; 1 ? &quot;star&quot; : p &#x3D;&#x3D;&#x3D; 2 ? &quot;star_half&quot; : &quot;star_outline&quot; }}
+          &lt;/mat-icon&gt;
+        &lt;/td&gt;
+        &lt;td mat-footer-cell *matFooterCellDef&gt;&lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- Action Column --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;action&quot; stickyEnd&gt;
+        &lt;th mat-header-cell *matHeaderCellDef&gt;
+          &lt;button
+            mat-flat-button
+            mat-icon-button
+            class&#x3D;&quot;info-color expandable&quot;
+            (click)&#x3D;&quot;expandedItems &#x3D; !expandedItems&quot;
+          &gt;
+            &lt;mat-icon class&#x3D;&quot;expandable&quot;&gt;{{
+              expandedItems ? &quot;expand_more&quot; : &quot;expand_less&quot;
+            }}&lt;/mat-icon&gt;
+          &lt;/button&gt;
+        &lt;/th&gt;
+        &lt;td mat-cell *matCellDef&#x3D;&quot;let element&quot;&gt;
+          &lt;button
+            mat-flat-button
+            mat-icon-button
+            class&#x3D;&quot;error-color&quot;
+            (click)&#x3D;&quot;deleteItem(element)&quot;
+          &gt;
+            &lt;mat-icon&gt;delete&lt;/mat-icon&gt;&lt;/button
+          &gt;&lt;button
+            mat-flat-button
+            mat-icon-button
+            class&#x3D;&quot;info-color&quot;
+            (click)&#x3D;&quot;editItem(element)&quot;
+          &gt;
+            &lt;mat-icon&gt;edit&lt;/mat-icon&gt;
+          &lt;/button&gt;
+
+          &lt;button
+            mat-flat-button
+            mat-icon-button
+            class&#x3D;&quot;info-color expandable&quot;
+            (click)&#x3D;&quot;element.expanded &#x3D; !element.expanded&quot;
+          &gt;
+            &lt;mat-icon class&#x3D;&quot;expandable&quot;&gt;{{
+              element.expanded ? &quot;expand_more&quot; : &quot;expand_less&quot;
+            }}&lt;/mat-icon&gt;
+          &lt;/button&gt;
+        &lt;/td&gt;
+        &lt;td mat-footer-cell *matFooterCellDef&gt;&lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- footer --&gt;
+      &lt;ng-container matColumnDef&#x3D;&quot;footer&quot;&gt;
+        &lt;td
+          mat-footer-cell
+          *matFooterCellDef
+          [attr.colspan]&#x3D;&quot;dataSource?.data?.length ?? 0&quot;
+        &gt;
+          &lt;mat-paginator
+            [length]&#x3D;&quot;dataSource?.data?.length ?? 0&quot; 
+            [pageSize]&#x3D;&quot;defaultPageSize&quot;
+            [pageSizeOptions]&#x3D;&quot;paginationSizes&quot;
+            aria-label&#x3D;&quot;Select page of tables&quot;
+            showFirstLastButtons
+          &gt;&lt;/mat-paginator&gt;
+        &lt;/td&gt;
+      &lt;/ng-container&gt;
+
+      &lt;!-- header --&gt;
+      &lt;tr mat-header-row *matHeaderRowDef&#x3D;&quot;[&#x27;header&#x27;]; sticky: true&quot;&gt;&lt;/tr&gt;
+      &lt;tr
+        mat-header-row
+        *matHeaderRowDef&#x3D;&quot;displayedColumns; sticky: true&quot;
+      &gt;&lt;/tr&gt;
+
+      &lt;!-- body --&gt;
+      &lt;tr
+        mat-row
+        *matRowDef&#x3D;&quot;let row; columns: displayedColumns&quot;
+        class&#x3D;&quot;element-row&quot;
+        [cdkDetailRow]&#x3D;&quot;row&quot;
+        [cdkDetailRowTpl]&#x3D;&quot;tpl&quot;
+        [cdkDetailRowOpen]&#x3D;&quot;expandedItems&quot;
+      &gt;&lt;/tr&gt;
+
+      &lt;!-- footer --&gt;
+      &lt;!-- &lt;tr mat-footer-row *matFooterRowDef&#x3D;&quot;displayedColumns; sticky: true&quot;&gt;&lt;/tr&gt; --&gt;
+      &lt;tr
+        mat-footer-row
+        *matFooterRowDef&#x3D;&quot;[&#x27;footer&#x27;]; sticky: true&quot;
+        class&#x3D;&quot;second-footer-row&quot;
+      &gt;&lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/mat-drawer-container&gt;
+
+&lt;!-- detail-row --&gt;
+&lt;ng-template #tpl let-element&gt;
+  &lt;app-datatable-detail-row
+    [element]&#x3D;&quot;element&quot;
+    [colspan]&#x3D;&quot;displayedColumns?.length ?? 0&quot;
+  &gt;&lt;/app-datatable-detail-row&gt;
+&lt;/ng-template&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./datatable.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;../../../styles/variables.scss&quot;;
+
+::ng-deep {
+  /*
+  fixed table column size
+  */
+  table#datatable_id {
+    // first column (No.)
+    &gt; thead &gt; tr:last-child &gt; th:first-child,
+    &gt; tbody &gt; tr:first-child &gt; td:first-child {
+      width: 60px;
+      min-width: 60px;
+    }
+
+    // second column
+    &gt; thead &gt; tr:last-child &gt; th:nth-child(2),
+    &gt; tbody &gt; tr:first-child &gt; th:nth-child(2) {
+      width: 60px;
+      min-width: 60px;
+    }
+
+    // last column (Actions)
+    &gt; thead &gt; tr:last-child &gt; th:last-child,
+    &gt; tbody &gt; tr:first-child &gt; td:last-child {
+      width: 104px;
+      min-width: 104px;
+    }
+  }
+}
+
+:host {
+  .mat-drawer-container {
+    height: 100%;
+  }
+
+  .container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: auto;
+  }
+
+  /*
+  table 
+  */
+  table {
+    width: 100%;
+    // height: 100%;
+  }
+
+  // table row height
+  tr.mat-row,
+  tr.mat-header-row {
+    height: 34px;
+  }
+
+  // table row toolbar height
+  tr.mat-header-row:first-child {
+    height: 56px;
+  }
+
+  tr.mat-header-row:last-child &gt; th {
+    top: 56px !important;
+    border-bottom: 1px solid $color-dark-3;
+  }
+
+  tr.mat-footer-row:first-child &gt; td {
+    border-top: 1px solid $color-dark-3;
+  }
+
+  tr.mat-header-row:last-child &gt; th:last-child {
+    text-align: end;
+  }
+
+  tr &gt; td {
+    &gt; button {
+      width: 34px;
+      height: 34px;
+      line-height: 34px;
+    }
+    &gt; .mat-icon {
+      line-height: 1.2;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!-- view state --><app-view-states [viewStates]="viewStates"></app-view-states><mat-drawer-container  *ngIf="viewStates?.isIdle"  hasBackdrop="false"  fxLayout="row"  fxFlex="100"  autosize>  <mat-drawer    #sidenav    id="main-sidenav-info"    mode="side"    disableClose="true"    position="end"  >    <app-sidenav-info></app-sidenav-info>  </mat-drawer>  <div class="container">    <table      id="datatable_id"      mat-table      [dataSource]="dataSource"      matSortActive="position"      matSortDirection="asc"      matSortDisableClear      multiTemplateDataRows      recycleRows      matSort      (matSortChange)="sortTable($event)"    >      <!-- header -->      <ng-container matColumnDef="header">        <td          mat-header-cell          *matHeaderCellDef          [attr.colspan]="dataSource?.data?.length ?? 0"          style="border-bottom: 1px solid rgba(0, 0, 0, 0.12)"        >          <app-datatable-toolbar            [toolbar]="toolbar"            (onButtonClick)="toolbarButtonClick($event)"            (onSearchKeyup)="toolbarSearchKeyup($event)"            (sortClick)="sortTable"          ></app-datatable-toolbar>        </td>      </ng-container>      <!-- Position Column -->      <ng-container matColumnDef="position" sticky>        <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>        <td mat-cell *matCellDef="let element">{{ element.position }}</td>        <td mat-footer-cell *matFooterCellDef>No.</td>      </ng-container>      <!-- Online Column -->      <ng-container matColumnDef="online">        <th mat-header-cell *matHeaderCellDef mat-sort-header>online</th>        <td mat-cell *matCellDef="let element">          <mat-icon [ngClass]="element.online ? \'success-color\' : \'error-color\'"            >radio_button_checked</mat-icon          >        </td>        <td mat-footer-cell *matFooterCellDef></td>      </ng-container>      <!-- Name Column -->      <ng-container matColumnDef="name">        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>        <td mat-cell *matCellDef="let element">{{ element.position }}</td>        <td mat-footer-cell *matFooterCellDef>Name</td>      </ng-container>      <!-- Weight Column -->      <ng-container matColumnDef="weight">        <th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>        <td mat-cell *matCellDef="let element">{{ element.weight }}</td>        <td mat-footer-cell *matFooterCellDef>Weight</td>      </ng-container>      <!-- Symbol Column -->      <ng-container matColumnDef="symbol">        <th mat-header-cell *matHeaderCellDef mat-sort-header>Symbol</th>        <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>        <td mat-footer-cell *matFooterCellDef>Symbol</td>      </ng-container>      <!-- Popularity Column -->      <ng-container matColumnDef="popularity">        <th mat-header-cell *matHeaderCellDef>Popularity</th>        <td mat-cell *matCellDef="let element">          <mat-icon *ngFor="let p of arrPopularity" class="gold-color">            {{ p === 1 ? "star" : p === 2 ? "star_half" : "star_outline" }}          </mat-icon>        </td>        <td mat-footer-cell *matFooterCellDef></td>      </ng-container>      <!-- Action Column -->      <ng-container matColumnDef="action" stickyEnd>        <th mat-header-cell *matHeaderCellDef>          <button            mat-flat-button            mat-icon-button            class="info-color expandable"            (click)="expandedItems = !expandedItems"          >            <mat-icon class="expandable">{{              expandedItems ? "expand_more" : "expand_less"            }}</mat-icon>          </button>        </th>        <td mat-cell *matCellDef="let element">          <button            mat-flat-button            mat-icon-button            class="error-color"            (click)="deleteItem(element)"          >            <mat-icon>delete</mat-icon></button          ><button            mat-flat-button            mat-icon-button            class="info-color"            (click)="editItem(element)"          >            <mat-icon>edit</mat-icon>          </button>          <button            mat-flat-button            mat-icon-button            class="info-color expandable"            (click)="element.expanded = !element.expanded"          >            <mat-icon class="expandable">{{              element.expanded ? "expand_more" : "expand_less"            }}</mat-icon>          </button>        </td>        <td mat-footer-cell *matFooterCellDef></td>      </ng-container>      <!-- footer -->      <ng-container matColumnDef="footer">        <td          mat-footer-cell          *matFooterCellDef          [attr.colspan]="dataSource?.data?.length ?? 0"        >          <mat-paginator            [length]="dataSource?.data?.length ?? 0"             [pageSize]="defaultPageSize"            [pageSizeOptions]="paginationSizes"            aria-label="Select page of tables"            showFirstLastButtons          ></mat-paginator>        </td>      </ng-container>      <!-- header -->      <tr mat-header-row *matHeaderRowDef="[\'header\']; sticky: true"></tr>      <tr        mat-header-row        *matHeaderRowDef="displayedColumns; sticky: true"      ></tr>      <!-- body -->      <tr        mat-row        *matRowDef="let row; columns: displayedColumns"        class="element-row"        [cdkDetailRow]="row"        [cdkDetailRowTpl]="tpl"        [cdkDetailRowOpen]="expandedItems"      ></tr>      <!-- footer -->      <!-- <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr> -->      <tr        mat-footer-row        *matFooterRowDef="[\'footer\']; sticky: true"        class="second-footer-row"      ></tr>    </table>  </div></mat-drawer-container><!-- detail-row --><ng-template #tpl let-element>  <app-datatable-detail-row    [element]="element"    [colspan]="displayedColumns?.length ?? 0"  ></app-datatable-detail-row></ng-template></div>'
+    var COMPONENTS = [{'name': 'AnnouncementComponent', 'selector': 'app-announcement'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CdkBottomSheetComponent', 'selector': 'bottom-sheet'},{'name': 'ConfirmationComponent', 'selector': 'app-confirmation'},{'name': 'DatatableComponent', 'selector': 'app-datatable'},{'name': 'DatatableDetailRowComponent', 'selector': 'app-datatable-detail-row'},{'name': 'DatatableToolbarComponent', 'selector': 'app-datatable-toolbar'},{'name': 'ErrorComponent', 'selector': 'app-error'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HelpComponent', 'selector': 'app-help'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'PlanningComponent', 'selector': 'app-planning'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SidenavInfoComponent', 'selector': 'app-sidenav-info'},{'name': 'SnackbarComponent', 'selector': 'app-snackbar'},{'name': 'StarRatingComponent', 'selector': 'app-star-rating'},{'name': 'TipsComponent', 'selector': 'app-tips'},{'name': 'ViewStatesComponent', 'selector': 'app-view-states'}];
+    var DIRECTIVES = [{'name': 'CdkDetailRowDirective', 'selector': '[cdkDetailRow]'}];
+    var ACTUAL_COMPONENT = {'name': 'DatatableComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DatatableComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

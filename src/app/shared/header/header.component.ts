@@ -1,9 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { IBreadcrumb } from 'src/app/core/interfaces/ibreadcrumb';
-import { GeneralService } from 'src/app/core/services/general/general.service';
 import { Subscription } from 'rxjs';
 import { SidenavService } from '../sidenav/sidenav.service';
+import { Util } from 'src/app/core/utils/util';
 
 @Component({
   selector: 'app-header',
@@ -16,20 +16,12 @@ export class HeaderComponent implements OnDestroy {
   breadcrumbs?: IBreadcrumb;
   hasSidenav: boolean = true;
 
-  constructor(
-    private router: Router,
-    private generalService: GeneralService,
-    private sidenavService: SidenavService
-  ) {
-    this.breadcrumbs = this.generalService.getBreadcrumbs(
-      this.toLink(this.router.url)
-    );
+  constructor(private router: Router, private sidenavService: SidenavService) {
+    this.breadcrumbs = Util.getBreadcrumbs(this.toLink(this.router.url));
 
     this.routerEventsSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.breadcrumbs = this.generalService.getBreadcrumbs(
-          this.toLink(this.router.url)
-        );
+        this.breadcrumbs = Util.getBreadcrumbs(this.toLink(this.router.url));
       }
     });
   }

@@ -6,15 +6,16 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { GeneralService } from '../../services/general/general.service';
 import { environment } from 'src/environments/environment';
 import { UserModel } from '../../models/user.model';
+import { DEFAULT_URL } from '../../constants/url';
+import { Util } from '../../utils/util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private generalService: GeneralService) {}
+  constructor() {}
 
   intercept(
     request: HttpRequest<any>,
@@ -42,8 +43,8 @@ export class JwtInterceptor implements HttpInterceptor {
       headers['app-key'] = environment.app_key;
     }
 
-    if (Object.values(environment.default_url).indexOf(request.url) > -1) {
-      let user: UserModel | undefined = this.generalService.getUser();
+    if (Object.values(DEFAULT_URL).indexOf(request.url) > -1) {
+      let user: UserModel | undefined = Util.user;
       if (user && user.token) {
         headers['Authorization'] = `Bearer ${user.token}`;
       }

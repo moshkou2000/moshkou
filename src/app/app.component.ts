@@ -4,7 +4,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ISidenav } from './core/interfaces/isidenav';
 import { LayoutModel } from './core/models/layout.model';
-import { GeneralService } from './core/services/general/general.service';
+import { Util } from './core/utils/util';
 import { SidenavInfoService } from './shared/sidenav-info/sidenav-info.service';
 import { SidenavService } from './shared/sidenav/sidenav.service';
 
@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private generalService: GeneralService,
     private sidenavService: SidenavService,
     private sidenavInfoService: SidenavInfoService
   ) {
@@ -63,7 +62,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sidenavItems = this.generalService.sidenavItems;
+    this.sidenavItems = Util.sidenavItems;
   }
 
   ngOnDestroy(): void {

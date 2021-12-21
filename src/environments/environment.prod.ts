@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  app_prefix: 'hn1363_',
+  app_key: 'cbsdnbhd',
+  base_url: 'http://localhost:3000/api/',
 };

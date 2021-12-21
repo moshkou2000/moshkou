@@ -1,0 +1,1003 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>moshkou documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">moshkou documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  HeaderComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/header/header.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-header</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./header.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./header.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#breadcrumbs" >breadcrumbs</a>
+                            </li>
+                            <li>
+                                <a href="#hasSidenav" >hasSidenav</a>
+                            </li>
+                            <li>
+                                <a href="#logoutSubscription" >logoutSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#routerEventsSubscription" >routerEventsSubscription</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#exit" >exit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#toggleSidenav" >toggleSidenav</a>
+                            </li>
+                            <li>
+                                <a href="#toLink" >toLink</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, generalService: <a href="../injectables/GeneralService.html" target="_self">GeneralService</a>, sidenavService: <a href="../injectables/SidenavService.html" target="_self">SidenavService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/shared/header/header.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>generalService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GeneralService.html" target="_self" >GeneralService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sidenavService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SidenavService.html" target="_self" >SidenavService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="exit"></a>
+                    <span class="name">
+                        <span ><b>exit</b></span>
+                        <a href="#exit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>exit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/shared/header/header.component.ts:56</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/shared/header/header.component.ts:37</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleSidenav"></a>
+                    <span class="name">
+                        <span ><b>toggleSidenav</b></span>
+                        <a href="#toggleSidenav"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleSidenav()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/app/shared/header/header.component.ts:53</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toLink"></a>
+                    <span class="name">
+                        <span ><b>toLink</b></span>
+                        <a href="#toLink"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toLink(location: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/app/shared/header/header.component.ts:46</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>location</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="breadcrumbs"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>breadcrumbs</b></span>
+                        <a href="#breadcrumbs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/IBreadcrumb.html" target="_self" >IBreadcrumb</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/header/header.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasSidenav"></a>
+                    <span class="name">
+                        <span ><b>hasSidenav</b></span>
+                        <a href="#hasSidenav"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/shared/header/header.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logoutSubscription"></a>
+                    <span class="name">
+                        <span ><b>logoutSubscription</b></span>
+                        <a href="#logoutSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/shared/header/header.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="routerEventsSubscription"></a>
+                    <span class="name">
+                        <span ><b>routerEventsSubscription</b></span>
+                        <a href="#routerEventsSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/shared/header/header.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy } from &#x27;@angular/core&#x27;;
+import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
+import { IBreadcrumb } from &#x27;src/app/core/interfaces/ibreadcrumb&#x27;;
+import { GeneralService } from &#x27;src/app/core/services/general/general.service&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+import { SidenavService } from &#x27;../sidenav/sidenav.service&#x27;;
+
+@Component({
+  selector: &#x27;app-header&#x27;,
+  templateUrl: &#x27;./header.component.html&#x27;,
+  styleUrls: [&#x27;./header.component.scss&#x27;],
+})
+export class HeaderComponent implements OnDestroy {
+  routerEventsSubscription: Subscription | undefined;
+  logoutSubscription: Subscription | undefined;
+  breadcrumbs?: IBreadcrumb;
+  hasSidenav: boolean &#x3D; true;
+
+  constructor(
+    private router: Router,
+    private generalService: GeneralService,
+    private sidenavService: SidenavService
+  ) {
+    this.breadcrumbs &#x3D; this.generalService.getBreadcrumbs(
+      this.toLink(this.router.url)
+    );
+
+    this.routerEventsSubscription &#x3D; this.router.events.subscribe((event) &#x3D;&gt; {
+      if (event instanceof NavigationEnd) {
+        this.breadcrumbs &#x3D; this.generalService.getBreadcrumbs(
+          this.toLink(this.router.url)
+        );
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.routerEventsSubscription) {
+      this.routerEventsSubscription.unsubscribe();
+    }
+    if (this.logoutSubscription) {
+      this.logoutSubscription.unsubscribe();
+    }
+  }
+
+  toLink(location: string): string {
+    if (location.length &gt; 0 &amp;&amp; location[0] &#x3D;&#x3D;&#x3D; &#x27;/&#x27;) {
+      location &#x3D; location.substring(1);
+    }
+    return location;
+  }
+
+  toggleSidenav(): void {
+    this.sidenavService.set();
+  }
+  exit(): void {}
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;mat-toolbar class&#x3D;&quot;header&quot;&gt;
+  &lt;mat-toolbar-row&gt;
+    &lt;button
+      *ngIf&#x3D;&quot;hasSidenav&quot;
+      mat-icon-button
+      aria-label&#x3D;&quot;icon-button&quot;
+      (click)&#x3D;&quot;toggleSidenav()&quot;
+    &gt;
+      &lt;mat-icon&gt;menu&lt;/mat-icon&gt;
+    &lt;/button&gt;
+    &lt;img
+      class&#x3D;&quot;logo&quot;
+      src&#x3D;&quot;https://material.angular.io/assets/img/homepage/angular-white-transparent.svg&quot;
+    /&gt;
+    &lt;div class&#x3D;&quot;title animate&quot; style&#x3D;&quot;cursor: pointer&quot;&gt;
+      &lt;span&gt;M&lt;/span&gt;&lt;span&gt;O&lt;/span&gt;&lt;span&gt;S&lt;/span&gt;&lt;span&gt;H&lt;/span&gt;&lt;span&gt;K&lt;/span
+      &gt;&lt;span&gt;O&lt;/span&gt;&lt;span&gt;U&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;divider&quot;&gt;&lt;/div&gt;
+    &lt;div class&#x3D;&quot;breadcrumbs&quot;&gt;
+      &lt;div&gt;
+        &lt;div
+          *ngFor&#x3D;&quot;let crumb of breadcrumbs?.parents!&quot;
+          class&#x3D;&quot;breadcrumb mat-small&quot;
+        &gt;
+          &lt;a [routerLink]&#x3D;&quot;crumb.link&quot; ng-show&#x3D;&quot;!$last&quot;&gt;{{
+            crumb.label | uppercase
+          }}&lt;/a&gt;
+          &lt;mat-icon ng-show&#x3D;&quot;!$last&quot; class&#x3D;&quot;next&quot; aria-label&#x3D;&quot;heart icon&quot;
+            &gt;chevron_right&lt;/mat-icon
+          &gt;
+        &lt;/div&gt;
+        &lt;h3 class&#x3D;&quot;current&quot;&gt;{{ breadcrumbs?.label! }}&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span class&#x3D;&quot;spacer&quot;&gt;&lt;/span&gt;
+    &lt;button mat-icon-button aria-label&#x3D;&quot;icon-button&quot;&gt;
+      &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+    &lt;/button&gt;
+    &lt;button mat-icon-button aria-label&#x3D;&quot;icon-button&quot;&gt;
+      &lt;mat-icon&gt;favorite&lt;/mat-icon&gt;
+    &lt;/button&gt;
+    &lt;button
+      mat-icon-button
+      [matMenuTriggerFor]&#x3D;&quot;menu&quot;
+      aria-label&#x3D;&quot;icon-button with a menu&quot;
+    &gt;
+      &lt;mat-icon&gt;more_vert&lt;/mat-icon&gt;
+    &lt;/button&gt;
+    &lt;mat-menu #menu&#x3D;&quot;matMenu&quot; xPosition&#x3D;&quot;before&quot;&gt;
+      &lt;button mat-menu-item&gt;
+        &lt;mat-icon&gt;dialpad&lt;/mat-icon&gt;
+        &lt;span&gt;Redial&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;button mat-menu-item disabled&gt;
+        &lt;mat-icon&gt;voicemail&lt;/mat-icon&gt;
+        &lt;span&gt;Check voice mail&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;mat-divider&gt;&lt;/mat-divider&gt;
+      &lt;button mat-menu-item (click)&#x3D;&quot;exit()&quot;&gt;
+        &lt;mat-icon&gt;exit_to_app&lt;/mat-icon&gt;
+        &lt;span&gt;Exit&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/mat-menu&gt;
+  &lt;/mat-toolbar-row&gt;
+&lt;/mat-toolbar&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./header.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;../../../styles/variables.scss&quot;;
+
+:host {
+  display: block;
+  background: $header-bg;
+  min-height: $header-height;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 30%);
+
+  &gt; mat-toolbar {
+    background: transparent;
+    min-height: 56px;
+    color: $header-color-secondry;
+
+    &gt; mat-toolbar-row {
+      min-height: 56px;
+      height: 56px;
+    }
+
+    .spacer {
+      flex: 1 1 auto;
+    }
+  }
+
+  .header button {
+    background: transparent;
+    color: $header-color-secondry;
+  }
+
+  .icon {
+    padding: 0 14px;
+  }
+
+  li {
+    display: inline;
+    list-style-type: none;
+  }
+
+  .logo {
+    height: 100%;
+  }
+
+  .divider {
+    width: 1px;
+    height: 60%;
+    margin: 14px;
+    background: $header-color-secondry;
+  }
+
+  .breadcrumbs {
+    line-height: 0.7;
+
+    .breadcrumb {
+      padding: 0;
+      margin: 0;
+      display: inline-flex;
+      font-size: small;
+
+      * {
+        font-size: 12px;
+        text-decoration: none;
+        color: $header-color-secondry;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .next {
+      padding: 0;
+      font-size: 19px;
+      height: 20px;
+    }
+
+    .current {
+      font: 400 18px/24px Roboto, &quot;Helvetica Neue&quot;, sans-serif;
+      color: $header-color;
+      line-height: 1;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .title {
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+  }
+
+  .title.animate {
+    span {
+      display: inline-block;
+      font: 500 20px/32px Roboto, &quot;Helvetica Neue&quot;, sans-serif;
+      animation: sideSlide 0.5s forwards;
+    }
+
+    span:nth-of-type(2) {
+      animation-delay: 0.05s;
+    }
+
+    span:nth-of-type(3) {
+      animation-delay: 0.1s;
+    }
+
+    span:nth-of-type(4) {
+      animation-delay: 0.15s;
+    }
+
+    span:nth-of-type(5) {
+      animation-delay: 0.2s;
+    }
+
+    span:nth-of-type(6) {
+      animation-delay: 0.25s;
+    }
+
+    span:nth-of-type(7) {
+      animation-delay: 0.3s;
+    }
+
+    span:nth-of-type(8) {
+      animation-delay: 0.35s;
+    }
+
+    span:nth-of-type(9) {
+      animation-delay: 0.4s;
+    }
+
+    span:nth-of-type(10) {
+      animation-delay: 0.45s;
+    }
+
+    span:nth-of-type(11) {
+      animation-delay: 0.5s;
+    }
+
+    span:nth-of-type(12) {
+      animation-delay: 0.55s;
+    }
+
+    span:nth-of-type(13) {
+      animation-delay: 0.6s;
+    }
+
+    span:nth-of-type(14) {
+      animation-delay: 0.65s;
+    }
+
+    span:nth-of-type(15) {
+      animation-delay: 0.7s;
+    }
+
+    span:nth-of-type(16) {
+      animation-delay: 0.75s;
+    }
+
+    span:nth-of-type(17) {
+      animation-delay: 0.8s;
+    }
+
+    span:nth-of-type(18) {
+      animation-delay: 0.85s;
+    }
+
+    span:nth-of-type(19) {
+      animation-delay: 0.9s;
+    }
+
+    span:nth-of-type(20) {
+      animation-delay: 0.95s;
+    }
+  }
+
+  @keyframes sideSlide {
+    60% {
+      transform: translate(20px, 0) scale(1);
+    }
+
+    80% {
+      transform: translate(20px, 0) scale(1);
+      color: #b10e81;
+    }
+
+    99% {
+      transform: translate(0) scale(1.4);
+      color: #54137a;
+    }
+
+    100% {
+      transform: translate(0) scale(1);
+      opacity: 1;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><mat-toolbar class="header">  <mat-toolbar-row>    <button      *ngIf="hasSidenav"      mat-icon-button      aria-label="icon-button"      (click)="toggleSidenav()"    >      <mat-icon>menu</mat-icon>    </button>    <img      class="logo"      src="https://material.angular.io/assets/img/homepage/angular-white-transparent.svg"    />    <div class="title animate" style="cursor: pointer">      <span>M</span><span>O</span><span>S</span><span>H</span><span>K</span      ><span>O</span><span>U</span>    </div>    <div class="divider"></div>    <div class="breadcrumbs">      <div>        <div          *ngFor="let crumb of breadcrumbs?.parents!"          class="breadcrumb mat-small"        >          <a [routerLink]="crumb.link" ng-show="!$last">{{            crumb.label | uppercase          }}</a>          <mat-icon ng-show="!$last" class="next" aria-label="heart icon"            >chevron_right</mat-icon          >        </div>        <h3 class="current">{{ breadcrumbs?.label! }}</h3>      </div>    </div>    <span class="spacer"></span>    <button mat-icon-button aria-label="icon-button">      <mat-icon>delete</mat-icon>    </button>    <button mat-icon-button aria-label="icon-button">      <mat-icon>favorite</mat-icon>    </button>    <button      mat-icon-button      [matMenuTriggerFor]="menu"      aria-label="icon-button with a menu"    >      <mat-icon>more_vert</mat-icon>    </button>    <mat-menu #menu="matMenu" xPosition="before">      <button mat-menu-item>        <mat-icon>dialpad</mat-icon>        <span>Redial</span>      </button>      <button mat-menu-item disabled>        <mat-icon>voicemail</mat-icon>        <span>Check voice mail</span>      </button>      <mat-divider></mat-divider>      <button mat-menu-item (click)="exit()">        <mat-icon>exit_to_app</mat-icon>        <span>Exit</span>      </button>    </mat-menu>  </mat-toolbar-row></mat-toolbar></div>'
+    var COMPONENTS = [{'name': 'AnnouncementComponent', 'selector': 'app-announcement'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CdkBottomSheetComponent', 'selector': 'bottom-sheet'},{'name': 'ConfirmationComponent', 'selector': 'app-confirmation'},{'name': 'DatatableComponent', 'selector': 'app-datatable'},{'name': 'DatatableDetailRowComponent', 'selector': 'app-datatable-detail-row'},{'name': 'DatatableToolbarComponent', 'selector': 'app-datatable-toolbar'},{'name': 'ErrorComponent', 'selector': 'app-error'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HelpComponent', 'selector': 'app-help'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'PlanningComponent', 'selector': 'app-planning'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SidenavInfoComponent', 'selector': 'app-sidenav-info'},{'name': 'SnackbarComponent', 'selector': 'app-snackbar'},{'name': 'StarRatingComponent', 'selector': 'app-star-rating'},{'name': 'TipsComponent', 'selector': 'app-tips'},{'name': 'ViewStatesComponent', 'selector': 'app-view-states'}];
+    var DIRECTIVES = [{'name': 'CdkDetailRowDirective', 'selector': '[cdkDetailRow]'}];
+    var ACTUAL_COMPONENT = {'name': 'HeaderComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HeaderComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

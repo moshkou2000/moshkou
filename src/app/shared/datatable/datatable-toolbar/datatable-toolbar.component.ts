@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { GeneralService } from 'src/app/core/services/general/general.service';
 import { SidenavService } from '../../sidenav/sidenav.service';
-import { CdkBottomSheetComponent } from '../../bottom-sheet/cdk-bottom-sheet.component';
 import { DatatableToolbarModel } from './datatable-toolbar.model';
-import { CONSTANT_STRINIGS } from '../../../core/constants/constant_strings';
+import { CONSTANT_STRINIG } from 'src/app/core/constants/constant_string';
+import { Util } from 'src/app/core/utils/util';
 
 @Component({
   selector: 'app-datatable-toolbar',
@@ -18,7 +17,6 @@ export class DatatableToolbarComponent implements OnInit {
 
   constructor(
     readonly bottomSheet: MatBottomSheet,
-    private generalService: GeneralService,
     private sidenavService: SidenavService
   ) {}
 
@@ -29,12 +27,12 @@ export class DatatableToolbarComponent implements OnInit {
 
   toggleFullscreen(): void {
     this.toolbar?.toggleFullscreen();
-    this.generalService.toggleFullscreen(CONSTANT_STRINIGS.datatable_id);
+    Util.toggleFullscreen(CONSTANT_STRINIG.datatable_id);
     this.sidenavService.set(false);
   }
 
   openBottomSheet(): void {
-    this.generalService.openBottomSheet(
+    Util.openBottomSheet(
       this.bottomSheet,
       this.toolbar?.toolbarButtons,
       (event?: string) => this.onButtonClick.emit(event)

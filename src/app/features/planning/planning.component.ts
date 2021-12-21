@@ -9,11 +9,11 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Sort } from '@angular/material/sort';
 import { Subscription } from 'rxjs';
-import { CONSTANT_NUMBERS } from 'src/app/core/constants/constant_numbers';
+import { CONSTANT_NUMBER } from 'src/app/core/constants/constant_number';
 import {
   TOOLBAR_BUTTONS,
   TOOLBAR_BUTTONS_NAME,
-} from 'src/app/core/constants/datatable-toolbar';
+} from 'src/app/core/constants/toolbar-buttons';
 import { STATUS_LEVEL } from 'src/app/core/constants/status-level';
 import { Services } from 'src/app/core/services/services.service';
 import { ConfirmationComponent } from 'src/app/shared/confirmation/confirmation.component';
@@ -34,7 +34,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./planning.component.scss'],
 })
 export class PlanningComponent implements OnInit, OnDestroy {
-  viewStates: ViewStatesModel = new ViewStatesModel({ state: ViewStates.idle });
+  viewStates: ViewStatesModel = new ViewStatesModel();
   displayedColumns: string[] = [
     'position',
     'online',
@@ -50,8 +50,8 @@ export class PlanningComponent implements OnInit, OnDestroy {
     toolbarButtons: TOOLBAR_BUTTONS,
   });
   data: any;
-  paginationSizes: number[] = CONSTANT_NUMBERS.paginationSizes;
-  defaultPageSize: number = CONSTANT_NUMBERS.defaultPageSize;
+  paginationSizes: number[] = CONSTANT_NUMBER.paginationSizes;
+  defaultPageSize: number = CONSTANT_NUMBER.defaultPageSize;
 
   confirmationRef: any = null;
   confirmationSubscription: Subscription | undefined;
@@ -83,9 +83,10 @@ export class PlanningComponent implements OnInit, OnDestroy {
   }
 
   getData() {
-    this.dataSubscription = this.service
-      .getSample()
-      .subscribe((data) => (this.data = data.body.result));
+    this.dataSubscription = this.service.getSample().subscribe((data) => {
+      this.data = data.body.result;
+      this.viewStates.state = ViewStates.idle;
+    });
   }
 
   // toolbar buttons click

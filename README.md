@@ -26,6 +26,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+## Documentation
+
+npm install -g @compodoc/compodoc
+
 # Project Settings
 
 ## fixed table column size
@@ -48,3 +52,21 @@ app > shared > components > datatable > datatable.component.scss
 display: block;
 }
 }
+
+# TODO
+
+## theme & typografy
+
+Primary and secondary colors
+Variants of primary and secondary colors
+Additional UI colors, such as colors for backgrounds, surfaces, errors, typography, and iconography.
+
+- https://material.io/design/color/the-color-system.html#color-theme-creation
+- https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+- https://material.io/resources/color/#!/?view.left=1&view.right=1&primary.color=1c39bb
+
+## localization
+
+## UI design
+
+https://www.airbnb.com/s/homes?refinement_paths%5B%5D=%2Fhomes&date_picker_type=flexible_dates&search_mode=flex_destinations_search&search_type=AUTOSUGGEST

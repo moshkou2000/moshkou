@@ -10,21 +10,17 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, finalize } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { GeneralService } from '../../services/general/general.service';
 import { environment } from 'src/environments/environment';
 import { ResponseModel } from '../../models/response.model';
 import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { Temp } from '../../temp/temp';
+import { Util } from '../../utils/util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BaseInterceptor implements HttpInterceptor {
-  constructor(
-    private router: Router,
-    private snackbar: MatSnackBar,
-    private generalService: GeneralService
-  ) {}
+  constructor(private router: Router, private snackbar: MatSnackBar) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -51,7 +47,7 @@ export class BaseInterceptor implements HttpInterceptor {
               verticalPosition: 'top',
             });
 
-          this.generalService.clear();
+          Util.clear();
           this.router.navigate(['/login']);
         }
 

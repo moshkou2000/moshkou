@@ -1,0 +1,913 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>moshkou documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">moshkou documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  DatatableToolbarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/shared/datatable/datatable-toolbar/datatable-toolbar.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-datatable-toolbar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./datatable-toolbar.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./datatable-toolbar.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onClick" >onClick</a>
+                            </li>
+                            <li>
+                                <a href="#onKeyup" >onKeyup</a>
+                            </li>
+                            <li>
+                                <a href="#openBottomSheet" >openBottomSheet</a>
+                            </li>
+                            <li>
+                                <a href="#toggleFullscreen" >toggleFullscreen</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#toolbar" >toolbar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onButtonClick" >onButtonClick</a>
+                            </li>
+                            <li>
+                                <a href="#onSearchKeyup" >onSearchKeyup</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(bottomSheet: MatBottomSheet, generalService: <a href="../injectables/GeneralService.html" target="_self">GeneralService</a>, sidenavService: <a href="../injectables/SidenavService.html" target="_self">SidenavService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/shared/datatable/datatable-toolbar/datatable-toolbar.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>bottomSheet</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatBottomSheet</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>generalService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/GeneralService.html" target="_self" >GeneralService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sidenavService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SidenavService.html" target="_self" >SidenavService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="toolbar"></a>
+                        <b>toolbar</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/DatatableToolbarModel.html" target="_self" >DatatableToolbarModel | undefined</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/shared/datatable/datatable-toolbar/datatable-toolbar.component.ts:15</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onButtonClick"></a>
+                        <b>onButtonClick</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/shared/datatable/datatable-toolbar/datatable-toolbar.component.ts:16</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="onSearchKeyup"></a>
+                        <b>onSearchKeyup</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/shared/datatable/datatable-toolbar/datatable-toolbar.component.ts:17</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/app/shared/datatable/datatable-toolbar/datatable-toolbar.component.ts:25</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onClick"></a>
+                    <span class="name">
+                        <span ><b>onClick</b></span>
+                        <a href="#onClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onClick(event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/shared/datatable/datatable-toolbar/datatable-toolbar.component.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onKeyup"></a>
+                    <span class="name">
+                        <span ><b>onKeyup</b></span>
+                        <a href="#onKeyup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onKeyup(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/app/shared/datatable/datatable-toolbar/datatable-toolbar.component.ts:44</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openBottomSheet"></a>
+                    <span class="name">
+                        <span ><b>openBottomSheet</b></span>
+                        <a href="#openBottomSheet"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openBottomSheet()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/app/shared/datatable/datatable-toolbar/datatable-toolbar.component.ts:36</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleFullscreen"></a>
+                    <span class="name">
+                        <span ><b>toggleFullscreen</b></span>
+                        <a href="#toggleFullscreen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleFullscreen()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/app/shared/datatable/datatable-toolbar/datatable-toolbar.component.ts:30</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, OnInit, Output } from &#x27;@angular/core&#x27;;
+import { MatBottomSheet } from &#x27;@angular/material/bottom-sheet&#x27;;
+import { GeneralService } from &#x27;src/app/core/services/general/general.service&#x27;;
+import { SidenavService } from &#x27;../../sidenav/sidenav.service&#x27;;
+import { CdkBottomSheetComponent } from &#x27;../../bottom-sheet/cdk-bottom-sheet.component&#x27;;
+import { DatatableToolbarModel } from &#x27;./datatable-toolbar.model&#x27;;
+import { CONSTANT_STRINIGS } from &#x27;../../../core/constants/constant_strings&#x27;;
+
+@Component({
+  selector: &#x27;app-datatable-toolbar&#x27;,
+  templateUrl: &#x27;./datatable-toolbar.component.html&#x27;,
+  styleUrls: [&#x27;./datatable-toolbar.component.scss&#x27;],
+})
+export class DatatableToolbarComponent implements OnInit {
+  @Input() toolbar: DatatableToolbarModel | undefined;
+  @Output() onButtonClick &#x3D; new EventEmitter();
+  @Output() onSearchKeyup &#x3D; new EventEmitter();
+
+  constructor(
+    readonly bottomSheet: MatBottomSheet,
+    private generalService: GeneralService,
+    private sidenavService: SidenavService
+  ) {}
+
+  ngOnInit(): void {
+    if (this.toolbar?.hasFullscreen &amp;&amp; this.toolbar?.isFullscreen)
+      this.toggleFullscreen();
+  }
+
+  toggleFullscreen(): void {
+    this.toolbar?.toggleFullscreen();
+    this.generalService.toggleFullscreen(CONSTANT_STRINIGS.datatable_id);
+    this.sidenavService.set(false);
+  }
+
+  openBottomSheet(): void {
+    this.generalService.openBottomSheet(
+      this.bottomSheet,
+      this.toolbar?.toolbarButtons,
+      (event?: string) &#x3D;&gt; this.onButtonClick.emit(event)
+    );
+  }
+
+  onKeyup(event: any): void {
+    this.onSearchKeyup.emit(event.target.value);
+  }
+
+  onClick(event: string): void {
+    this.onButtonClick.emit(event);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;toolbar&quot;&gt;
+  &lt;!-- search --&gt;
+  &lt;button *ngIf&#x3D;&quot;toolbar?.hasSearch&quot; mat-button&gt;
+    &lt;mat-icon&gt;search&lt;/mat-icon&gt;
+  &lt;/button&gt;
+  &lt;div class&#x3D;&quot;search&quot;&gt;
+    &lt;input
+      *ngIf&#x3D;&quot;toolbar?.hasSearch&quot;
+      matInput
+      (keyup)&#x3D;&quot;onKeyup($event)&quot;
+      placeholder&#x3D;&quot;Ex. Mia&quot;
+      #input
+    /&gt;
+  &lt;/div&gt;
+
+  &lt;!-- toolbar buttons --&gt;
+  &lt;button
+    *ngFor&#x3D;&quot;let b of toolbar?.toolbarButtons&quot;
+    mat-button
+    aria-label&#x3D;&quot;icon-button&quot;
+    class&#x3D;&quot;all-buttons&quot;
+    (click)&#x3D;&quot;onClick(b.name)&quot;
+  &gt;
+    &lt;mat-icon
+      *ngIf&#x3D;&quot;b.icon&quot;
+      [matBadge]&#x3D;&quot;b.badge&quot;
+      [matBadgeColor]&#x3D;&quot;b.badgeColor&quot;
+      &gt;{{ b.icon }}&lt;/mat-icon
+    &gt;
+    &lt;img *ngIf&#x3D;&quot;b.imageIcon&quot; [src]&#x3D;&quot;b.imageIcon&quot; /&gt;
+    &lt;div&gt;{{ b.name }}&lt;/div&gt;
+  &lt;/button&gt;
+
+  &lt;!-- fullscreen --&gt;
+  &lt;button
+    *ngIf&#x3D;&quot;toolbar?.hasFullscreen&quot;
+    mat-button
+    aria-label&#x3D;&quot;icon-button&quot;
+    class&#x3D;&quot;all-buttons&quot;
+    (click)&#x3D;&quot;toggleFullscreen()&quot;
+  &gt;
+    &lt;mat-icon&gt;{{
+      toolbar?.isFullscreen &#x3D;&#x3D;&#x3D; true ? &quot;fullscreen_exit&quot; : &quot;fullscreen&quot;
+    }}&lt;/mat-icon&gt;
+    &lt;div&gt;
+      {{ toolbar?.isFullscreen &#x3D;&#x3D;&#x3D; true ? &quot;COLLAPSE&quot; : &quot;EXPAND&quot; }}
+    &lt;/div&gt;
+  &lt;/button&gt;
+
+  &lt;!-- more --&gt;
+  &lt;button
+    mat-button
+    class&#x3D;&quot;buttun-more&quot;
+    aria-label&#x3D;&quot;icon-button&quot;
+    (click)&#x3D;&quot;openBottomSheet()&quot;
+  &gt;
+    &lt;mat-icon&gt;more_vert&lt;/mat-icon&gt;
+    &lt;div&gt;&lt;/div&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./datatable-toolbar.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &quot;../../../../styles/variables.scss&quot;;
+
+::ng-deep {
+  bottom-sheet {
+    .mat-list-item-content {
+      text-align: center;
+
+      &gt; *:last-child {
+        flex: 5;
+        text-align: left;
+      }
+      &gt; *:nth-last-child(2) {
+        flex: 1;
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}
+
+:host {
+  display: block;
+
+  .toolbar {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    font-size: 12px;
+    height: 53px;
+
+    // buttons
+    button {
+      color: $toolbar-color;
+      border-radius: 0 !important;
+      border: 0;
+      background: transparent;
+      padding: 0;
+      height: 100%;
+      border-radius: 0;
+
+      div {
+        color: rgba(97, 97, 97, 0.8);
+        font-size: 10px;
+        line-height: 1;
+      }
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    // button all-buttons is visible on tablet view
+    button.all-buttons {
+      display: block;
+    }
+    // button buttun-more is visible on mobile view
+    button.buttun-more {
+      display: none;
+    }
+
+    // search
+    .search {
+      display: flex;
+      flex: 1;
+
+      input {
+        font-size: 18px;
+        color: $toolbar-color;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 720px) {
+    // button buttun-more is visible on mobile view
+    .toolbar {
+      &gt; .all-buttons {
+        display: none !important;
+      }
+      &gt; .buttun-more {
+        display: block !important;
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="toolbar">  <!-- search -->  <button *ngIf="toolbar?.hasSearch" mat-button>    <mat-icon>search</mat-icon>  </button>  <div class="search">    <input      *ngIf="toolbar?.hasSearch"      matInput      (keyup)="onKeyup($event)"      placeholder="Ex. Mia"      #input    />  </div>  <!-- toolbar buttons -->  <button    *ngFor="let b of toolbar?.toolbarButtons"    mat-button    aria-label="icon-button"    class="all-buttons"    (click)="onClick(b.name)"  >    <mat-icon      *ngIf="b.icon"      [matBadge]="b.badge"      [matBadgeColor]="b.badgeColor"      >{{ b.icon }}</mat-icon    >    <img *ngIf="b.imageIcon" [src]="b.imageIcon" />    <div>{{ b.name }}</div>  </button>  <!-- fullscreen -->  <button    *ngIf="toolbar?.hasFullscreen"    mat-button    aria-label="icon-button"    class="all-buttons"    (click)="toggleFullscreen()"  >    <mat-icon>{{      toolbar?.isFullscreen === true ? "fullscreen_exit" : "fullscreen"    }}</mat-icon>    <div>      {{ toolbar?.isFullscreen === true ? "COLLAPSE" : "EXPAND" }}    </div>  </button>  <!-- more -->  <button    mat-button    class="buttun-more"    aria-label="icon-button"    (click)="openBottomSheet()"  >    <mat-icon>more_vert</mat-icon>    <div></div>  </button></div></div>'
+    var COMPONENTS = [{'name': 'AnnouncementComponent', 'selector': 'app-announcement'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'CdkBottomSheetComponent', 'selector': 'bottom-sheet'},{'name': 'ConfirmationComponent', 'selector': 'app-confirmation'},{'name': 'DatatableComponent', 'selector': 'app-datatable'},{'name': 'DatatableDetailRowComponent', 'selector': 'app-datatable-detail-row'},{'name': 'DatatableToolbarComponent', 'selector': 'app-datatable-toolbar'},{'name': 'ErrorComponent', 'selector': 'app-error'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HelpComponent', 'selector': 'app-help'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'PlanningComponent', 'selector': 'app-planning'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SidenavInfoComponent', 'selector': 'app-sidenav-info'},{'name': 'SnackbarComponent', 'selector': 'app-snackbar'},{'name': 'StarRatingComponent', 'selector': 'app-star-rating'},{'name': 'TipsComponent', 'selector': 'app-tips'},{'name': 'ViewStatesComponent', 'selector': 'app-view-states'}];
+    var DIRECTIVES = [{'name': 'CdkDetailRowDirective', 'selector': '[cdkDetailRow]'}];
+    var ACTUAL_COMPONENT = {'name': 'DatatableToolbarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DatatableToolbarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,9 +1,72 @@
 /*
+    font
+*/
+$mdc-typography-styles-headline1: (
+  font-family: unquote("Roboto"),
+  font-size: 96,
+);
+$mdc-typography-styles-headline2: (
+  font-family: unquote("Roboto"),
+  font-size: 60,
+);
+$mdc-typography-styles-headline3: (
+  font-family: unquote("Roboto"),
+  font-size: 48,
+);
+$mdc-typography-styles-headline4: (
+  font-family: unquote("Roboto"),
+  font-size: 34,
+);
+$mdc-typography-styles-headline5: (
+  font-family: unquote("Roboto"),
+  font-size: 24,
+);
+$mdc-typography-styles-headline6: (
+  font-family: unquote("Roboto"),
+  font-size: 20,
+);
+$mdc-typography-styles-body1: (
+  font-family: unquote("Roboto"),
+  font-size: 16,
+);
+$mdc-typography-styles-body2: (
+  font-family: unquote("Roboto"),
+  font-size: 14,
+);
+$mdc-typography-styles-subtitle1: (
+  font-family: unquote("Roboto"),
+  font-size: 16,
+);
+$mdc-typography-styles-subtitle2: (
+  font-family: unquote("Roboto"),
+  font-size: 14,
+);
+$mdc-typography-styles-button: (
+  font-family: unquote("Roboto"),
+  font-size: 14,
+);
+$mdc-typography-styles-overline: (
+  font-family: unquote("Roboto"),
+  font-size: 10,
+);
+$mdc-typography-styles-caption: (
+  font-family: unquote("Roboto"),
+  font-size: 12,
+);
+
+/*
     variables
 */
-$primary: rgb(25, 118, 210);
-$primary-dark: rgb(21, 101, 192);
-$primary-light: rgb(30, 136, 229);
+
+$persian-blue: #1c39bb;
+$persian-medium-blue: #0067a5;
+$persian-indigo: #32127a;
+$persian-rose: #fe28a2;
+$persian-pink: #f77fbe;
+$persian-red: #c81d11;
+$persian-orange: #d99058;
+$persian-plum: #701c1c;
+$persian-green: #00a693;
 
 $default: #4285f4;
 $info: #1c78d1;
@@ -26,6 +89,120 @@ $border-radius: 12px;
 /*
     theme
 */
+
+// init
+$primary: $persian-red;
+$primary-light: $persian-red;
+$primary-dark: $persian-red;
+$complementary: $persian-red;
+$analogous-1: $persian-red;
+$analogous-2: $persian-red;
+$triadic-1: $persian-red;
+$triadic-2: $persian-red;
+$extra: $persian-red;
+
+@if $primary == $persian-blue {
+  // perisan blue
+  $primary: $persian-blue; // 700
+  $primary-light: #6263ee;
+  $primary-dark: #00138a;
+  $complementary: #bb9e1c; // 800
+  $analogous-1: #1c89bb; // 700
+  $analogous-2: #4e1cbb; // 700
+  $triadic-1: #9e1cbb; // 500
+  $triadic-2: #bb1c39; // 800
+  $extra: #d4ced2;
+} @else if $primary == $persian-medium-blue {
+  // perisan medium blue
+  $primary: $persian-medium-blue; // 800
+  $primary-light: #5194d7;
+  $primary-dark: #003d76;
+  $complementary: #a53f00; // 900
+  $analogous-1: #00a592; // 400
+  $analogous-2: #0013a5; // 900
+  $triadic-1: #3f00a5; // 900
+  $triadic-2: #a50066; // 800
+  $extra: #fee4ce;
+} @else if $primary == $persian-indigo {
+  // perisan indigo
+  $primary: $persian-indigo; // 900
+  $primary-light: #643daa;
+  $primary-dark: #00004d;
+  $complementary: #5b7a12; // 800
+  $analogous-1: #65127a; // 900
+  $analogous-2: #4e1cbb; // 800
+  $triadic-1: #7a125b; // 900
+  $triadic-2: #7a3112; // 600
+  $extra: #bb9e1c;
+} @else if $primary == $persian-rose {
+  // perisan rose
+  $primary: $persian-rose; // 400
+  $primary-light: #ff6bd3;
+  $primary-dark: #c60073;
+  $complementary: #f6bf2b; // 300
+  $analogous-1: #f028fe; // 300
+  $analogous-2: #fe2836; // 500
+  $triadic-1: #fe8528; // 900
+  $triadic-2: #0033c0; // 400
+  $extra: #0a96d7;
+} @else if $primary == $persian-pink {
+  // perisan pink
+  $primary: $persian-pink; // 200
+  $primary-light: #ffb1f1;
+  $primary-dark: #c24e8e;
+  $complementary: #00a693; // 200
+  $analogous-1: #f57ff7; // 200
+  $analogous-2: #f77f81; // 300
+  $triadic-1: #f7b97f; // 200
+  $triadic-2: #9ac41d; // 300
+  $extra: #00a693;
+} @else if $primary == $persian-red {
+  // perisan red
+  $primary: $persian-red; // 800
+  $primary-light: #ff583c;
+  $primary-dark: #8f0000;
+  $complementary: #11bcc8; // 400
+  $analogous-1: #c81160; // 700
+  $analogous-2: #c87911; // 700
+  $triadic-1: #bcc811; // 600
+  $triadic-2: #11c81d; // 500
+  $extra: #fbbc04;
+} @else if $primary == $persian-orange {
+  // perisan orange
+  $primary: $persian-orange; // 900
+  $primary-light: #ffc186;
+  $primary-dark: #a4622d;
+  $complementary: #58a1d9; // 400
+  $analogous-1: #d95861; // 400
+  $analogous-2: #d9d058; // 600
+  $triadic-1: #a1d958; // 400
+  $triadic-2: #58d990; // 300
+  $extra: #6d8f90;
+} @else if $primary == $persian-plum {
+  // perisan plum
+  $primary: $persian-plum; // 800
+  $primary-light: #a34943;
+  $primary-dark: #410000;
+  $complementary: #1c7070; // 900
+  $analogous-1: #701c46; // 900
+  $analogous-2: #70461c; // 600
+  $triadic-1: #70701c; // 900
+  $triadic-2: #1c701c; // 900
+  $extra: #d6c088;
+} @else if $primary == $persian-green {
+  // perisan green
+  $primary: $persian-green; // 400
+  $primary-light: #56d8c3;
+  $primary-dark: #007665;
+  $complementary: #a60013; // 800
+  $analogous-1: #00a640; // 600
+  $analogous-2: #0066a6; // 800
+  $triadic-1: #0013a6; // 900
+  $triadic-2: #9300a6; // 600
+  $extra: #cb4114;
+}
+
+////
 // header
 $header-bg: $primary;
 $header-color: rgba(255, 255, 255, 1);

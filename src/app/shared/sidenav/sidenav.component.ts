@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { SidenavArguments } from 'src/app/core/arguments/arguments';
 import { INITIIAL_ROUTE } from 'src/app/core/constants/app-routes';
 import { ISidenav } from 'src/app/core/interfaces/isidenav';
-import { GeneralService } from 'src/app/core/services/general/general.service';
+import { Util } from 'src/app/core/utils/util';
 
 @Component({
   selector: 'app-sidenav',
@@ -15,7 +15,7 @@ export class SidenavComponent implements OnInit {
   routerEventsSubscription: Subscription | undefined;
   sidenavItems?: ISidenav[];
 
-  constructor(private generalService: GeneralService, private router: Router) {
+  constructor(private router: Router) {
     this.routerEventsSubscription = this.router.events.subscribe(
       (event: any) => {
         if (event instanceof NavigationEnd) {
@@ -26,7 +26,7 @@ export class SidenavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sidenavItems = this.generalService.sidenavItems;
+    this.sidenavItems = Util.sidenavItems;
   }
 
   initSelection(route: String): void {
