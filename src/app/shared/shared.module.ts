@@ -23,22 +23,25 @@ import { SidenavInfoComponent } from './sidenav-info/sidenav-info.component';
 import { ViewStatesComponent } from './view-states/view-states.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { CdkBottomSheetComponent } from './bottom-sheet/cdk-bottom-sheet.component';
+import { MainnavComponent } from './mainnav/mainnav.component';
 
 @NgModule({
   declarations: [
     AnnouncementComponent,
-    NotificationComponent,
-    HeaderComponent,
+    CdkBottomSheetComponent,
     FooterComponent,
+    HeaderComponent,
+    MainnavComponent,
+    NotificationComponent,
     SidenavComponent,
     SidenavInfoComponent,
-    ViewStatesComponent,
     StarRatingComponent,
-    CdkBottomSheetComponent,
+    ViewStatesComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    FlexLayoutModule,
+    LayoutModule,
     MatToolbarModule,
     MatIconModule,
     MatBadgeModule,
@@ -46,22 +49,23 @@ import { CdkBottomSheetComponent } from './bottom-sheet/cdk-bottom-sheet.compone
     MatMenuModule,
     MatButtonModule,
     MatExpansionModule,
-    LayoutModule,
-    FlexLayoutModule,
     MatListModule,
     MatSidenavModule,
     MatProgressSpinnerModule,
+    RouterModule,
   ],
   exports: [
     AnnouncementComponent,
+    CdkBottomSheetComponent,
     FooterComponent,
     HeaderComponent,
-    NotificationComponent,
+    MainnavComponent,
     MatSidenavModule,
+    NotificationComponent,
     SidenavComponent,
     SidenavInfoComponent,
+    StarRatingComponent,
     ViewStatesComponent,
-    CdkBottomSheetComponent,
   ],
 })
 export class SharedModule {}

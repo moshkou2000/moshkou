@@ -1,0 +1,20 @@
+@import "../../../styles/variables.scss";
+
+:host {
+  display: block;
+  background: $header-bg;
+  min-height: $header-height;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 30%);
+
+  > mat-toolbar {
+    background: transparent;
+    min-height: 56px;
+    color: $header-color-secondry;
+
+    > mat-toolbar-row {
+      min-height: 56px;
+      height: 56px;
+      justify-content: center;
+    }
+  }
+}

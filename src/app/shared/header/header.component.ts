@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { IBreadcrumb } from 'src/app/core/interfaces/ibreadcrumb';
 import { Subscription } from 'rxjs';
@@ -11,10 +11,11 @@ import { Util } from 'src/app/core/utils/util';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnDestroy {
+  @Input() hasSidenav: boolean | undefined;
+
   routerEventsSubscription: Subscription | undefined;
   logoutSubscription: Subscription | undefined;
   breadcrumbs?: IBreadcrumb;
-  hasSidenav: boolean = true;
 
   constructor(private router: Router, private sidenavService: SidenavService) {
     this.breadcrumbs = Util.getBreadcrumbs(this.toLink(this.router.url));

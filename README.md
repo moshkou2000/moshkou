@@ -40,7 +40,7 @@ app > shared > components > datatable > datatable.component.scss
 
 - xs: begin: 0, end: 599.9px
 - sm: begin: 600px, end: 959.9px
-  - sm: begin: 720px, end: 959.9px
+- sm: begin: 720px, end: 959.9px
 - md: begin: 960px, end: 1279.9px
 - lg: begin: 1280px, end: 1919.9px
 - xl: begin: 1920px, end: 4999.99px
@@ -55,7 +55,7 @@ display: block;
 
 # TODO
 
-## theme & typografy
+## theme
 
 Primary and secondary colors
 Variants of primary and secondary colors
@@ -65,8 +65,18 @@ Additional UI colors, such as colors for backgrounds, surfaces, errors, typograp
 - https://material.io/design/color/the-color-system.html#tools-for-picking-colors
 - https://material.io/resources/color/#!/?view.left=1&view.right=1&primary.color=1c39bb
 
+## typography ???
+
+## create star-rating component / directive
+
+## sample usage of sidenav-info
+
+## sample usage of hasBack or remove it
+
 ## localization
 
 ## UI design
+
+The main navigation in app is eighter `sidenav` or `mainnav`. Defaul theme has `sidenav` onless we set `hasMainnav: true` in `APP_ROUTES`.
 
 https://www.airbnb.com/s/homes?refinement_paths%5B%5D=%2Fhomes&date_picker_type=flexible_dates&search_mode=flex_destinations_search&search_type=AUTOSUGGEST

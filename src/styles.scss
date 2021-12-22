@@ -9,8 +9,7 @@ html {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 body {
-  header,
-  footer {
+  header {
     flex: 0;
     flex-shrink: 0;
     z-index: 9;
@@ -19,6 +18,7 @@ body {
     display: flex;
     flex: 1;
     flex-grow: 1;
+    position: relative;
     > * {
       flex: 1;
       flex-grow: 1;
@@ -26,6 +26,30 @@ body {
   }
 }
 
+/*
+  content scrollable
+  example: 
+    <div class="content-scrollable">
+      <div>
+        // this is scrollable
+      </div>
+    <div>
+*/
+.content-scrollable {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  display: block;
+  overflow: auto;
+  outline: 0;
+  flex-basis: 100%;
+}
+
+/*
+  badge
+*/
 .mat-badge-content {
   width: auto !important;
   display: grid;

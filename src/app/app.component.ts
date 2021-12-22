@@ -38,6 +38,10 @@ export class AppComponent implements OnInit {
             this.activatedRoute.firstChild?.snapshot.data.hasHeader === true;
           this.layout.hasFooter =
             this.activatedRoute.firstChild?.snapshot.data.hasFooter === true;
+          this.layout.hasMainnav =
+            this.activatedRoute.firstChild?.snapshot.data.hasMainnav === true;
+
+          if (this.layout.hasMainnav) this.isSidenavOpen = false;
         }
       }
     );

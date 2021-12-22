@@ -21,6 +21,18 @@ export const APP_ROUTES: Routes = [
     },
   },
   {
+    path: 'profile',
+    loadChildren: () =>
+      import('../components/profile/profile.module').then(
+        (m) => m.ProfileModule
+      ),
+    canActivate: [AuthGuard],
+    data: {
+      hasHeader: true,
+      hasFooter: true,
+    },
+  },
+  {
     path: 'settings',
     loadChildren: () =>
       import('../components/settings/settings.module').then(
@@ -50,6 +62,7 @@ export const APP_ROUTES: Routes = [
     canActivate: [AuthGuard],
     data: {
       hasHeader: true,
+      hasMainnav: true,
     },
   },
   {

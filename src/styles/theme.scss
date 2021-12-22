@@ -2,19 +2,6 @@
 @import "./variables.scss";
 @include mat-core();
 
-$app-primary: mat-palette($mat-blue-grey);
-$app-accent: mat-palette($mat-pink, 500, 900, A100);
-$app-warn: mat-palette($mat-deep-orange);
-$theme: mat-light-theme($app-primary, $app-accent, $app-warn);
-@include angular-material-theme($theme);
-
-.alternate-theme {
-  $alternate-primary: mat-palette($mat-light-blue);
-  $alternate-accent: mat-palette($mat-yellow, 400);
-  $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
-  @include angular-material-theme($alternate-theme);
-}
-
 $persian-blue-palette: (
   50: #e8eafa,
   100: #c5c9f2,
@@ -306,3 +293,16 @@ $persian-green-palette: (
     A700: $light-primary-text,
   ),
 );
+
+$app-primary: mat-palette($persian-medium-blue-palette);
+$app-accent: mat-palette($persian-green-palette);
+$app-warn: mat-palette($persian-rose-palette);
+$theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+@include angular-material-theme($theme);
+
+.alternate-theme {
+  $alternate-primary: mat-palette($mat-light-blue);
+  $alternate-accent: mat-palette($mat-yellow, 400);
+  $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
+  @include angular-material-theme($alternate-theme);
+}

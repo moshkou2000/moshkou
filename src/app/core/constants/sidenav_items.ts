@@ -27,6 +27,10 @@ export const SIDENAV_ITEMS: ISidenav[] = [
     label: 'Sample :D',
   },
   {
+    label: 'Profile',
+    link: 'profile',
+  },
+  {
     label: 'Settings',
     link: 'settings',
   },
