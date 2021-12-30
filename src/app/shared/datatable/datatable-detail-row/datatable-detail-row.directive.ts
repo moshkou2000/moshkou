@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Directive,
   HostBinding,
   HostListener,
@@ -11,13 +10,13 @@ import {
 @Directive({
   selector: '[cdkDetailRow]',
 })
-export class CdkDetailRowDirective implements AfterViewInit {
+export class CdkDetailRowDirective {
   private row: any;
   private tRef: TemplateRef<any> | undefined;
   private opened: boolean | undefined;
 
-  @HostBinding('class.expanded')
-  get expended(): boolean {
+  @HostBinding('class.selected')
+  get selected(): boolean {
     return this.opened ?? false;
   }
 
@@ -42,10 +41,6 @@ export class CdkDetailRowDirective implements AfterViewInit {
   }
 
   constructor(public vcRef: ViewContainerRef) {}
-
-  ngAfterViewInit(): void {
-    // throw new Error('Method not implemented.');
-  }
 
   @HostListener('click', ['$event'])
   onClick(event: any): void {

@@ -1,11 +1,41 @@
 <mat-toolbar class="header">
-    <mat-toolbar-row>
-      <button mat-button aria-label="button" routerLink="home">
-        Home
-      </button>
-      <button mat-button aria-label="button" routerLink="tips">
-        Tips
-      </button>
-    </mat-toolbar-row>
-  </mat-toolbar>
-  
+  <mat-toolbar-row>
+    <div *ngFor="let item of items">
+      <ng-container *ngIf="!item.children">
+        <button
+          mat-button
+          aria-label="button"
+          [routerLink]="item.link !== undefined ? item.link : null"
+        >
+          {{ item.label }}
+        </button>
+      </ng-container>
+      <ng-container *ngIf="item.children">
+        <button
+          mat-button
+          aria-label="button"
+          [matMenuTriggerFor]="menu"
+          aria-label="icon-button with a menu"
+        >
+          {{ item.label }}
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button
+            mat-menu-item
+            *ngFor="let child of item.children"
+            [routerLink]="child.link !== undefined ? child.link : null"
+          >
+            <span>{{ child.label }}</span>
+          </button>
+        </mat-menu>
+      </ng-container>
+      <div [ngClass]="item.isSelected ? 'selected' : ''"></div>
+    </div>
+
+    <span class="spacer"></span>
+
+    <button mat-icon-button aria-label="icon-button">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

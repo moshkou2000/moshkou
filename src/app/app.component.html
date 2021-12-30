@@ -1,7 +1,16 @@
 <header>
   <app-announcement fxLayout="column"></app-announcement>
-  <app-header *ngIf="layout.hasHeader" fxLayout="column" [hasSidenav]="!layout.hasMainnav"></app-header>
-  <app-mainnav *ngIf="layout.hasMainnav" fxLayout="column"></app-mainnav>
+  <app-header
+    *ngIf="layout.hasHeader"
+    fxLayout="column"
+    [hasSidenav]="!layout.hasMainnav"
+    [currentRoute]="currentRoute"
+  ></app-header>
+  <app-mainnav
+    *ngIf="layout.hasMainnav"
+    fxLayout="column"
+    [currentRoute]="currentRoute"
+  ></app-mainnav>
   <app-notification fxLayout="column"></app-notification>
 </header>
 <main>
@@ -14,7 +23,7 @@
     autosize
   >
     <mat-drawer #sidenav id="main-sidenav" mode="side">
-      <app-sidenav></app-sidenav>
+      <app-sidenav [currentRoute]="currentRoute"></app-sidenav>
     </mat-drawer>
     <div class="content">
       <router-outlet></router-outlet>

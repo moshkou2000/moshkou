@@ -53,30 +53,47 @@ display: block;
 }
 }
 
-# TODO
-
-## theme
-
-Primary and secondary colors
-Variants of primary and secondary colors
-Additional UI colors, such as colors for backgrounds, surfaces, errors, typography, and iconography.
-
-- https://material.io/design/color/the-color-system.html#color-theme-creation
-- https://material.io/design/color/the-color-system.html#tools-for-picking-colors
-- https://material.io/resources/color/#!/?view.left=1&view.right=1&primary.color=1c39bb
-
-## typography ???
-
-## create star-rating component / directive
-
-## sample usage of sidenav-info
-
-## sample usage of hasBack or remove it
-
-## localization
-
 ## UI design
 
 The main navigation in app is eighter `sidenav` or `mainnav`. Defaul theme has `sidenav` onless we set `hasMainnav: true` in `APP_ROUTES`.
 
 https://www.airbnb.com/s/homes?refinement_paths%5B%5D=%2Fhomes&date_picker_type=flexible_dates&search_mode=flex_destinations_search&search_type=AUTOSUGGEST
+
+# TODO
+
+## nav directive
+
+⬜️ create directive for navigation, `siddenav` & `mannav`
+
+## theme
+
+- ✅ Primary and secondary colors
+- ✅ Variants of primary and secondary colors
+- ⬜️ Additional UI colors, such as colors for backgrounds, surfaces, errors, typography, and iconography.
+
+### read more
+
+- https://material.io/design/color/the-color-system.html#color-theme-creation
+- https://material.io/design/color/the-color-system.html#tools-for-picking-colors
+- https://material.io/resources/color/#!/?view.left=1&view.right=1&primary.color=1c39bb
+
+## localization
+
+⬜️ adding localization
+
+## typography
+
+⬜️ implimenting typography
+
+## create star-rating component / directive
+
+⬜️ implimenting star-rating
+
+## sample usage of sidenav-info
+
+⬜️ adding sample usage of sidenav-info in any component
+
+## sample usage of hasBack or remove it
+
+⬜️ adding sample usage of back button design in moblie view
+⬜️ using css / ts

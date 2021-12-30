@@ -1,6 +1,6 @@
 import { NavItemModel } from '../models/navitem.model';
 
-export const SIDENAV_ITEMS: NavItemModel[] = [
+export const MAINNAV_ITEMS: NavItemModel[] = [
   new NavItemModel(<NavItemModel>{
     label: 'Main',
     imageIcon: 'assets/logo.png',

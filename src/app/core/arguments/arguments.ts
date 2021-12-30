@@ -4,12 +4,6 @@ import {
 } from 'src/app/shared/datatable/datatable-toolbar/datatable-toolbar.interface';
 import { Options } from 'src/app/shared/notification/notification.model';
 import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
-import { ISidenav } from '../interfaces/isidenav';
-
-export type SidenavArguments = {
-  item?: ISidenav;
-  items?: ISidenav;
-};
 
 export type GetArguments = {
   tag?: string;

@@ -40,6 +40,7 @@ export const APP_ROUTES: Routes = [
       ),
     data: {
       hasHeader: true,
+      hasMainnav: true,
     },
   },
   {

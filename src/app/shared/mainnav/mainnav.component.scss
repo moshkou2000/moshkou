@@ -14,7 +14,25 @@
     > mat-toolbar-row {
       min-height: 56px;
       height: 56px;
-      justify-content: center;
+      // justify-content: center;
+
+      > div {
+        position: relative;
+        height: 100%;
+        display: flex;
+
+        .selected {
+          width: 100%;
+          height: 2px;
+          background: red;
+          position: absolute;
+          bottom: 0;
+        }
+      }
+    }
+
+    .spacer {
+      flex: 1 1 auto;
     }
   }
 }

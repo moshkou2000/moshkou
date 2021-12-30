@@ -1,11 +1,13 @@
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { CdkBottomSheetComponent } from 'src/app/shared/bottom-sheet/cdk-bottom-sheet.component';
 import { IToolbarButton } from 'src/app/shared/datatable/datatable-toolbar/datatable-toolbar.interface';
+import { INITIIAL_ROUTE } from '../constants/app-routes';
 import { BREADCRUMBS } from '../constants/breadcrumbs';
 import { KEY } from '../constants/key';
+import { MAINNAV_ITEMS } from '../constants/mainnav_items';
 import { SIDENAV_ITEMS } from '../constants/sidenav_items';
 import { IBreadcrumb } from '../interfaces/ibreadcrumb';
-import { ISidenav } from '../interfaces/isidenav';
+import { NavItemModel } from '../models/navitem.model';
 import { UserModel } from '../models/user.model';
 
 export class Util {
@@ -19,8 +21,13 @@ export class Util {
   }
 
   // Sidenav
-  static get sidenavItems(): ISidenav[] {
+  static get sidenavItems(): NavItemModel[] {
     return SIDENAV_ITEMS;
+  }
+
+  // Mainnav
+  static get mainnavItems(): NavItemModel[] {
+    return MAINNAV_ITEMS;
   }
 
   // User
@@ -94,5 +101,41 @@ export class Util {
   // you can clear cach, session & ...
   static clear(): void {
     localStorage.clear();
+  }
+
+  static initSelection(items?: NavItemModel[], route?: String): void {
+    console.log(1, route);
+
+    let isFound: boolean = false;
+    const r: String =
+      route && route.length > 0 ? route : INITIIAL_ROUTE.substring(1);
+    if (items) {
+      this.clearSelection(items);
+      for (let a of items) {
+        if (isFound) break;
+        if (a?.link === r) {
+          a.selected = true;
+          isFound = true;
+          break;
+        } else if (a?.children) {
+          for (let b of a?.children) {
+            if (b?.link === r) {
+              b.selected = true;
+              isFound = true;
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  static clearSelection(items?: NavItemModel[]): void {
+    items?.forEach((a) => {
+      a.selected = false;
+      if (a.children) {
+        a.children?.forEach((b) => (b.selected = false));
+      }
+    });
   }
 }

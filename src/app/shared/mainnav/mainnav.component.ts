@@ -1,15 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import { NavItemModel } from 'src/app/core/models/navitem.model';
+import { Util } from 'src/app/core/utils/util';
 
 @Component({
   selector: 'app-mainnav',
   templateUrl: './mainnav.component.html',
-  styleUrls: ['./mainnav.component.scss']
+  styleUrls: ['./mainnav.component.scss'],
 })
-export class MainnavComponent implements OnInit {
+export class MainnavComponent implements OnChanges {
+  @Input() currentRoute: string | undefined;
 
-  constructor() { }
+  items?: NavItemModel[] = Util.mainnavItems;
 
-  ngOnInit(): void {
+  constructor(private changeDetector: ChangeDetectorRef) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    Util.initSelection(this.items, this.currentRoute);
+    this.changeDetector.detectChanges();
   }
-
 }

@@ -1,31 +1,33 @@
 <mat-expansion-panel
-  *ngFor="let items of sidenavItems; let k = index"
-  [hideToggle]="items.children === undefined"
-  [disabled]="items?.link === undefined && items?.children === undefined"
+  *ngFor="let item of items"
+  [hideToggle]="item.children === undefined"
+  [disabled]="item?.link === undefined && item?.children === undefined"
 >
   <mat-expansion-panel-header
+    [ngClass]="item.selected ? 'active' : ''"
     [routerLink]="
-      items.children === undefined && items?.link !== undefined
-        ? items?.link
+      item.children === undefined && item?.link !== undefined
+        ? item?.link
         : null
     "
-    [ngClass]="items.selected ? 'active' : ''"
-    (click)="itemSelect({ items: items })"
+    (click)="itemSelect(item)"
   >
-    <mat-icon *ngIf="items.icon && !items.imageIcon">{{ items.icon }}</mat-icon>
-    <img *ngIf="!items.icon && items.imageIcon" [src]="items.imageIcon" />
-    {{ items.label }}
+    <mat-icon *ngIf="item.icon && !item.imageIcon">{{ item.icon }}</mat-icon>
+    <img *ngIf="!item.icon && item.imageIcon" [src]="item.imageIcon" />
+    {{ item.label }}
   </mat-expansion-panel-header>
-  <ng-container *ngIf="items.children">
+  <ng-container *ngIf="item.children">
     <a
-      *ngFor="let item of items.children; let i = index"
-      [ngClass]="item.selected ? 'item active' : 'item'"
-      [routerLink]="item?.link !== undefined ? item?.link : null"
-      (click)="itemSelect({ item: item })"
+      *ngFor="let child of item.children"
+      [ngClass]="child.selected ? 'item active' : 'item'"
+      [routerLink]="child?.link !== undefined ? child.link : null"
+      (click)="itemSelect(child)"
     >
-      <mat-icon *ngIf="item.icon && !item.imageIcon">{{ item.icon }}</mat-icon>
-      <img *ngIf="!item.icon && item.imageIcon" [src]="item.imageIcon" />
-      {{ item.label }}
+      <mat-icon *ngIf="child.icon && !child.imageIcon">{{
+        child.icon
+      }}</mat-icon>
+      <img *ngIf="!child.icon && child.imageIcon" [src]="child.imageIcon" />
+      {{ child.label }}
     </a>
   </ng-container>
 </mat-expansion-panel>

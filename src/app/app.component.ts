@@ -2,8 +2,8 @@ import { OnInit, Component, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ISidenav } from './core/interfaces/isidenav';
 import { LayoutModel } from './core/models/layout.model';
+import { NavItemModel } from './core/models/navitem.model';
 import { Util } from './core/utils/util';
 import { SidenavInfoService } from './shared/sidenav-info/sidenav-info.service';
 import { SidenavService } from './shared/sidenav/sidenav.service';
@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
   isSidenavInfoOpen: boolean = false;
 
   layout: LayoutModel = new LayoutModel();
-  sidenavItems?: ISidenav[];
+  sidenavItems?: NavItemModel[] = Util.sidenavItems;
+  currentRoute: string = '';
 
   constructor(
     private router: Router,
@@ -34,6 +35,8 @@ export class AppComponent implements OnInit {
     this.routerEventsSubscription = this.router.events.subscribe(
       (event: any) => {
         if (event instanceof NavigationEnd) {
+          this.currentRoute = event.url.substring(1) ?? '';
+
           this.layout.hasHeader =
             this.activatedRoute.firstChild?.snapshot.data.hasHeader === true;
           this.layout.hasFooter =
@@ -65,9 +68,7 @@ export class AppComponent implements OnInit {
     //   });
   }
 
-  ngOnInit(): void {
-    this.sidenavItems = Util.sidenavItems;
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     if (this.routerEventsSubscription) {

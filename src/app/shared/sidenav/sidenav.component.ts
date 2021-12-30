@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { SidenavArguments } from 'src/app/core/arguments/arguments';
-import { INITIIAL_ROUTE } from 'src/app/core/constants/app-routes';
-import { ISidenav } from 'src/app/core/interfaces/isidenav';
+import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  SimpleChanges,
+} from '@angular/core';
+import { NavItemModel } from 'src/app/core/models/navitem.model';
 import { Util } from 'src/app/core/utils/util';
 
 @Component({
@@ -11,71 +12,30 @@ import { Util } from 'src/app/core/utils/util';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
 })
-export class SidenavComponent implements OnInit {
-  routerEventsSubscription: Subscription | undefined;
-  sidenavItems?: ISidenav[];
+export class SidenavComponent {
+  @Input() currentRoute: string | undefined;
 
-  constructor(private router: Router) {
-    this.routerEventsSubscription = this.router.events.subscribe(
-      (event: any) => {
-        if (event instanceof NavigationEnd) {
-          this.initSelection(event.url.substring(1));
-        }
-      }
-    );
+  items?: NavItemModel[] = Util.sidenavItems;
+
+  constructor(private changeDetector: ChangeDetectorRef) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    Util.initSelection(this.items, this.currentRoute);
+    this.changeDetector.detectChanges();
   }
 
-  ngOnInit(): void {
-    this.sidenavItems = Util.sidenavItems;
-  }
+  itemSelect(item: NavItemModel): void {
+    console.log(88, item);
 
-  initSelection(route: String): void {
-    let isFound: boolean = false;
-    const r: String = route.length > 0 ? route : INITIIAL_ROUTE.substring(1);
-    if (this.sidenavItems) {
-      this.clearSelection();
-      for (let a of this.sidenavItems) {
-        if (isFound) break;
-        if (a?.link === r) {
-          a.selected = true;
-          isFound = true;
-          break;
-        } else if (a?.children) {
-          for (let b of a?.children) {
-            if (b?.link === r) {
-              b.selected = true;
-              isFound = true;
-              break;
-            }
-          }
-        }
+    if (item) {
+      if (item?.link) {
+        this.toggleSelectedItem(item);
       }
     }
   }
 
-  itemSelect(args: SidenavArguments): void {
-    if (args.items) {
-      if (args.items?.link) {
-        this.toggleSelectedItem(args.items);
-      }
-    } else if (args.item) {
-      if (args.item?.link) {
-        this.toggleSelectedItem(args.item);
-      }
-    }
-  }
-
-  toggleSelectedItem(item: ISidenav): void {
-    this.clearSelection();
+  toggleSelectedItem(item: NavItemModel): void {
+    Util.clearSelection(this.items);
     item.selected = true;
-  }
-
-  clearSelection(): void {
-    this.sidenavItems?.forEach((a) => {
-      a.selected = false;
-      if (a.children) {
-        a.children?.forEach((b) => (b.selected = false));
-      }
-    });
   }
 }
