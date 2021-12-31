@@ -16,7 +16,7 @@ import { SidenavService } from './shared/sidenav/sidenav.service';
 })
 export class AppComponent implements OnInit {
   @ViewChild(MatDrawer) sidenav: MatDrawer | undefined;
-  routerEventsSubscription: Subscription | undefined;
+
   sidenavSubscription: Subscription | undefined;
   sidenavInfoSubscription: Subscription | undefined;
   isSidenavOpen: boolean = false;
@@ -71,9 +71,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
-    if (this.routerEventsSubscription) {
-      this.routerEventsSubscription.unsubscribe();
-    }
     if (this.sidenavSubscription) {
       this.sidenavSubscription.unsubscribe();
     }

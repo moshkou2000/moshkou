@@ -1,19 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import {
   NavigationEnd,
   NavigationError,
   NavigationExtras,
   Router,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { GetArguments, NavigationArguments } from '../arguments/arguments';
 import { SampleService } from './sample/sample.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Services implements IServices {
+export class Services implements IServices, OnDestroy {
+  routerSubscription: Subscription | undefined;
+
   constructor(private sampleService: SampleService, private router: Router) {}
+
+  ngOnDestroy(): void {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
+  }
 
   /* 
     Router
@@ -33,7 +41,7 @@ export class Services implements IServices {
   }
 
   navigation(args: NavigationArguments): void {
-    this.router.events.subscribe((event: any) => {
+    this.routerSubscription = this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
         if (args.navigationEnd) args.navigationEnd(event);
       } else if (event instanceof NavigationError) {
