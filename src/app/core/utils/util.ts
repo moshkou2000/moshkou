@@ -10,14 +10,40 @@ import { IBreadcrumb } from '../interfaces/ibreadcrumb';
 import { NavItemModel } from '../models/navitem.model';
 import { UserModel } from '../models/user.model';
 
-export class Util {
-  private static breadcrumb: IBreadcrumb | undefined;
+/*
+  Util
+  is a class with static members
+*/
 
-  static toLink(location: string): string {
-    if (location.length > 0 && location[0] === '/') {
-      location = location.substring(1);
+export class Util {
+  /*
+    get const | static
+  */
+
+  // Breadcrumbs
+  // link: current route
+  private static breadcrumb: IBreadcrumb | undefined;
+  private static getBreadcrumb(link: string): IBreadcrumb | undefined {
+    let breadcrumb: IBreadcrumb | undefined = BREADCRUMBS.find((item) => {
+      return item.link === link;
+    });
+    if (breadcrumb?.parents) {
+      const b: IBreadcrumb | undefined = this.getBreadcrumb(
+        breadcrumb.parents[0].link
+      );
+      if (b) this.breadcrumb!.parents!.push(b);
     }
-    return location;
+    return breadcrumb;
+  }
+  static getBreadcrumbs(link: string): IBreadcrumb | undefined {
+    let breadcrumb: IBreadcrumb | undefined = BREADCRUMBS.find((item) => {
+      return item.link === link;
+    });
+    this.breadcrumb = breadcrumb;
+    if (breadcrumb && breadcrumb.parents) {
+      this.getBreadcrumb(breadcrumb.parents[0].link);
+    }
+    return this.breadcrumb;
   }
 
   // Sidenav
@@ -36,30 +62,9 @@ export class Util {
     return user ? JSON.parse(user) : undefined;
   }
 
-  // Breadcrumbs
-  // link: current route
-  static getBreadcrumbs(link: string): IBreadcrumb | undefined {
-    let breadcrumb: IBreadcrumb | undefined = BREADCRUMBS.find((item) => {
-      return item.link === link;
-    });
-    this.breadcrumb = breadcrumb;
-    if (breadcrumb && breadcrumb.parents) {
-      this.getBreadcrumb(breadcrumb.parents[0].link);
-    }
-    return this.breadcrumb;
-  }
-  private static getBreadcrumb(link: string): IBreadcrumb | undefined {
-    let breadcrumb: IBreadcrumb | undefined = BREADCRUMBS.find((item) => {
-      return item.link === link;
-    });
-    if (breadcrumb?.parents) {
-      const b: IBreadcrumb | undefined = this.getBreadcrumb(
-        breadcrumb.parents[0].link
-      );
-      if (b) this.breadcrumb!.parents!.push(b);
-    }
-    return breadcrumb;
-  }
+  /*
+    actions
+  */
 
   // Fullscreen
   // id: target selector
@@ -103,14 +108,13 @@ export class Util {
     localStorage.clear();
   }
 
-  static initSelection(items?: NavItemModel[], route?: String): void {
-    console.log(1, route);
-
+  // init navigation selection based on current route
+  static initNavSelection(items?: NavItemModel[], route?: String): void {
     let isFound: boolean = false;
     const r: String =
       route && route.length > 0 ? route : INITIIAL_ROUTE.substring(1);
     if (items) {
-      this.clearSelection(items);
+      this.clearNavSelection(items);
       for (let a of items) {
         if (isFound) break;
         if (a?.link === r) {
@@ -130,12 +134,24 @@ export class Util {
     }
   }
 
-  static clearSelection(items?: NavItemModel[]): void {
+  // cleare navigation selection
+  static clearNavSelection(items?: NavItemModel[]): void {
     items?.forEach((a) => {
       a.selected = false;
       if (a.children) {
         a.children?.forEach((b) => (b.selected = false));
       }
     });
+  }
+
+  /*
+    convertors
+  */
+
+  static toLink(location: string): string {
+    if (location.length > 0 && location[0] === '/') {
+      location = location.substring(1);
+    }
+    return location;
   }
 }

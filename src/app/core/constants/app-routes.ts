@@ -16,6 +16,8 @@ export const APP_ROUTES: Routes = [
       import('../components/home/home.module').then((m) => m.HomeModule),
     canActivate: [AuthGuard],
     data: {
+      hasMainnav: true,
+      hasSidenav: true,
       hasHeader: true,
       hasFooter: true,
     },
@@ -28,8 +30,8 @@ export const APP_ROUTES: Routes = [
       ),
     canActivate: [AuthGuard],
     data: {
+      hasSidenav: true,
       hasHeader: true,
-      hasFooter: true,
     },
   },
   {
@@ -74,6 +76,7 @@ export const APP_ROUTES: Routes = [
       ),
     canActivate: [AuthGuard],
     data: {
+      hasSidenav: true,
       hasHeader: true,
     },
   },

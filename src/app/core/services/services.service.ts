@@ -1,16 +1,50 @@
 import { Injectable } from '@angular/core';
+import {
+  NavigationEnd,
+  NavigationError,
+  NavigationExtras,
+  Router,
+} from '@angular/router';
 import { Observable } from 'rxjs';
-import { GetArguments } from '../arguments/arguments';
+import { GetArguments, NavigationArguments } from '../arguments/arguments';
 import { SampleService } from './sample/sample.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class Services {
-  constructor(private sampleService: SampleService) {}
+export class Services implements IServices {
+  constructor(private sampleService: SampleService, private router: Router) {}
 
-  // SampleService
-  //
+  /* 
+    Router
+  */
+  navigate(
+    route: string[],
+    extras?: NavigationExtras | undefined
+  ): Promise<boolean> {
+    return this.router.navigate([route], extras);
+  }
+
+  navigateByUrl(
+    route: string,
+    extras?: NavigationExtras | undefined
+  ): Promise<boolean> {
+    return this.router.navigateByUrl(route, extras);
+  }
+
+  navigation(args: NavigationArguments): void {
+    this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd) {
+        if (args.navigationEnd) args.navigationEnd(event);
+      } else if (event instanceof NavigationError) {
+        if (args.navigationError) args.navigationError(event);
+      }
+    });
+  }
+
+  /* 
+    SampleService
+  */
   postSample(body: any): Observable<any> {
     return this.sampleService.post(body);
   }
@@ -31,6 +65,16 @@ export class Services {
 }
 
 export abstract class IServices {
+  abstract navigate(
+    route: string[],
+    extras?: NavigationExtras | undefined
+  ): Promise<boolean>;
+  abstract navigateByUrl(
+    route: string,
+    extras?: NavigationExtras | undefined
+  ): Promise<boolean>;
+  abstract navigation(args: NavigationArguments): void;
+
   abstract postSample(body: any): Observable<any>;
   abstract getSample(arg: GetArguments): Observable<any>;
   abstract putSample(id: string, body: any): Observable<any>;

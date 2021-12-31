@@ -7,9 +7,9 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { IBreadcrumb } from 'src/app/core/interfaces/ibreadcrumb';
-import { Subscription } from 'rxjs';
 import { SidenavService } from '../sidenav/sidenav.service';
 import { Util } from 'src/app/core/utils/util';
+import { IServices } from 'src/app/core/services/services.service';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +24,8 @@ export class HeaderComponent implements OnDestroy, OnChanges {
 
   constructor(
     private changeDetector: ChangeDetectorRef,
-    private sidenavService: SidenavService
+    private sidenavService: SidenavService,
+    private service: IServices
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -34,15 +35,12 @@ export class HeaderComponent implements OnDestroy, OnChanges {
 
   ngOnDestroy(): void {}
 
-  toLink(location: string): string {
-    if (location.length > 0 && location[0] === '/') {
-      location = location.substring(1);
-    }
-    return location;
-  }
-
   toggleSidenav(): void {
     this.sidenavService.set();
   }
-  exit(): void {}
+
+  exit(): void {
+    Util.clear();
+    this.service.navigate(['/login']);
+  }
 }

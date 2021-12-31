@@ -3,7 +3,7 @@
   <app-header
     *ngIf="layout.hasHeader"
     fxLayout="column"
-    [hasSidenav]="!layout.hasMainnav"
+    [hasSidenav]="layout.hasSidenav"
     [currentRoute]="currentRoute"
   ></app-header>
   <app-mainnav
@@ -14,15 +14,18 @@
   <app-notification fxLayout="column"></app-notification>
 </header>
 <main>
-  <router-outlet *ngIf="layout.hasMainnav"></router-outlet>
   <mat-drawer-container
-    *ngIf="!layout.hasMainnav"
     hasBackdrop="false"
     fxLayout="row"
     fxFlex="100"
     autosize
   >
-    <mat-drawer #sidenav id="main-sidenav" mode="side">
+    <mat-drawer
+      *ngIf="layout.hasSidenav"
+      #sidenav
+      id="main-sidenav"
+      mode="side"
+    >
       <app-sidenav [currentRoute]="currentRoute"></app-sidenav>
     </mat-drawer>
     <div class="content">

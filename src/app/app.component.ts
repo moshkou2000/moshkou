@@ -4,6 +4,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LayoutModel } from './core/models/layout.model';
 import { NavItemModel } from './core/models/navitem.model';
+import { IServices } from './core/services/services.service';
 import { Util } from './core/utils/util';
 import { SidenavInfoService } from './shared/sidenav-info/sidenav-info.service';
 import { SidenavService } from './shared/sidenav/sidenav.service';
@@ -26,28 +27,27 @@ export class AppComponent implements OnInit {
   currentRoute: string = '';
 
   constructor(
-    private router: Router,
     private activatedRoute: ActivatedRoute,
     private sidenavService: SidenavService,
-    private sidenavInfoService: SidenavInfoService
+    private sidenavInfoService: SidenavInfoService,
+    private service: IServices
   ) {
-    // router
-    this.routerEventsSubscription = this.router.events.subscribe(
-      (event: any) => {
-        if (event instanceof NavigationEnd) {
-          this.currentRoute = event.url.substring(1) ?? '';
+    this.service.navigation({
+      navigationEnd: (event: any) => {
+        this.currentRoute = event.url.substring(1) ?? '';
 
-          this.layout.hasHeader =
-            this.activatedRoute.firstChild?.snapshot.data.hasHeader === true;
-          this.layout.hasFooter =
-            this.activatedRoute.firstChild?.snapshot.data.hasFooter === true;
-          this.layout.hasMainnav =
-            this.activatedRoute.firstChild?.snapshot.data.hasMainnav === true;
+        this.layout.hasMainnav =
+          this.activatedRoute.firstChild?.snapshot.data.hasMainnav === true;
+        this.layout.hasSidenav =
+          this.activatedRoute.firstChild?.snapshot.data.hasSidenav === true;
+        this.layout.hasHeader =
+          this.activatedRoute.firstChild?.snapshot.data.hasHeader === true;
+        this.layout.hasFooter =
+          this.activatedRoute.firstChild?.snapshot.data.hasFooter === true;
 
-          if (this.layout.hasMainnav) this.isSidenavOpen = false;
-        }
-      }
-    );
+        if (!this.layout.hasSidenav) this.isSidenavOpen = false;
+      },
+    });
 
     // sidenav
     this.sidenavSubscription = this.sidenavService

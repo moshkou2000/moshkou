@@ -11,6 +11,10 @@ export class UserModel {
   public about_me: string | undefined;
   public createdAt: string | undefined;
   public updatedAt: string | undefined;
+
+  public constructor(init: UserModel) {
+    Object.assign(this, init);
+  }
 }
 
 /*

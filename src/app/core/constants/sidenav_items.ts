@@ -34,9 +34,4 @@ export const SIDENAV_ITEMS: NavItemModel[] = [
     label: 'Planning',
     link: 'planning',
   }),
-  new NavItemModel(<NavItemModel>{
-    label: 'Login',
-    link: 'login',
-    icon: 'login',
-  }),
 ];

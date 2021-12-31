@@ -51,3 +51,8 @@ export type ViewStatesArguments = {
   backgroundColor?: string;
   backgroundImage?: string;
 };
+
+export type NavigationArguments = {
+  navigationEnd?: Function;
+  navigationError?: Function;
+};

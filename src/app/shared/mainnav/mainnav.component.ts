@@ -21,7 +21,7 @@ export class MainnavComponent implements OnChanges {
   constructor(private changeDetector: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    Util.initSelection(this.items, this.currentRoute);
+    Util.initNavSelection(this.items, this.currentRoute);
     this.changeDetector.detectChanges();
   }
 }

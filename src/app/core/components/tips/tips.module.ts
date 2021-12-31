@@ -6,7 +6,7 @@ import { TipsComponent } from './tips.component';
 import { TipsRoutingModule } from './tips-routing.module';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, TipsRoutingModule],
+  imports: [CommonModule, TipsRoutingModule, FormsModule, ReactiveFormsModule],
   declarations: [TipsComponent],
 })
 export class TipsModule {}

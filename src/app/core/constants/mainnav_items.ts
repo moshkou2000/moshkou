@@ -13,14 +13,7 @@ export const MAINNAV_ITEMS: NavItemModel[] = [
         label: 'Tips',
         link: 'tips',
       }),
-      new NavItemModel(<NavItemModel>{
-        label: 'Datatable',
-        link: 'datatable',
-      }),
     ],
-  }),
-  new NavItemModel(<NavItemModel>{
-    label: 'Sample',
   }),
   new NavItemModel(<NavItemModel>{
     label: 'Profile',
@@ -33,10 +26,5 @@ export const MAINNAV_ITEMS: NavItemModel[] = [
   new NavItemModel(<NavItemModel>{
     label: 'Planning',
     link: 'planning',
-  }),
-  new NavItemModel(<NavItemModel>{
-    label: 'Login',
-    link: 'login',
-    icon: 'login',
   }),
 ];

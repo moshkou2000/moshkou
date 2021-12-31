@@ -2,6 +2,7 @@
 export class NavItemModel {
   label: string = '';
   link?: string;
+  outlet?: any;
   selected?: boolean;
   icon?: string;
   imageIcon?: string;
