@@ -22,13 +22,13 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { SidenavInfoComponent } from './sidenav-info/sidenav-info.component';
 import { ViewStatesComponent } from './view-states/view-states.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
-import { CdkBottomSheetComponent } from './bottom-sheet/cdk-bottom-sheet.component';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { MainnavComponent } from './mainnav/mainnav.component';
 
 @NgModule({
   declarations: [
     AnnouncementComponent,
-    CdkBottomSheetComponent,
+    BottomSheetComponent,
     FooterComponent,
     HeaderComponent,
     MainnavComponent,
@@ -56,7 +56,7 @@ import { MainnavComponent } from './mainnav/mainnav.component';
   ],
   exports: [
     AnnouncementComponent,
-    CdkBottomSheetComponent,
+    BottomSheetComponent,
     FooterComponent,
     HeaderComponent,
     MainnavComponent,

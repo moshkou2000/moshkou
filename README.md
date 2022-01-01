@@ -63,7 +63,7 @@ https://www.airbnb.com/s/homes?refinement_paths%5B%5D=%2Fhomes&date_picker_type=
 
 ## nav directive
 
-⬜️ create directive for navigation, `siddenav` & `mannav`
+✅ create directive for navigation, `siddenav` & `mannav`
 
 ## theme
 
@@ -97,3 +97,18 @@ https://www.airbnb.com/s/homes?refinement_paths%5B%5D=%2Fhomes&date_picker_type=
 
 ⬜️ adding sample usage of back button design in moblie view
 ⬜️ using css / ts
+
+## ACL
+
+```
+  tocken : {
+    roles: [],
+    modules: [{
+        id: string,
+        name: string,
+        view: boolean,
+        update: boolean,
+        create: boolean,
+        delete: boolean,
+    }]}
+```

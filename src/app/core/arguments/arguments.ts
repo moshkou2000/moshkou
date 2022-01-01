@@ -1,3 +1,6 @@
+import { ComponentType } from '@angular/cdk/portal';
+import { ElementRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import {
   IToolbarButton,
   IToolbarButtonsName,
@@ -55,4 +58,14 @@ export type ViewStatesArguments = {
 export type NavigationArguments = {
   navigationEnd?: Function;
   navigationError?: Function;
+};
+
+export type DialogArguments = {
+  dialog: MatDialog;
+  component: ComponentType<any>;
+  disableClose?: boolean;
+  width?: number;
+  data?: any;
+  onClosed?: Function;
+  element?: ElementRef;
 };

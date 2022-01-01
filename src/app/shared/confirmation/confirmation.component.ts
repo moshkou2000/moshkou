@@ -12,6 +12,6 @@ import { ConfirmationModel } from './confirmation.model';
 export class ConfirmationComponent {
   constructor(
     public dialogRef: MatDialogRef<ConfirmationComponent>,
-    @Inject(MAT_DIALOG_DATA) public confirmation: ConfirmationModel
+    @Inject(MAT_DIALOG_DATA) public data: ConfirmationModel
   ) {}
 }

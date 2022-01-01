@@ -1,6 +1,8 @@
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { CdkBottomSheetComponent } from 'src/app/shared/bottom-sheet/cdk-bottom-sheet.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { BottomSheetComponent } from 'src/app/shared/bottom-sheet/bottom-sheet.component';
 import { IToolbarButton } from 'src/app/shared/datatable/datatable-toolbar/datatable-toolbar.interface';
+import { DialogArguments } from '../arguments/arguments';
 import { INITIIAL_ROUTE } from '../constants/app-routes';
 import { BREADCRUMBS } from '../constants/breadcrumbs';
 import { KEY } from '../constants/key';
@@ -94,12 +96,30 @@ export class Util {
     buttons?: IToolbarButton[],
     buttonClick?: any
   ): void {
-    bottomSheet.open(CdkBottomSheetComponent, {
+    bottomSheet.open(BottomSheetComponent, {
       data: {
         buttons: buttons,
         buttonClick: buttonClick,
       },
     });
+  }
+
+  // open Dialog
+  // dialog: from view
+  static openDialog(args: DialogArguments): MatDialogRef<any, any> {
+    const dialogRef: MatDialogRef<any, any> = args.dialog.open(args.component, {
+      disableClose: args.disableClose ?? true,
+      width: `${args.width ?? 250}px`,
+      data: args.data,
+      position: {
+        left: '10px',
+        top: '10px',
+      },
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      if (args.onClosed) args.onClosed();
+    });
+    return dialogRef;
   }
 
   // clear localStorage

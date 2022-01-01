@@ -1,19 +1,17 @@
 @import "../../../../styles/variables.scss";
 
 ::ng-deep {
-  bottom-sheet {
-    .mat-list-item-content {
-      text-align: center;
+  .mat-list-item-content {
+    text-align: center;
 
-      > *:last-child {
-        flex: 5;
-        text-align: left;
-      }
-      > *:nth-last-child(2) {
-        flex: 1;
-        width: 24px;
-        height: 24px;
-      }
+    > *:last-child {
+      flex: 5;
+      text-align: left;
+    }
+    > *:nth-last-child(2) {
+      flex: 1;
+      width: 24px;
+      height: 24px;
     }
   }
 }

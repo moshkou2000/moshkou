@@ -5,7 +5,7 @@ import {
   OnDestroy,
   ViewRef,
 } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Sort } from '@angular/material/sort';
 import { Subscription } from 'rxjs';
@@ -27,6 +27,7 @@ import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
 import { ViewStatesModel } from 'src/app/shared/view-states/view-states.model';
 import { environment } from 'src/environments/environment';
+import { Util } from 'src/app/core/utils/util';
 
 @Component({
   selector: 'app-planning',
@@ -53,8 +54,6 @@ export class PlanningComponent implements OnInit, OnDestroy {
   paginationSizes: number[] = CONSTANT_NUMBER.paginationSizes;
   defaultPageSize: number = CONSTANT_NUMBER.defaultPageSize;
 
-  confirmationRef: any = null;
-  confirmationSubscription: Subscription | undefined;
   notificationOptionSubscription: Subscription | undefined;
   dataSubscription: Subscription | undefined;
 
@@ -71,9 +70,6 @@ export class PlanningComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.confirmationSubscription) {
-      this.confirmationSubscription.unsubscribe();
-    }
     if (this.notificationOptionSubscription) {
       this.notificationOptionSubscription.unsubscribe();
     }
@@ -187,61 +183,77 @@ export class PlanningComponent implements OnInit, OnDestroy {
   */
   // delete
   onDeleteItem(event: /*DataModel*/ any): void {
-    console.log('onDeleteItem', event);
-    if (event) {
-      if (!this.confirmationRef) {
-        let that: any = this;
-        const confirmationRef: MatDialogRef<ConfirmationComponent, any> =
-          this.dialog.open(ConfirmationComponent, {
-            disableClose: true,
-            width: '250px',
-            data: {
-              title: 'Delete Records',
-              message:
-                'This is data message, This is data message, This is data message, This is data message',
-              button1: {
-                title: 'Cancel',
-                click: function () {
-                  confirmationRef.close();
+    let that: any = this;
+    const dialogRef = Util.openDialog({
+      dialog: this.dialog,
+      component: ConfirmationComponent,
+      data: {
+        title: 'Delete Records',
+        message:
+          'This is data message, This is data message, This is data message, This is data message',
+        button1: {
+          title: 'Cancel',
+          click: function () {
+            dialogRef.close();
+          },
+        },
+        button2: {
+          title: 'Delete',
+          click: function () {
+            // TODO: do your action
+            that.snackbar.openFromComponent(SnackbarComponent, {
+              data: {
+                message: 'This snakbar message.',
+                action: 'Undo',
+                actionClick: () => {
+                  console.log('SettingsComponent.Snackbar.clicked');
                 },
               },
-              button2: {
-                title: 'Delete',
-                click: function () {
-                  // TODO: do your action
+              duration: 399000,
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+            });
 
-                  that.snackbar.openFromComponent(SnackbarComponent, {
-                    data: {
-                      message: 'This snakbar message.',
-                      action: 'Undo',
-                      actionClick: () => {
-                        console.log('SettingsComponent.Snackbar.clicked');
-                      },
-                    },
-                    duration: 399000,
-                    horizontalPosition: 'center',
-                    verticalPosition: 'top',
-                  });
-
-                  confirmationRef.close();
-                  // alert
-                },
-              },
-            },
-          });
-        this.confirmationSubscription = confirmationRef
-          .afterClosed()
-          .subscribe(() => {
-            this.confirmationRef = null;
-            that = null;
-          });
-        this.confirmationRef = confirmationRef;
-      }
-    }
+            dialogRef.close();
+            // alert
+          },
+        },
+      },
+      onClosed: () => {
+        console.log('onDeleteItem dialog onClosed', event);
+        that = null;
+      },
+    });
   }
 
   // edit
   onEditItem(event: /*DataModel*/ any): void {
-    console.log('onEditItem', event);
+    const dialogRef = Util.openDialog({
+      dialog: this.dialog,
+      component: ConfirmationComponent,
+      data: {
+        title: 'Edit Records',
+        message:
+          'This is data message, This is data message, This is data message, This is data message',
+        button1: {
+          title: 'Cancel',
+          click: function () {
+            dialogRef.close();
+          },
+        },
+        button2: {
+          title: 'Save',
+          click: function () {
+            // TODO: do your action
+
+            dialogRef.close();
+            // alert
+          },
+        },
+      },
+      onClosed: () => {
+        console.log('onEditItem dialog onClosed', event);
+      },
+    });
   }
 }

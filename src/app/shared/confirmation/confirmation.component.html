@@ -1,10 +1,14 @@
-<div *ngIf="confirmation" class="mat-dialog-container">
-  <h6 mat-dialog-title class="mat-dialog-title">{{confirmation.title}}</h6>
+<div *ngIf="data" class="mat-dialog-container">
+  <h6 mat-dialog-title class="mat-dialog-title">{{ data.title }}</h6>
   <div mat-dialog-content class="mat-dialog-content">
-    <p>{{confirmation.message}}</p>
+    <p>{{ data.message }}</p>
   </div>
   <div mat-dialog-actions class="mat-dialog-actions">
-    <button mat-button *ngIf="confirmation.button1" (click)="confirmation.button1.click()">{{confirmation.button1.title}}</button>
-    <button mat-button *ngIf="confirmation.button2" (click)="confirmation.button2.click()">{{confirmation.button2.title}}</button>
+    <button mat-button *ngIf="data.button1" (click)="data.button1.click()">
+      {{ data.button1.title }}
+    </button>
+    <button mat-button *ngIf="data.button2" (click)="data.button2.click()">
+      {{ data.button2.title }}
+    </button>
   </div>
 </div>
