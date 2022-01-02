@@ -1,0 +1,71 @@
+@import "../../../../styles/variables.scss";
+
+:host {
+  .profile {
+    z-index: 0;
+    width: 100%;
+    margin-bottom: 10px;
+
+    .profile-text {
+      > h1 {
+        color: $color-dark-2;
+        margin-bottom: 12px;
+      }
+      > p {
+        color: $color-dark-3;
+        margin: 0 55px;
+      }
+      > div {
+        color: $color-dark-3;
+        margin: 8px 240px 8px;
+      }
+    }
+
+    > .bg {
+      height: 240px;
+      width: 100%;
+      background: $analogous-1;
+    }
+
+    .thumbnail-profile {
+      margin: -90px 10px 0px 50px;
+      z-index: 9;
+      width: 180px;
+      height: 180px;
+      border-radius: 32px;
+      background: $complementary;
+      object-fit: cover;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    .profile {
+      .profile-text {
+        > h1 {
+          font-weight: 700;
+          font-size: 18px;
+        }
+        > p {
+          margin: 0 33px;
+        }
+        > div {
+          margin: 8px 145px 8px;
+        }
+      }
+
+      > .bg {
+        height: 120px;
+      }
+
+      .thumbnail-profile {
+        margin: -45px 10px 0px 25px;
+        z-index: 9;
+        width: 110px;
+        height: 110px;
+        border-radius: 16px;
+      }
+    }
+  }
+}

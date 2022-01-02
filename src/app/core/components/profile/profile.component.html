@@ -1,62 +1,19 @@
 <div class="content-scrollable">
-    <p>profile works!</p>
-    <div>
-        <div>Content 0001</div>
-        <div>Content 001</div>
-        <div>Content 01</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 1</div>
-        <div>Content 2</div>
-        <div>Content 3</div>
-        <div>Content 4</div>
-        <div>Content 5</div>
-        <div>Content 6</div>
-        <div>Content 7</div>
-        <div>Content 8</div>
-        <div>Content 9</div>
+  <div class="container">
+    <div class="profile">
+      <div class="bg"></div>
+      <img
+        align="left"
+        class="thumbnail-profile"
+        [src]="user?.picture ? user?.picture : '../../assets/logo.png'"
+        alt=" "
+      />
+      <div class="profile-text">
+        <h1>{{ user?.name }}</h1>
+        <div>{{ user?.phone }}</div>
+        <div>{{ user?.email }}</div>
+        <p>{{ user?.about_me }}</p>
       </div>
+    </div>
+  </div>
 </div>

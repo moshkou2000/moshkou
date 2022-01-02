@@ -30,7 +30,7 @@ export class Services implements IServices, OnDestroy {
     route: string[],
     extras?: NavigationExtras | undefined
   ): Promise<boolean> {
-    return this.router.navigate([route], extras);
+    return this.router.navigate(route, extras);
   }
 
   navigateByUrl(
