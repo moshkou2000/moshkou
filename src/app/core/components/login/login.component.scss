@@ -1,0 +1,77 @@
+@import "../../../../styles/variables.scss";
+
+:host {
+  ::ng-deep {
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+
+    .phone.mat-form-field-appearance-outline .mat-form-field-label {
+      left: 34px;
+      top: 2.1em;
+    }
+    .phone.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+      .mat-form-field-label {
+      left: 0;
+      top: 1.8em;
+      background: #fafafa;
+      width: 120px;
+      padding-left: 4px;
+    }
+    .phone.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+      .mat-form-field-outline-gap {
+      border-top-color: inherit;
+    }
+  }
+
+  .container {
+    width: 360px;
+    display: grid;
+    margin: 0 auto;
+    padding: 16px 16px;
+
+    > span {
+      text-align: center;
+      color: $color-dark-3;
+    }
+
+    form {
+      text-align: center;
+      > * {
+        width: 320px;
+      }
+
+      .phone {
+        input {
+          text-indent: 34px;
+        }
+        .prefix {
+          top: 16px;
+          position: absolute;
+          left: 0;
+          color: $color-dark-3;
+        }
+      }
+
+      button {
+        height: 56px;
+      }
+
+      .error {
+        display: inline-block;
+        color: $error;
+      }
+
+      .terms {
+        display: inline-block;
+        color: $color-dark-4;
+
+        a {
+          color: $color-dark-4;
+          text-decoration: none;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

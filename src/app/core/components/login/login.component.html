@@ -1,3 +1,69 @@
-<p>login works!</p>
+<div class="content-scrollable">
+  <div class="container">
+    <img class="logo" src="../../../../assets/logo.png" />
+    <br />
+    <span>Please confirm your information and tab Next.</span>
+    <span>You will receive account verification code shortly.</span>
+    <br />
+    <form #loginform="ngForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Full name</mat-label>
+        <input
+          matInput
+          type="text"
+          name="name"
+          placeholder="Full name"
+          pattern="^[A-Za-z][A-Za-z\'\-\.]+([\ A-Za-z][A-Za-z\'\-\.]+)*"
+          required
+          ngModel
+        />
+      </mat-form-field>
 
-<button (click)="login()">Login</button>
+      <mat-form-field appearance="outline" class="phone">
+        <mat-label>Phone number</mat-label>
+        <input
+          matInput
+          type="text"
+          name="phone"
+          placeholder="Phone number"
+          pattern="^1[0-9]{8,9}$"
+          required
+          ngModel
+        />
+        <span class="prefix">+60&nbsp;</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="text"
+          name="email"
+          placeholder="Email"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          required
+          ngModel
+        />
+      </mat-form-field>
+
+      <p class="error"></p>
+
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="login()"
+        [disabled]="!loginform.form.valid"
+      >
+        Sginup
+      </button>
+
+      <p class="terms">
+        By sgining up, you agree to our
+        <a href="https://www.google.com/">Terms</a> &
+        <a href="https://www.google.com/">Privacy Policy</a>.
+      </p>
+
+      <button mat-button color="primary">Have an account? Sign in</button>
+    </form>
+  </div>
+</div>
