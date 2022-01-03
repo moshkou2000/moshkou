@@ -56,6 +56,23 @@
       >
         Sginup
       </button>
+    </form>
+
+    <div class="other">
+      <div class="or">
+        <mat-divider></mat-divider>
+        <span>OR</span>
+      </div>
+
+      <button mat-flat-button color="accent" (click)="loginWithTwitter()">
+        Sgin up with Twitter
+      </button>
+
+      <p></p>
+
+      <button mat-flat-button color="warn" (click)="loginWithGoogle()">
+        Sgin up with Google
+      </button>
 
       <p class="terms">
         By sgining up, you agree to our
@@ -64,6 +81,6 @@
       </p>
 
       <button mat-button color="primary">Have an account? Sign in</button>
-    </form>
+    </div>
   </div>
 </div>

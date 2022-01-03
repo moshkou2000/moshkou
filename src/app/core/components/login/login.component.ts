@@ -18,4 +18,7 @@ export class LoginComponent implements OnInit {
     );
     this.service.navigate(['']);
   }
+
+  loginWithTwitter(): void {}
+  loginWithGoogle(): void {}
 }
