@@ -59,6 +59,24 @@ export const APP_ROUTES: Routes = [
     data: {},
   },
   {
+    path: 'register',
+    loadChildren: () =>
+      import('../components/register/register.module').then(
+        (m) => m.RegisterModule
+      ),
+    canActivate: [UnauthGuard],
+    data: {},
+  },
+  {
+    path: 'verification',
+    loadChildren: () =>
+      import('../components/verification/verification.module').then(
+        (m) => m.VerificationModule
+      ),
+    canActivate: [UnauthGuard],
+    data: {},
+  },
+  {
     path: 'tips',
     loadChildren: () =>
       import('../components/tips/tips.module').then((m) => m.TipsModule),

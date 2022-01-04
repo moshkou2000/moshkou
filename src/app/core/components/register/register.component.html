@@ -1,1 +1,92 @@
-<p>register works!</p>
+<div class="content-scrollable">
+  <div class="container">
+    <img class="logo" src="../../../../assets/logo.png" />
+    <br />
+    <span>Please confirm your information then tab Sginup.</span>
+    <span>You will receive account verification email shortly.</span>
+    <br />
+    <form #registerForm="ngForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Full name</mat-label>
+        <input
+          matInput
+          type="text"
+          name="name"
+          placeholder="Full name"
+          pattern="^[A-Za-z][A-Za-z\'\-\.]+([\ A-Za-z][A-Za-z\'\-\.]+)*"
+          required
+          ngModel
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="phone">
+        <mat-label>Phone number</mat-label>
+        <input
+          matInput
+          type="text"
+          name="phone"
+          placeholder="Phone number"
+          pattern="^1[0-9]{8,9}$"
+          required
+          ngModel
+        />
+        <span class="prefix">+60&nbsp;</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="text"
+          name="email"
+          placeholder="Email"
+          pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          required
+          ngModel
+        />
+      </mat-form-field>
+
+      <p *ngIf="error" class="error">{{ error }}</p>
+
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="register()"
+        [disabled]="!registerForm.form.valid"
+        style="margin-top: 4px"
+      >
+        Sginup
+      </button>
+    </form>
+
+    <div class="other">
+      <div class="or">
+        <mat-divider></mat-divider>
+        <span>OR</span>
+      </div>
+
+      <button
+        mat-flat-button
+        color="accent"
+        (click)="registerWithTwitter()"
+        style="margin-bottom: 8px"
+      >
+        Sgin up with Twitter
+      </button>
+
+      <button mat-flat-button color="warn" (click)="registerWithGoogle()">
+        Sgin up with Google
+      </button>
+
+      <p class="terms">
+        By sgining up, you agree to our
+        <a href="https://www.google.com/" target="blank">Terms</a> &
+        <a href="https://www.google.com/" target="blank">Privacy Policy</a>.
+      </p>
+
+      <button mat-button color="primary" (click)="login()">
+        Have an account? Sign in
+      </button>
+    </div>
+  </div>
+</div>

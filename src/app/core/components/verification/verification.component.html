@@ -1,0 +1,41 @@
+<div class="content-scrollable">
+  <div class="container">
+    <img class="logo" src="../../../../assets/logo.png" />
+    <br />
+    <span>Just to make sure the account belonngs to you.</span>
+    <span>We have sent you account verification code.</span>
+    <br />
+    <form #verificationForm="ngForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Verification Code</mat-label>
+        <input
+          matInput
+          type="text"
+          name="verificationCode"
+          placeholder="Verification Code"
+          pattern="^[0-9]{6}$"
+          required
+          ngModel
+        />
+      </mat-form-field>
+
+      <p *ngIf="error" class="error">{{ error }}</p>
+
+      <button
+        mat-flat-button
+        color="accent"
+        (click)="verify(verificationForm.form)"
+        [disabled]="!verificationForm.form.valid"
+        style="margin-top: 4px"
+      >
+        Verify
+      </button>
+    </form>
+
+    <br /><br /><br />
+
+    <span
+      >Thanks for helping us to secure account from unauthorized access!.</span
+    >
+  </div>
+</div>

@@ -27,7 +27,7 @@ export class DatatableToolbarComponent implements OnInit {
 
   toggleFullscreen(): void {
     this.toolbar?.toggleFullscreen();
-    Util.toggleFullscreen(CONSTANT_STRINIG.datatable_id);
+    Util.toggleFullscreen(CONSTANT_STRINIG.datatableId);
     this.sidenavService.set(false);
   }
 

@@ -7,22 +7,21 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-import { RegisterRoutingModule } from './register-routing.module';
-import { RegisterComponent } from './register.component';
+import { VerificationComponent } from './verification.component';
+import { VerificationRoutingModule } from './verification-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    RegisterRoutingModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatInputModule,
+    MatButtonModule,
     MatDividerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    VerificationRoutingModule,
+    ReactiveFormsModule,
   ],
-  declarations: [RegisterComponent],
+  declarations: [VerificationComponent],
 })
-export class RegisterModule {}
+export class VerificationModule {}

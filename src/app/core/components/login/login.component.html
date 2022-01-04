@@ -2,37 +2,10 @@
   <div class="container">
     <img class="logo" src="../../../../assets/logo.png" />
     <br />
-    <span>Please confirm your information and tab Next.</span>
+    <span>Please confirm your email address then tab Next.</span>
     <span>You will receive account verification code shortly.</span>
     <br />
-    <form #loginform="ngForm">
-      <mat-form-field appearance="outline">
-        <mat-label>Full name</mat-label>
-        <input
-          matInput
-          type="text"
-          name="name"
-          placeholder="Full name"
-          pattern="^[A-Za-z][A-Za-z\'\-\.]+([\ A-Za-z][A-Za-z\'\-\.]+)*"
-          required
-          ngModel
-        />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" class="phone">
-        <mat-label>Phone number</mat-label>
-        <input
-          matInput
-          type="text"
-          name="phone"
-          placeholder="Phone number"
-          pattern="^1[0-9]{8,9}$"
-          required
-          ngModel
-        />
-        <span class="prefix">+60&nbsp;</span>
-      </mat-form-field>
-
+    <form #loginForm="ngForm">
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input
@@ -42,19 +15,20 @@
           placeholder="Email"
           pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           required
-          ngModel
+          [(ngModel)]="email"
         />
       </mat-form-field>
 
-      <p class="error"></p>
+      <p *ngIf="error" class="error">{{ error }}</p>
 
       <button
         mat-flat-button
         color="primary"
         (click)="login()"
-        [disabled]="!loginform.form.valid"
+        [disabled]="!loginForm.form.valid"
+        style="margin-top: 4px"
       >
-        Sginup
+        Next
       </button>
     </form>
 
@@ -64,23 +38,24 @@
         <span>OR</span>
       </div>
 
-      <button mat-flat-button color="accent" (click)="loginWithTwitter()">
-        Sgin up with Twitter
+      <button
+        mat-flat-button
+        color="accent"
+        (click)="loginWithTwitter()"
+        style="margin-bottom: 8px"
+      >
+        Sgin in with Twitter
+      </button>
+
+      <button mat-flat-button color="warn" (click)="loginWithGoogle()">
+        Sgin in with Google
       </button>
 
       <p></p>
 
-      <button mat-flat-button color="warn" (click)="loginWithGoogle()">
-        Sgin up with Google
+      <button mat-button color="primary" (click)="register()">
+        Don't have an account? Sign up
       </button>
-
-      <p class="terms">
-        By sgining up, you agree to our
-        <a href="https://www.google.com/">Terms</a> &
-        <a href="https://www.google.com/">Privacy Policy</a>.
-      </p>
-
-      <button mat-button color="primary">Have an account? Sign in</button>
     </div>
   </div>
 </div>

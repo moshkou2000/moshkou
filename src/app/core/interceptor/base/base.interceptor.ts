@@ -33,32 +33,33 @@ export class BaseInterceptor implements HttpInterceptor {
         if (data instanceof HttpResponse) {
           data = data.clone({
             body: Temp.modifyGithubResponse(data),
+            // body: new ResponseModel(data)
           });
         }
         return data;
       }),
       catchError((error) => {
         if ([401, 403].includes(error.status)) {
-          !environment.production &&
-            this.snackbar.openFromComponent(SnackbarComponent, {
-              data: 'The authentication session has expired. please sign-in again.',
-              duration: 3000,
-              horizontalPosition: 'center',
-              verticalPosition: 'top',
-            });
+          this.snackbar.openFromComponent(SnackbarComponent, {
+            data: 'The authentication session has expired. please Sign in again.',
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          });
 
           Util.clear();
           this.router.navigate(['/login']);
         }
 
         return throwError(new ResponseModel(error));
-      }),
-      finalize(() => {
-        const elapsed = Date.now() - started;
-        const msg = `${request.method} ${request.url} ${request.params} ${elapsed} ms.`;
-        !environment.production &&
-          console.log('::BaseInterceptor: ', msg, request);
       })
+      // finalize(() => {
+      //   if (!environment.production) {
+      //     const elapsed = Date.now() - started;
+      //     const msg = `${request.method} ${request.url} ${request.params} ${elapsed} ms.`;
+      //     console.log('::BaseInterceptor: ', msg, request);
+      //   }
+      // })
     );
   }
 }

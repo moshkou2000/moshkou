@@ -8,6 +8,7 @@ import {
 import { Observable, Subscription } from 'rxjs';
 import { GetArguments, NavigationArguments } from '../arguments/arguments';
 import { SampleService } from './sample/sample.service';
+import { UserService } from './user/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,11 @@ import { SampleService } from './sample/sample.service';
 export class Services implements IServices, OnDestroy {
   routerSubscription: Subscription | undefined;
 
-  constructor(private sampleService: SampleService, private router: Router) {}
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private sampleService: SampleService
+  ) {}
 
   ngOnDestroy(): void {
     if (this.routerSubscription) {
@@ -50,6 +55,37 @@ export class Services implements IServices, OnDestroy {
     });
   }
 
+  getCurrentNavigationExtras(): NavigationExtras | undefined {
+    return this.router.getCurrentNavigation()?.extras;
+  }
+
+  /* 
+    UserService
+  */
+  login(body: any): Observable<any> {
+    return this.userService.login(body);
+  }
+
+  register(body: any): Observable<any> {
+    return this.userService.register(body);
+  }
+
+  verify(body: any): Observable<any> {
+    return this.userService.verify(body);
+  }
+
+  confirm(body: any): Observable<any> {
+    return this.userService.confirm(body);
+  }
+
+  getProfile(): Observable<any> {
+    return this.userService.getProfile();
+  }
+
+  updateProfile(body: any): Observable<any> {
+    return this.userService.updateProfile(body);
+  }
+
   /* 
     SampleService
   */
@@ -82,6 +118,14 @@ export abstract class IServices {
     extras?: NavigationExtras | undefined
   ): Promise<boolean>;
   abstract navigation(args: NavigationArguments): void;
+  abstract getCurrentNavigationExtras(): any;
+
+  abstract login(body: any): Observable<any>;
+  abstract register(body: any): Observable<any>;
+  abstract verify(body: any): Observable<any>;
+  abstract confirm(body: any): Observable<any>;
+  abstract getProfile(): Observable<any>;
+  abstract updateProfile(body: any): Observable<any>;
 
   abstract postSample(body: any): Observable<any>;
   abstract getSample(arg: GetArguments): Observable<any>;

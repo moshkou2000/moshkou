@@ -1,10 +1,11 @@
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { BottomSheetComponent } from 'src/app/shared/bottom-sheet/bottom-sheet.component';
 import { IToolbarButton } from 'src/app/shared/datatable/datatable-toolbar/datatable-toolbar.interface';
 import { DialogArguments } from '../arguments/arguments';
 import { INITIIAL_ROUTE } from '../constants/app-routes';
 import { BREADCRUMBS } from '../constants/breadcrumbs';
+import { CONSTANT_REGEXP } from '../constants/constant_regexp';
 import { KEY } from '../constants/key';
 import { MAINNAV_ITEMS } from '../constants/mainnav_items';
 import { SIDENAV_ITEMS } from '../constants/sidenav_items';
@@ -173,5 +174,20 @@ export class Util {
       location = location.substring(1);
     }
     return location;
+  }
+
+  /*
+    validation
+  */
+  static isEmail(email?: string): boolean {
+    return email ? CONSTANT_REGEXP.email.test(email) : false;
+  }
+
+  static isPhone(phone?: string): boolean {
+    return phone ? CONSTANT_REGEXP.phone.test(phone) : false;
+  }
+
+  static isFullName(fullName?: string): boolean {
+    return fullName ? CONSTANT_REGEXP.fullName.test(fullName) : false;
   }
 }

@@ -23,7 +23,16 @@ export class UnauthGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (!Util.user) {
-      return true;
+      if (route.routeConfig?.path === 'verification') {
+        const email: string | undefined =
+          this.service.getCurrentNavigationExtras()?.state?.email;
+        const isEmail: boolean | undefined = Util.isEmail(email);
+        if (isEmail) {
+          return true;
+        }
+      } else {
+        return true;
+      }
     }
 
     return this.service.navigate(['/home']);
