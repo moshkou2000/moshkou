@@ -2,19 +2,19 @@
   <div class="container">
     <img class="logo" src="../../../../assets/logo.png" />
     <br />
-    <span>Just to make sure the account belonngs to you.</span>
-    <span>We have sent you account verification code to {{ email }}</span>
+    <span>Just to make sure the email belonngs to you.</span>
+    <span>We have sent you account confirmation code to {{ email }}</span>
     <br />
-    <form #verificationForm="ngForm">
+    <form #confirmationForm="ngForm">
       <mat-form-field appearance="outline">
         <input
           matInput
           type="text"
-          name="verificationCode"
+          name="confirmationCode"
           maxlength="6"
           pattern="[a-zA-Z0-9]{6}"
           required
-          [(ngModel)]="verificationCode"
+          [(ngModel)]="confirmationCode"
         />
       </mat-form-field>
 
@@ -23,11 +23,11 @@
       <button
         mat-flat-button
         color="accent"
-        (click)="verify()"
-        [disabled]="disabled || !verificationForm.form.valid"
+        (click)="confirm()"
+        [disabled]="disabled || !confirmationForm.form.valid"
         style="margin-top: 4px"
       >
-        Verify
+        confirm
       </button>
     </form>
 

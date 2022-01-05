@@ -25,7 +25,7 @@ export class UnauthGuard implements CanActivate {
     if (!Util.user) {
       if (route.routeConfig?.path === 'verification') {
         const email: string | undefined =
-          this.service.getCurrentNavigationExtras()?.state?.email;
+          this.service.getCurrentNavigationExtras()?.email;
         const isEmail: boolean | undefined = Util.isEmail(email);
         if (isEmail) {
           return true;

@@ -1,26 +1,31 @@
+import { CONSTANT_STRINIG } from '../constants/constant_string';
+
 export class ResponseBodyModel {
-  public success: boolean | undefined;
+  public success: boolean = false;
   public code: number | undefined;
   public message: string | undefined;
   public result: any | undefined;
   public pagination: [string] | undefined;
 
   constructor(response: any) {
-    if (response) {
-      if (response.body) {
-        if (response.body.success) this.success = response.body.success;
-        if (response.body.code) this.code = response.body.code;
-        if (response.body.result) this.result = response.body.result;
-        if (response.body.message) this.message = response.body.message;
-        if (response.body.pagination)
-          this.pagination = response.body.pagination;
-      } else if (response.error) {
+    console.log(response);
+
+    if (!response.ok) {
+      if (response.status === 0) {
+        this.message = CONSTANT_STRINIG.serviceIsUnavailable;
+      } else {
         this.message = response.error.message
           ? response.error.message
-          : 'service is unavailable at the moment';
+          : response.message
+          ? response.message
+          : CONSTANT_STRINIG.serviceIsUnavailable;
       }
     } else {
-      this.result = response;
+      this.success = response.body.success;
+      this.code = response.body.code;
+      this.result = response.body.result;
+      this.message = response.body.message;
+      this.pagination = response.body.pagination;
     }
   }
 }

@@ -31,17 +31,21 @@ export class Services implements IServices, OnDestroy {
   /* 
     Router
   */
-  navigate(
-    route: string[],
-    extras?: NavigationExtras | undefined
-  ): Promise<boolean> {
+  navigate(route: string[], data?: any): Promise<boolean> {
+    const extras: NavigationExtras | undefined = data
+      ? {
+          state: data,
+        }
+      : undefined;
     return this.router.navigate(route, extras);
   }
 
-  navigateByUrl(
-    route: string,
-    extras?: NavigationExtras | undefined
-  ): Promise<boolean> {
+  navigateByUrl(route: string, data?: any): Promise<boolean> {
+    const extras: NavigationExtras | undefined = data
+      ? {
+          state: data,
+        }
+      : undefined;
     return this.router.navigateByUrl(route, extras);
   }
 
@@ -55,8 +59,8 @@ export class Services implements IServices, OnDestroy {
     });
   }
 
-  getCurrentNavigationExtras(): NavigationExtras | undefined {
-    return this.router.getCurrentNavigation()?.extras;
+  getCurrentNavigationExtras(): any | undefined {
+    return this.router.getCurrentNavigation()?.extras?.state;
   }
 
   /* 
@@ -109,16 +113,10 @@ export class Services implements IServices, OnDestroy {
 }
 
 export abstract class IServices {
-  abstract navigate(
-    route: string[],
-    extras?: NavigationExtras | undefined
-  ): Promise<boolean>;
-  abstract navigateByUrl(
-    route: string,
-    extras?: NavigationExtras | undefined
-  ): Promise<boolean>;
+  abstract navigate(route: string[], data?: any): Promise<boolean>;
+  abstract navigateByUrl(route: string, data?: any): Promise<boolean>;
   abstract navigation(args: NavigationArguments): void;
-  abstract getCurrentNavigationExtras(): any;
+  abstract getCurrentNavigationExtras(): any | undefined;
 
   abstract login(body: any): Observable<any>;
   abstract register(body: any): Observable<any>;

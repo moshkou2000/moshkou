@@ -77,6 +77,15 @@ export const APP_ROUTES: Routes = [
     data: {},
   },
   {
+    path: 'confirmation',
+    loadChildren: () =>
+      import('../components/confirmation/confirmation.module').then(
+        (m) => m.ConfirmationModule
+      ),
+    canActivate: [UnauthGuard],
+    data: {},
+  },
+  {
     path: 'tips',
     loadChildren: () =>
       import('../components/tips/tips.module').then((m) => m.TipsModule),

@@ -3,13 +3,14 @@ import { ResponseModel } from '../../models/response.model';
 import { IServices } from '../../services/services.service';
 
 @Component({
-  selector: 'app-verification',
-  templateUrl: './verification.component.html',
-  styleUrls: ['./verification.component.scss'],
+  selector: 'app-confirmation',
+  templateUrl: './confirmation.component.html',
+  styleUrls: ['./confirmation.component.scss'],
 })
-export class VerificationComponent implements OnInit {
-  verificationCode: string | undefined;
+export class ConfirmationComponent implements OnInit {
+  confirmationCode: string | undefined;
   email: string | undefined;
+  token: string | undefined;
   error: string | undefined;
   disabled: boolean = false;
 
@@ -19,10 +20,14 @@ export class VerificationComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  verify(): void {
+  confirm(): void {
     this.disabled = true;
     this.service
-      .verify({ email: this.email, verificationCode: this.verificationCode })
+      .confirm({
+        email: this.email,
+        token: this.token,
+        confirmationCode: this.confirmationCode,
+      })
       .subscribe((data: ResponseModel) => {
         this.disabled = false;
         if (data.ok && data.body.success) {

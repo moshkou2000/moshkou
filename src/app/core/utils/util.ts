@@ -1,8 +1,10 @@
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BottomSheetComponent } from 'src/app/shared/bottom-sheet/bottom-sheet.component';
 import { IToolbarButton } from 'src/app/shared/datatable/datatable-toolbar/datatable-toolbar.interface';
-import { DialogArguments } from '../arguments/arguments';
+import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
+import { DialogArguments, SnackbarArguments } from '../arguments/arguments';
 import { INITIIAL_ROUTE } from '../constants/app-routes';
 import { BREADCRUMBS } from '../constants/breadcrumbs';
 import { CONSTANT_REGEXP } from '../constants/constant_regexp';
@@ -86,6 +88,16 @@ export class Util {
         }
       }
     }
+  }
+
+  // open snackbar
+  static openSnackbar(args: SnackbarArguments) {
+    args.snackbar.openFromComponent(SnackbarComponent, {
+      data: args.data,
+      duration: args.duration ?? 3000,
+      horizontalPosition: args.horizontalPosition ?? 'center',
+      verticalPosition: args.verticalPosition ?? 'top',
+    });
   }
 
   // open BottomSheet

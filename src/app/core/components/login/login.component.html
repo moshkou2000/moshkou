@@ -25,7 +25,7 @@
         mat-flat-button
         color="primary"
         (click)="login()"
-        [disabled]="!loginForm.form.valid"
+        [disabled]="disabled || !loginForm.form.valid"
         style="margin-top: 4px"
       >
         Next

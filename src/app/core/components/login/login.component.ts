@@ -10,20 +10,24 @@ import { IServices } from '../../services/services.service';
 export class LoginComponent implements OnInit {
   email: string | undefined;
   error: string | undefined;
+  disabled: boolean = false;
 
   constructor(private service: IServices) {}
 
   ngOnInit(): void {}
 
   login(): void {
+    this.disabled = true;
     this.service
       .login({ email: this.email })
       .subscribe((data: ResponseModel) => {
+        this.disabled = false;
         if (data.ok && data.body.success) {
-          this.service.navigate(['/verification'], {
-            state: { email: this.email },
-          });
+          this.service.navigate(['/verification'], { email: this.email });
         } else {
+          // TODO: remove this line when the backend is ready
+          this.service.navigate(['/verification'], { email: this.email });
+
           this.error = data.body.message;
         }
       });

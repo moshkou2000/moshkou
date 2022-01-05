@@ -15,7 +15,7 @@
           placeholder="Full name"
           pattern="^[A-Za-z][A-Za-z\'\-\.]+([\ A-Za-z][A-Za-z\'\-\.]+)*"
           required
-          ngModel
+          [(ngModel)]="fullName"
         />
       </mat-form-field>
 
@@ -28,7 +28,7 @@
           placeholder="Phone number"
           pattern="^1[0-9]{8,9}$"
           required
-          ngModel
+          [(ngModel)]="phone"
         />
         <span class="prefix">+60&nbsp;</span>
       </mat-form-field>
@@ -42,7 +42,7 @@
           placeholder="Email"
           pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           required
-          ngModel
+          [(ngModel)]="email"
         />
       </mat-form-field>
 
@@ -52,7 +52,7 @@
         mat-flat-button
         color="primary"
         (click)="register()"
-        [disabled]="!registerForm.form.valid"
+        [disabled]="disabled || !registerForm.form.valid"
         style="margin-top: 4px"
       >
         Sginup

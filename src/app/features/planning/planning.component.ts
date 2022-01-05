@@ -23,7 +23,6 @@ import {
   Options,
 } from 'src/app/shared/notification/notification.model';
 import { NotificationService } from 'src/app/shared/notification/notification.service';
-import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
 import { ViewStatesModel } from 'src/app/shared/view-states/view-states.model';
 import { environment } from 'src/environments/environment';
@@ -144,20 +143,17 @@ export class PlanningComponent implements OnInit, OnDestroy {
             // it is an example
             this.removeNotification();
           } else {
-            !environment.production &&
-              this.snackbar.openFromComponent(SnackbarComponent, {
-                data: {
-                  message: 'This snakbar message.',
-                  action: 'Undo',
-                  actionClick: () => {
-                    console.log('SettingsComponent.Snackbar.clicked');
-                    this.removeNotification();
-                  },
+            Util.openSnackbar({
+              snackbar: this.snackbar,
+              duration: 399000,
+              data: {
+                message: 'This snakbar message.',
+                action: 'Undo',
+                actionClick: () => {
+                  console.log('SettingsComponent.Snackbar.clicked');
                 },
-                duration: 399000,
-                horizontalPosition: 'center',
-                verticalPosition: 'top',
-              });
+              },
+            });
           }
         }
 
@@ -201,7 +197,9 @@ export class PlanningComponent implements OnInit, OnDestroy {
           title: 'Delete',
           click: function () {
             // TODO: do your action
-            that.snackbar.openFromComponent(SnackbarComponent, {
+            Util.openSnackbar({
+              snackbar: that.snackbar,
+              duration: 399000,
               data: {
                 message: 'This snakbar message.',
                 action: 'Undo',
@@ -209,9 +207,6 @@ export class PlanningComponent implements OnInit, OnDestroy {
                   console.log('SettingsComponent.Snackbar.clicked');
                 },
               },
-              duration: 399000,
-              horizontalPosition: 'center',
-              verticalPosition: 'top',
             });
 
             dialogRef.close();

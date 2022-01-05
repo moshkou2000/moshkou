@@ -11,7 +11,6 @@ import { Subscription } from 'rxjs';
 import { AnnouncementModel } from 'src/app/shared/announcement/announcement.model';
 import { AnnouncementService } from 'src/app/shared/announcement/announcement.service';
 import { ConfirmationComponent } from 'src/app/shared/confirmation/confirmation.component';
-import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
 
 import { environment } from '../../../../environments/environment';
 
@@ -21,6 +20,7 @@ import {
 } from '../../../shared/notification/notification.model';
 import { NotificationService } from '../../../shared/notification/notification.service';
 import { STATUS_LEVEL } from '../../constants/status-level';
+import { Util } from '../../utils/util';
 
 @Component({
   selector: 'app-settings',
@@ -78,19 +78,16 @@ export class SettingsComponent implements AfterViewInit, OnDestroy {
             // it is an example
             this.removeNotification();
           } else {
-            !environment.production &&
-              this.snackbar.openFromComponent(SnackbarComponent, {
-                data: {
-                  message: 'This snakbar message.',
-                  action: 'Undo',
-                  actionClick: () => {
-                    console.log('SettingsComponent.Snackbar.clicked');
-                  },
+            Util.openSnackbar({
+              snackbar: this.snackbar,
+              data: {
+                message: 'This snakbar message.',
+                action: 'Undo',
+                actionClick: () => {
+                  console.log('SettingsComponent.Snackbar.clicked');
                 },
-                duration: 399000,
-                horizontalPosition: 'center',
-                verticalPosition: 'top',
-              });
+              },
+            });
           }
         }
 

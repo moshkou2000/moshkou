@@ -2,6 +2,11 @@ import { ComponentType } from '@angular/cdk/portal';
 import { ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import {
+  MatSnackBar,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+import {
   IToolbarButton,
   IToolbarButtonsName,
 } from 'src/app/shared/datatable/datatable-toolbar/datatable-toolbar.interface';
@@ -68,4 +73,13 @@ export type DialogArguments = {
   data?: any;
   onClosed?: Function;
   element?: ElementRef;
+};
+
+export type SnackbarArguments = {
+  snackbar: MatSnackBar;
+  component?: ComponentType<any>;
+  data: any;
+  duration?: number;
+  horizontalPosition?: MatSnackBarHorizontalPosition | undefined;
+  verticalPosition?: MatSnackBarVerticalPosition | undefined;
 };
