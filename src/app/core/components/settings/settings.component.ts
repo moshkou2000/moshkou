@@ -59,9 +59,7 @@ export class SettingsComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.confirmationSubscription) {
-      this.confirmationSubscription.unsubscribe();
-    }
+    this.confirmationSubscription?.unsubscribe();
   }
 
   generateNotification(): void {
@@ -99,10 +97,7 @@ export class SettingsComponent implements AfterViewInit, OnDestroy {
 
   removeNotification(): void {
     this.notificationService.remove();
-
-    if (this.notificationOptionSubscription) {
-      this.notificationOptionSubscription.unsubscribe();
-    }
+    this.notificationOptionSubscription?.unsubscribe();
   }
 
   generateAnnouncement(): void {
@@ -111,10 +106,7 @@ export class SettingsComponent implements AfterViewInit, OnDestroy {
 
   removeAnnouncement(): void {
     this.announcementService.remove();
-
-    if (this.announcementOptionSubscription) {
-      this.announcementOptionSubscription.unsubscribe();
-    }
+    this.announcementOptionSubscription?.unsubscribe();
   }
 
   generateDialog(): void {

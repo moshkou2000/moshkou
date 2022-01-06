@@ -26,9 +26,7 @@ export class NotificationComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    this.subscription?.unsubscribe();
   }
 
   notificationClick(notification_id: string, option: Options): void {

@@ -141,6 +141,15 @@ body {
 }
 
 /*
+  hyperlink
+*/
+.hyperlink {
+  color: $info !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*
   scrollbar
 */
 *::-webkit-scrollbar {

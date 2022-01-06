@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { VerificationComponent } from './verification.component';
 import { VerificationRoutingModule } from './verification-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { VerificationRoutingModule } from './verification-routing.module';
     MatInputModule,
     VerificationRoutingModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   declarations: [VerificationComponent],
 })

@@ -165,10 +165,7 @@ export class PlanningComponent implements OnInit, OnDestroy {
 
   removeNotification(): void {
     this.notificationService.remove();
-
-    if (this.notificationOptionSubscription) {
-      this.notificationOptionSubscription.unsubscribe();
-    }
+    this.notificationOptionSubscription?.unsubscribe();
   }
 
   /*

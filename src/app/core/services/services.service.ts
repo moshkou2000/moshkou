@@ -23,9 +23,7 @@ export class Services implements IServices, OnDestroy {
   ) {}
 
   ngOnDestroy(): void {
-    if (this.routerSubscription) {
-      this.routerSubscription.unsubscribe();
-    }
+    this.routerSubscription?.unsubscribe();
   }
 
   /* 

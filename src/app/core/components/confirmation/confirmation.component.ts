@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TimerArguments } from '../../arguments/arguments';
 import { ResponseModel } from '../../models/response.model';
 import { IServices } from '../../services/services.service';
 
@@ -13,6 +14,8 @@ export class ConfirmationComponent implements OnInit {
   token: string | undefined;
   error: string | undefined;
   disabled: boolean = false;
+  timerArgs: TimerArguments = { minute: 2 };
+  canResend: boolean = false;
 
   constructor(private service: IServices) {
     this.email = this.service.getCurrentNavigationExtras()?.email;
@@ -47,5 +50,13 @@ export class ConfirmationComponent implements OnInit {
           this.error = data.body.message;
         }
       });
+  }
+
+  resend(): void {
+    this.canResend = false;
+  }
+
+  timerStopped(): void {
+    this.canResend = true;
   }
 }

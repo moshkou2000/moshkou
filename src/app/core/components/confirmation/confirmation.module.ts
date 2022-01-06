@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { ConfirmationComponent } from './confirmation.component';
 import { ConfirmationRoutingModule } from './confirmation-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { ConfirmationRoutingModule } from './confirmation-routing.module';
     MatInputModule,
     ConfirmationRoutingModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   declarations: [ConfirmationComponent],
 })

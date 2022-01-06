@@ -24,6 +24,7 @@ import { ViewStatesComponent } from './view-states/view-states.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { MainnavComponent } from './mainnav/mainnav.component';
+import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MainnavComponent } from './mainnav/mainnav.component';
     SidenavComponent,
     SidenavInfoComponent,
     StarRatingComponent,
+    TimerComponent,
     ViewStatesComponent,
   ],
   imports: [
@@ -65,6 +67,7 @@ import { MainnavComponent } from './mainnav/mainnav.component';
     SidenavComponent,
     SidenavInfoComponent,
     StarRatingComponent,
+    TimerComponent,
     ViewStatesComponent,
   ],
 })

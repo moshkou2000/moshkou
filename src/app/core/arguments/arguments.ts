@@ -83,3 +83,9 @@ export type SnackbarArguments = {
   horizontalPosition?: MatSnackBarHorizontalPosition | undefined;
   verticalPosition?: MatSnackBarVerticalPosition | undefined;
 };
+
+export type TimerArguments = {
+  second?: number;
+  minute?: number;
+  hour?: number;
+};

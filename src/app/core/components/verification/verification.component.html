@@ -29,6 +29,20 @@
       >
         Verify
       </button>
+
+      <br /><br />
+
+      <span *ngIf="!canResend"
+        >You can request a code in
+        <app-timer
+          [args]="timerArgs"
+          (timerStopped)="timerStopped()"
+        ></app-timer
+      ></span>
+      <span *ngIf="canResend"
+        >Click <span class="hyperlink" (click)="resend()">here</span> to send
+        you verification code.</span
+      >
     </form>
 
     <br /><br /><br />

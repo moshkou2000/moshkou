@@ -71,8 +71,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
-    if (this.sidenavSubscription) {
-      this.sidenavSubscription.unsubscribe();
-    }
+    this.sidenavSubscription?.unsubscribe();
   }
 }
