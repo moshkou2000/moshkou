@@ -1,0 +1,31 @@
+<div class="content-scrollable">
+  <div class="container">
+    <img class="logo" src="../../../../assets/logo.png" />
+    <h2>Oops!!!</h2>
+    <span
+      >Your credentials did not work, the credential that were used to access to
+      the user data and servicess.</span
+    >
+    <br />
+    <span>For security reasons you need to Sign in.</span>
+    <br />
+    <form #verificationForm="ngForm">
+      <p *ngIf="error" class="error">{{ error }}</p>
+
+      <button
+        mat-flat-button
+        color="accent"
+        (click)="login()"
+        style="margin-top: 4px"
+      >
+        Sign in
+      </button>
+    </form>
+
+    <br /><br /><br />
+
+    <span
+      >Thanks for helping us to secure account from unauthorized access!</span
+    >
+  </div>
+</div>

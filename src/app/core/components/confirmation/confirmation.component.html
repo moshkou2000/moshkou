@@ -14,6 +14,7 @@
           maxlength="6"
           pattern="[a-zA-Z0-9]{6}"
           required
+          [disabled]="disabledForm"
           [(ngModel)]="confirmationCode"
         />
       </mat-form-field>

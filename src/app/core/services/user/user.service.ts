@@ -39,6 +39,13 @@ export class UserService {
     );
   }
 
+  prove(body: any): Observable<any> {
+    return this.http.post<any>(TOKENLESS_URL.prove, body).pipe(
+      map((data) => data),
+      catchError((err: any) => observableOf(err))
+    );
+  }
+
   getProfile(): Observable<any> {
     return this.http.get<any>(DEFAULT_URL.profile).pipe(
       map((data) => data),

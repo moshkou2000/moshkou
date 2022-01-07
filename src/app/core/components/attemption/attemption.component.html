@@ -1,0 +1,29 @@
+<div class="content-scrollable">
+  <div class="container">
+    <img class="logo" src="../../../../assets/logo.png" />
+    <h2>We detected an unusual login attempt</h2>
+    <span
+      >To secure your account, we will send you a security code to verify your
+      identity.</span
+    >
+    <br />
+    <form #verificationForm="ngForm">
+      <p *ngIf="error" class="error">{{ error }}</p>
+
+      <button
+        mat-flat-button
+        color="accent"
+        (click)="prove()"
+        style="margin-top: 4px"
+      >
+        Send Security Code
+      </button>
+    </form>
+
+    <br /><br /><br />
+
+    <span
+      >Thanks for helping us to secure account from unauthorized access!</span
+    >
+  </div>
+</div>

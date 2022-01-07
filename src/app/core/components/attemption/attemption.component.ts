@@ -3,28 +3,27 @@ import { ResponseModel } from '../../models/response.model';
 import { IServices } from '../../services/services.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-attemption',
+  templateUrl: './attemption.component.html',
+  styleUrls: ['./attemption.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class AttemptionComponent implements OnInit {
   email: string | undefined;
   error: string | undefined;
   disabled: boolean = false;
-  disabledForm: boolean = false;
 
-  constructor(private service: IServices) {}
+  constructor(private service: IServices) {
+    this.email = this.service.getCurrentNavigationExtras()?.email;
+  }
 
   ngOnInit(): void {}
 
-  login(): void {
+  prove(): void {
     this.disabled = true;
-    this.disabledForm = true;
     this.service
-      .login({ email: this.email })
+      .prove({ email: this.email })
       .subscribe((data: ResponseModel) => {
         this.disabled = false;
-        this.disabledForm = false;
         if (data.ok && data.body.success) {
           this.service.navigate(['/verification'], { email: this.email });
         } else {
@@ -34,10 +33,5 @@ export class LoginComponent implements OnInit {
           this.error = data.body.message;
         }
       });
-  }
-  loginWithTwitter(): void {}
-  loginWithGoogle(): void {}
-  register(): void {
-    this.service.navigate(['/registration']);
   }
 }

@@ -62,7 +62,7 @@ export class Util {
   }
 
   // User
-  static get user(): UserModel {
+  static get user(): UserModel | undefined {
     const user: string | null = localStorage.getItem(KEY.user);
     return user ? JSON.parse(user) : undefined;
   }
@@ -191,6 +191,10 @@ export class Util {
   /*
     validation
   */
+  static isSessionExpired(): boolean {
+    return Util.user?.token === undefined;
+  }
+
   static isEmail(email?: string): boolean {
     return email ? CONSTANT_REGEXP.email.test(email) : false;
   }

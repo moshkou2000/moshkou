@@ -13,7 +13,8 @@ export class VerificationComponent implements OnInit {
   email: string | undefined;
   error: string | undefined;
   disabled: boolean = false;
-  timerArgs: TimerArguments = { minute: 2 };
+  disabledForm: boolean = false;
+  timerArgs: TimerArguments = { second: 2 };
   canResend: boolean = false;
 
   constructor(private service: IServices) {
@@ -24,10 +25,12 @@ export class VerificationComponent implements OnInit {
 
   verify(): void {
     this.disabled = true;
+    this.disabledForm = true;
     this.service
       .verify({ email: this.email, verificationCode: this.verificationCode })
       .subscribe((data: ResponseModel) => {
         this.disabled = false;
+        this.disabledForm = false;
         if (data.ok && data.body.success) {
           localStorage.setItem(
             'hn1363_user',
@@ -48,7 +51,18 @@ export class VerificationComponent implements OnInit {
   }
 
   resend(): void {
-    this.canResend = false;
+    this.service
+      .prove({ email: this.email })
+      .subscribe((data: ResponseModel) => {
+        if (data.ok && data.body.success) {
+          this.canResend = false;
+        } else {
+          // TODO: remove this line when the backend is ready
+          this.canResend = false;
+
+          this.error = data.body.message;
+        }
+      });
   }
 
   timerStopped(): void {

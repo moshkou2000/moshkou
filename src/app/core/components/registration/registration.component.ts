@@ -3,16 +3,17 @@ import { ResponseModel } from '../../models/response.model';
 import { IServices } from '../../services/services.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegistrationComponent implements OnInit {
   fullName: string | undefined;
   phone: string | undefined;
   email: string | undefined;
   error: string | undefined;
   disabled: boolean = false;
+  disabledForm: boolean = false;
 
   constructor(private service: IServices) {}
 
@@ -23,10 +24,12 @@ export class RegisterComponent implements OnInit {
   // 2. confirm
   register(): void {
     this.disabled = true;
+    this.disabledForm = true;
     this.service
       .login({ fullName: this.fullName, phone: this.phone, email: this.email })
       .subscribe((data: ResponseModel) => {
         this.disabled = false;
+        this.disabledForm = false;
         if (data.ok && data.body.success) {
           this.service.navigate(['/confirmation'], {
             email: this.email,

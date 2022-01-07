@@ -7,13 +7,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-import { RegisterRoutingModule } from './register-routing.module';
-import { RegisterComponent } from './register.component';
+import { RegistrationRoutingModule } from './registration-routing.module';
+import { RegistrationComponent } from './registration.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    RegisterRoutingModule,
+    RegistrationRoutingModule,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
@@ -23,6 +23,6 @@ import { RegisterComponent } from './register.component';
     MatInputModule,
     MatDividerModule,
   ],
-  declarations: [RegisterComponent],
+  declarations: [RegistrationComponent],
 })
-export class RegisterModule {}
+export class RegistrationModule {}

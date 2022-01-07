@@ -44,9 +44,8 @@ export class JwtInterceptor implements HttpInterceptor {
     }
 
     if (Object.values(DEFAULT_URL).indexOf(request.url) > -1) {
-      let user: UserModel | undefined = Util.user;
-      if (user && user.token) {
-        headers['Authorization'] = `Bearer ${user.token}`;
+      if (Util.user && Util.user.token) {
+        headers['Authorization'] = `Bearer ${Util.user.token}`;
       }
     }
 

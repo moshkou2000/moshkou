@@ -13,4 +13,5 @@ export const TOKENLESS_URL = {
   verify: `${environment.base_url}auths/verify`,
   register: `${environment.base_url}auths/register`,
   confirm: `${environment.base_url}auths/confirm`,
+  prove: `${environment.base_url}auths/prove`,
 };

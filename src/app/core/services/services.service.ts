@@ -80,6 +80,10 @@ export class Services implements IServices, OnDestroy {
     return this.userService.confirm(body);
   }
 
+  prove(body: any): Observable<any> {
+    return this.userService.prove(body);
+  }
+
   getProfile(): Observable<any> {
     return this.userService.getProfile();
   }
@@ -120,6 +124,7 @@ export abstract class IServices {
   abstract register(body: any): Observable<any>;
   abstract verify(body: any): Observable<any>;
   abstract confirm(body: any): Observable<any>;
+  abstract prove(body: any): Observable<any>;
   abstract getProfile(): Observable<any>;
   abstract updateProfile(body: any): Observable<any>;
 

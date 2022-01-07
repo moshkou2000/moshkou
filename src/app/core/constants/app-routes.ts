@@ -59,10 +59,10 @@ export const APP_ROUTES: Routes = [
     data: {},
   },
   {
-    path: 'register',
+    path: 'registration',
     loadChildren: () =>
-      import('../components/register/register.module').then(
-        (m) => m.RegisterModule
+      import('../components/registration/registration.module').then(
+        (m) => m.RegistrationModule
       ),
     canActivate: [UnauthGuard],
     data: {},
@@ -81,6 +81,24 @@ export const APP_ROUTES: Routes = [
     loadChildren: () =>
       import('../components/confirmation/confirmation.module').then(
         (m) => m.ConfirmationModule
+      ),
+    canActivate: [UnauthGuard],
+    data: {},
+  },
+  {
+    path: 'attemption',
+    loadChildren: () =>
+      import('../components/attemption/attemption.module').then(
+        (m) => m.AttemptionModule
+      ),
+    canActivate: [UnauthGuard],
+    data: {},
+  },
+  {
+    path: 'expiration',
+    loadChildren: () =>
+      import('../components/expiration/expiration.module').then(
+        (m) => m.ExpirationModule
       ),
     canActivate: [UnauthGuard],
     data: {},

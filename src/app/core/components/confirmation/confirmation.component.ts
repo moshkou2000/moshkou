@@ -14,6 +14,7 @@ export class ConfirmationComponent implements OnInit {
   token: string | undefined;
   error: string | undefined;
   disabled: boolean = false;
+  disabledForm: boolean = false;
   timerArgs: TimerArguments = { minute: 2 };
   canResend: boolean = false;
 
@@ -25,6 +26,7 @@ export class ConfirmationComponent implements OnInit {
 
   confirm(): void {
     this.disabled = true;
+    this.disabledForm = true;
     this.service
       .confirm({
         email: this.email,
@@ -33,6 +35,7 @@ export class ConfirmationComponent implements OnInit {
       })
       .subscribe((data: ResponseModel) => {
         this.disabled = false;
+        this.disabledForm = false;
         if (data.ok && data.body.success) {
           localStorage.setItem(
             'hn1363_user',
@@ -53,7 +56,18 @@ export class ConfirmationComponent implements OnInit {
   }
 
   resend(): void {
-    this.canResend = false;
+    this.service
+      .prove({ email: this.email })
+      .subscribe((data: ResponseModel) => {
+        if (data.ok && data.body.success) {
+          this.canResend = false;
+        } else {
+          // TODO: remove this line when the backend is ready
+          this.canResend = false;
+
+          this.error = data.body.message;
+        }
+      });
   }
 
   timerStopped(): void {
