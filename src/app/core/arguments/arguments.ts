@@ -88,4 +88,22 @@ export type TimerArguments = {
   second?: number;
   minute?: number;
   hour?: number;
+  day?: number;
+  month?: number;
+};
+
+export type UserArguments = {
+  _id?: string | undefined;
+  token?: string | undefined;
+  tempToken?: string | undefined;
+  email?: string | undefined;
+  name?: string | undefined;
+  phone?: string | undefined;
+  gender?: string | undefined;
+  dob?: string | undefined;
+  picture?: string | undefined;
+  country?: any | undefined;
+  about_me?: string | undefined;
+  createdAt?: string | undefined;
+  updatedAt?: string | undefined;
 };

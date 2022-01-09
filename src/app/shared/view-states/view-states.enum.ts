@@ -1,4 +1,5 @@
 export enum ViewStates {
+  none,
   busy,
   idle,
   error,
@@ -8,4 +9,8 @@ export enum ViewStates {
   noTask,
   notAvailable,
   offline,
+  attemption,
+  confirmation,
+  expiration,
+  verification,
 }

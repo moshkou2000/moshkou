@@ -22,24 +22,48 @@ export class UnauthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (!Util.user) {
-      if (
-        route.routeConfig?.path === 'verification' ||
-        route.routeConfig?.path === 'confirmation' ||
-        route.routeConfig?.path === 'attemption'
-      ) {
-        const email: string | undefined =
-          this.service.getCurrentNavigationExtras()?.email;
-        const isEmail: boolean = Util.isEmail(email);
-        if (isEmail) {
+    if (Util.isSessionExpired()) {
+      console.log(
+        '::guard',
+        Util.getViewStates()?.state,
+        Util.getViewStates().isNone,
+        Util.getUser(),
+        route.routeConfig?.path
+      );
+
+      if (Util.getViewStates().isNone) {
+        if (
+          route.routeConfig?.path === 'login' ||
+          route.routeConfig?.path === 'registration'
+        ) {
           return true;
         }
-      } else if (route.routeConfig?.path === 'expiration') {
-        const isSessionExpired: boolean = Util.isSessionExpired();
-        if (isSessionExpired) {
-          return true;
+        return this.service.navigate(['/login']);
+      } else if (Util.getViewStates().isVerification) {
+        if (route.routeConfig?.path === 'verification') {
+          if (Util.getUser()?.email !== undefined) return true;
+          Util.clear();
         }
+        return this.service.navigate(['/verification']);
+      } else if (Util.getViewStates().isConfirmation) {
+        if (route.routeConfig?.path === 'confirmation') {
+          if (Util.getUser()?.email !== undefined) return true;
+          Util.clear();
+        }
+        return this.service.navigate(['/registration']);
+      } else if (Util.getViewStates().isAttemption) {
+        if (route.routeConfig?.path === 'attemption') {
+          if (Util.getUser()?.email !== undefined) return true;
+          Util.clear();
+        }
+        return this.service.navigate(['/login']);
+      } else if (Util.getViewStates().isExpiration) {
+        if (route.routeConfig?.path === 'expiration') {
+          if (Util.isSessionExpired()) return true;
+        }
+        return this.service.navigate(['/login']);
       } else {
+        console.log(85, Util.getViewStates());
         return true;
       }
     }

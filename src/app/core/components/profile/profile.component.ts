@@ -11,7 +11,7 @@ export class ProfileComponent implements OnInit {
   user: UserModel | undefined;
 
   constructor() {
-    this.user = Util.user;
+    this.user = Util.getUser();
   }
 
   ngOnInit(): void {}

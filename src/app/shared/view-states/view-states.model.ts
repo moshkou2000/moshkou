@@ -11,6 +11,9 @@ export class ViewStatesModel {
   backgroundColor?: string;
   backgroundImage?: string;
 
+  get isNone(): boolean {
+    return this.state === ViewStates.none;
+  }
   get isBusy(): boolean {
     return this.state === ViewStates.busy;
   }
@@ -37,6 +40,18 @@ export class ViewStatesModel {
   }
   get isNotAvailable(): boolean {
     return this.state === ViewStates.notAvailable;
+  }
+  get isAttemption(): boolean {
+    return this.state === ViewStates.attemption;
+  }
+  get isConfirmation(): boolean {
+    return this.state === ViewStates.confirmation;
+  }
+  get isExpiration(): boolean {
+    return this.state === ViewStates.expiration;
+  }
+  get isVerification(): boolean {
+    return this.state === ViewStates.verification;
   }
 
   constructor(args?: ViewStatesArguments) {

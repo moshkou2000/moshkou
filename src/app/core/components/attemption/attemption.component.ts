@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
 import { ResponseModel } from '../../models/response.model';
 import { IServices } from '../../services/services.service';
+import { Util } from '../../utils/util';
 
 @Component({
   selector: 'app-attemption',
@@ -25,13 +27,21 @@ export class AttemptionComponent implements OnInit {
       .subscribe((data: ResponseModel) => {
         this.disabled = false;
         if (data.ok && data.body.success) {
-          this.service.navigate(['/verification'], { email: this.email });
+          Util.setViewStates(ViewStates.verification);
+          setTimeout(() => {
+            this.service.navigate(['/verification']);
+          }, 400);
         } else {
           // TODO: remove this line when the backend is ready
-          this.service.navigate(['/verification'], { email: this.email });
+          Util.setViewStates(ViewStates.verification);
+          setTimeout(() => {
+            this.service.navigate(['/verification']);
+          }, 400);
 
           this.error = data.body.message;
         }
       });
   }
 }
+
+/////////// todo => Util.setViewStates(ViewStates.verification);

@@ -16,7 +16,7 @@ import { Util } from 'src/app/core/utils/util';
 export class MainnavComponent implements OnChanges {
   @Input() currentRoute: string | undefined;
 
-  items?: NavItemModel[] = Util.mainnavItems;
+  items?: NavItemModel[] = Util.getMainnavItems();
 
   constructor(private changeDetector: ChangeDetectorRef) {}
 

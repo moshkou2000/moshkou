@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
 import { ResponseModel } from '../../models/response.model';
+import { UserModel } from '../../models/user.model';
 import { IServices } from '../../services/services.service';
+import { Util } from '../../utils/util';
 
 @Component({
   selector: 'app-login',
@@ -26,10 +29,21 @@ export class LoginComponent implements OnInit {
         this.disabled = false;
         this.disabledForm = false;
         if (data.ok && data.body.success) {
-          this.service.navigate(['/verification'], { email: this.email });
+          Util.updateUser({ email: this.email, tempToken: data.body.result });
+          Util.setViewStates(ViewStates.verification);
+          setTimeout(() => {
+            this.service.navigate(['/verification']);
+          }, 400);
         } else {
           // TODO: remove this line when the backend is ready
-          this.service.navigate(['/verification'], { email: this.email });
+          Util.updateUser({
+            email: this.email,
+            tempToken: 'hjk76sdknjds876dfnb7',
+          });
+          Util.setViewStates(ViewStates.verification);
+          setTimeout(() => {
+            this.service.navigate(['/verification']);
+          }, 400);
 
           this.error = data.body.message;
         }

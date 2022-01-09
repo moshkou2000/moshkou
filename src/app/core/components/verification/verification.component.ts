@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TimerArguments } from '../../arguments/arguments';
 import { ResponseModel } from '../../models/response.model';
+import { UserModel } from '../../models/user.model';
 import { IServices } from '../../services/services.service';
+import { Util } from '../../utils/util';
 
 @Component({
   selector: 'app-verification',
@@ -14,7 +16,7 @@ export class VerificationComponent implements OnInit {
   error: string | undefined;
   disabled: boolean = false;
   disabledForm: boolean = false;
-  timerArgs: TimerArguments = { second: 2 };
+  timerArgs: TimerArguments = { minute: 2 };
   canResend: boolean = false;
 
   constructor(private service: IServices) {
@@ -32,16 +34,36 @@ export class VerificationComponent implements OnInit {
         this.disabled = false;
         this.disabledForm = false;
         if (data.ok && data.body.success) {
-          localStorage.setItem(
-            'hn1363_user',
-            '{"_id":"user_id","token":"user_token","email":"user_email@email.com","name":"user_name","phone":"user_phone","gender":"male","dob":"04.06.1984","password":"user_password","about_me":"user_about_me","createdAt":"2021-10-27T08:25:11.803Z","updatedAt":"2021-10-27T08:25:11.803Z"}'
+          Util.setUser(
+            new UserModel({
+              _id: 'user_id',
+              token: 'user_token',
+              email: this.email,
+              name: 'user_name',
+              phone: 'user_phone',
+              gender: 'male',
+              dob: '04.06.1984',
+              about_me: 'user_about_me',
+              createdAt: '2021-10-27T08:25:11.803Z',
+              updatedAt: '2021-10-27T08:25:11.803Z',
+            })
           );
           this.service.navigate(['']);
         } else {
           // TODO: remove this line when the backend is ready
-          localStorage.setItem(
-            'hn1363_user',
-            '{"_id":"user_id","token":"user_token","email":"user_email@email.com","name":"user_name","phone":"user_phone","gender":"male","dob":"04.06.1984","password":"user_password","about_me":"user_about_me","createdAt":"2021-10-27T08:25:11.803Z","updatedAt":"2021-10-27T08:25:11.803Z"}'
+          Util.setUser(
+            new UserModel({
+              _id: 'user_id',
+              token: 'user_token',
+              email: this.email,
+              name: 'user_name',
+              phone: 'user_phone',
+              gender: 'male',
+              dob: '04.06.1984',
+              about_me: 'user_about_me',
+              createdAt: '2021-10-27T08:25:11.803Z',
+              updatedAt: '2021-10-27T08:25:11.803Z',
+            })
           );
           this.service.navigate(['']);
 

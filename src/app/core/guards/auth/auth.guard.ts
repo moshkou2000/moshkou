@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (Util.user) {
+    if (!Util.isSessionExpired()) {
       return true;
     }
 

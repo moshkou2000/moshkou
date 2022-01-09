@@ -16,7 +16,7 @@ import { Util } from 'src/app/core/utils/util';
 export class SidenavComponent implements OnChanges {
   @Input() currentRoute: string | undefined;
 
-  items?: NavItemModel[] = Util.sidenavItems;
+  items?: NavItemModel[] = Util.getSidenavItems();
 
   constructor(private changeDetector: ChangeDetectorRef) {}
 

@@ -1,6 +1,9 @@
+import { UserArguments } from '../arguments/arguments';
+
 export class UserModel {
   public _id: string | undefined;
   public token: string | undefined;
+  public tempToken: string | undefined;
   public email: string | undefined;
   public name: string | undefined;
   public phone: string | undefined;
@@ -12,8 +15,39 @@ export class UserModel {
   public createdAt: string | undefined;
   public updatedAt: string | undefined;
 
-  public constructor(init: UserModel) {
-    Object.assign(this, init);
+  public constructor(init?: UserArguments) {
+    if (init) Object.assign(this, init);
+  }
+
+  setToken(token: string | undefined): void {
+    this.token = token;
+  }
+  setTempToken(tempToken: string | undefined): void {
+    this.tempToken = tempToken;
+  }
+  setEmail(email: string | undefined): void {
+    this.email = email;
+  }
+  setName(name: string | undefined): void {
+    this.name = name;
+  }
+  setPhone(phone: string | undefined): void {
+    this.phone = phone;
+  }
+  setGender(gender: string | undefined): void {
+    this.gender = gender;
+  }
+  setDob(dob: string | undefined): void {
+    this.dob = dob;
+  }
+  setPicture(picture: string | undefined): void {
+    this.picture = picture;
+  }
+  setCountry(country: any | undefined): void {
+    this.country = country;
+  }
+  setAboutMe(about_me: string | undefined): void {
+    this.about_me = about_me;
   }
 }
 

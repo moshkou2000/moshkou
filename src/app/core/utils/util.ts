@@ -4,7 +4,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { BottomSheetComponent } from 'src/app/shared/bottom-sheet/bottom-sheet.component';
 import { IToolbarButton } from 'src/app/shared/datatable/datatable-toolbar/datatable-toolbar.interface';
 import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
-import { DialogArguments, SnackbarArguments } from '../arguments/arguments';
+import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
+import { ViewStatesModel } from 'src/app/shared/view-states/view-states.model';
+import {
+  DialogArguments,
+  SnackbarArguments,
+  TimerArguments,
+  UserArguments,
+} from '../arguments/arguments';
 import { INITIIAL_ROUTE } from '../constants/app-routes';
 import { BREADCRUMBS } from '../constants/breadcrumbs';
 import { CONSTANT_REGEXP } from '../constants/constant_regexp';
@@ -22,7 +29,7 @@ import { UserModel } from '../models/user.model';
 
 export class Util {
   /*
-    get const | static
+    get const | static | storage
   */
 
   // Breadcrumbs
@@ -52,24 +59,91 @@ export class Util {
   }
 
   // Sidenav
-  static get sidenavItems(): NavItemModel[] {
+  static getSidenavItems(): NavItemModel[] {
     return SIDENAV_ITEMS;
   }
 
   // Mainnav
-  static get mainnavItems(): NavItemModel[] {
+  static getMainnavItems(): NavItemModel[] {
     return MAINNAV_ITEMS;
   }
 
   // User
-  static get user(): UserModel | undefined {
-    const user: string | null = localStorage.getItem(KEY.user);
-    return user ? JSON.parse(user) : undefined;
+  private static user: UserModel | undefined;
+  static getUser(): UserModel | undefined {
+    if (this.user) return this.user;
+    try {
+      const user: string | undefined | null = localStorage.getItem(KEY.user);
+      if (user) {
+        const u: any = JSON.parse(user);
+        return new UserModel(u);
+      }
+    } catch {}
+    return;
+  }
+
+  static setUser(value: UserModel | undefined): void {
+    if (value) {
+      this.user = value;
+      localStorage.setItem(KEY.user, JSON.stringify(value));
+    }
+  }
+
+  static updateUser(args: UserArguments): void {
+    if (args) {
+      if (!this.user) this.user = new UserModel();
+
+      if (args.token) this.user.token = args.token;
+      if (args.tempToken) this.user.tempToken = args.tempToken;
+      if (args.email) this.user.email = args.email;
+      if (args.name) this.user.name = args.name;
+      if (args.phone) this.user.phone = args.phone;
+      if (args.gender) this.user.gender = args.gender;
+      if (args.dob) this.user.dob = args.dob;
+      if (args.picture) this.user.picture = args.picture;
+      if (args.country) this.user.country = args.country;
+      if (args.about_me) this.user.about_me = args.about_me;
+      if (args.createdAt) this.user.createdAt = args.createdAt;
+      if (args.updatedAt) this.user.updatedAt = args.updatedAt;
+
+      localStorage.setItem(KEY.user, JSON.stringify(this.user));
+    }
+  }
+
+  // ViewStates
+  static viewStates: ViewStatesModel | undefined;
+  static getViewStates(): ViewStatesModel {
+    try {
+      const item: string | undefined | null = localStorage.getItem(
+        KEY.viewStates
+      );
+      if (item) {
+        const b: any = JSON.parse(item);
+        if (b.v > new Date().getTime()) {
+          return new ViewStatesModel({
+            state: ViewStates[b.k as keyof typeof ViewStates],
+          });
+        }
+      }
+    } catch {}
+    return new ViewStatesModel({ state: ViewStates.none });
+  }
+  static setViewStates(value: ViewStates): void {
+    localStorage.setItem(
+      KEY.viewStates,
+      JSON.stringify({ k: ViewStates[value], v: new Date().getTime() + 455664 })
+    );
   }
 
   /*
     actions
   */
+
+  // clear localStorage
+  // you can clear cach, session & ...
+  static clear(): void {
+    localStorage.clear();
+  }
 
   // Fullscreen
   // id: target selector
@@ -135,12 +209,6 @@ export class Util {
     return dialogRef;
   }
 
-  // clear localStorage
-  // you can clear cach, session & ...
-  static clear(): void {
-    localStorage.clear();
-  }
-
   // init navigation selection based on current route
   static initNavSelection(items?: NavItemModel[], route?: String): void {
     let isFound: boolean = false;
@@ -192,7 +260,8 @@ export class Util {
     validation
   */
   static isSessionExpired(): boolean {
-    return Util.user?.token === undefined;
+    // TODO: get jwt token expiration
+    return Util.getUser()?.token === undefined;
   }
 
   static isEmail(email?: string): boolean {

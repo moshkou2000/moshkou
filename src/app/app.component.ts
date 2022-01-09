@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   isSidenavInfoOpen: boolean = false;
 
   layout: LayoutModel = new LayoutModel();
-  sidenavItems?: NavItemModel[] = Util.sidenavItems;
+  sidenavItems?: NavItemModel[] = Util.getSidenavItems();
   currentRoute: string = '';
 
   constructor(

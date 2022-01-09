@@ -44,8 +44,8 @@ export class JwtInterceptor implements HttpInterceptor {
     }
 
     if (Object.values(DEFAULT_URL).indexOf(request.url) > -1) {
-      if (Util.user && Util.user.token) {
-        headers['Authorization'] = `Bearer ${Util.user.token}`;
+      if (Util.getUser()?.token) {
+        headers['Authorization'] = `Bearer ${Util.getUser()!.token}`;
       }
     }
 
