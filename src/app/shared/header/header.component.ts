@@ -41,6 +41,6 @@ export class HeaderComponent implements OnDestroy, OnChanges {
 
   exit(): void {
     Util.clear();
-    this.service.navigate(['/login']);
+    window.location.reload();
   }
 }

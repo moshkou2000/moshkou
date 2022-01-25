@@ -35,10 +35,12 @@ export class RegistrationComponent implements OnInit {
         if (data.ok && data.body.success) {
           Util.updateUser({ email: this.email, tempToken: data.body.result });
           Util.setViewStates(ViewStates.confirmation);
-          this.service.navigate(['/confirmation'], {
-            email: this.email,
-            token: data.body.result,
-          });
+          setTimeout(() => {
+            this.service.navigate(['/confirmation'], {
+              email: this.email,
+              token: data.body.result,
+            });
+          }, 400);
           Util.setViewStates(ViewStates.confirmation);
         } else {
           // TODO: remove this line when the backend is ready
@@ -47,10 +49,12 @@ export class RegistrationComponent implements OnInit {
             tempToken: 'hjk76sdknjds876dfnb7',
           });
           Util.setViewStates(ViewStates.confirmation);
-          this.service.navigate(['/confirmation'], {
-            email: this.email,
-            token: 'hjk76sdknjds876dfnb7',
-          });
+          setTimeout(() => {
+            this.service.navigate(['/confirmation'], {
+              email: this.email,
+              token: 'hjk76sdknjds876dfnb7',
+            });
+          }, 400);
           Util.setViewStates(ViewStates.confirmation);
 
           this.error = data.body.message;

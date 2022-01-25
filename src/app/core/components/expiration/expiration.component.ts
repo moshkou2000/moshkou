@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
 import { IServices } from '../../services/services.service';
+import { Util } from '../../utils/util';
 
 @Component({
   selector: 'app-expiration',
@@ -15,6 +17,7 @@ export class ExpirationComponent implements OnInit {
   ngOnInit(): void {}
 
   login(): void {
+    Util.setViewStates(ViewStates.none);
     this.service.navigate(['/login']);
   }
 }

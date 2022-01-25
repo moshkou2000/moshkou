@@ -1,0 +1,31 @@
+@import "../../../../styles/variables.scss";
+
+:host {
+  .container {
+    width: 360px;
+    display: grid;
+    margin: 0 auto;
+    padding: 16px 16px;
+    text-align: center;
+
+    span {
+      text-align: center;
+      color: $color-dark-3;
+    }
+
+    h2 {
+      color: $color-dark-2;
+    }
+
+    button {
+      width: 320px;
+      height: 56px;
+      margin-top: 4px;
+    }
+
+    .error {
+      display: inline-block;
+      color: $error;
+    }
+  }
+}

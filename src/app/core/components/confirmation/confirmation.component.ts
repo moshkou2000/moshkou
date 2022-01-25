@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
 import { TimerArguments } from '../../arguments/arguments';
 import { ResponseModel } from '../../models/response.model';
 import { UserModel } from '../../models/user.model';
@@ -53,7 +54,10 @@ export class ConfirmationComponent implements OnInit {
               updatedAt: '2021-10-27T08:25:11.803Z',
             })
           );
-          this.service.navigate(['']);
+          Util.setViewStates(ViewStates.none);
+          setTimeout(() => {
+            this.service.navigate(['']);
+          }, 400);
         } else {
           // TODO: remove this line when the backend is ready
           Util.setUser(
@@ -70,7 +74,10 @@ export class ConfirmationComponent implements OnInit {
               updatedAt: '2021-10-27T08:25:11.803Z',
             })
           );
-          this.service.navigate(['']);
+          Util.setViewStates(ViewStates.none);
+          setTimeout(() => {
+            this.service.navigate(['']);
+          }, 400);
 
           this.error = data.body.message;
         }

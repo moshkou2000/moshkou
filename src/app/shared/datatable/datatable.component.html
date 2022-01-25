@@ -42,7 +42,7 @@
             [toolbar]="toolbar"
             (onButtonClick)="toolbarButtonClick($event)"
             (onSearchKeyup)="toolbarSearchKeyup($event)"
-            (sortClick)="sortTable"
+            (sortClick)="(sortTable)"
           ></app-datatable-toolbar>
         </td>
       </ng-container>
@@ -150,7 +150,7 @@
           [attr.colspan]="dataSource?.data?.length ?? 0"
         >
           <mat-paginator
-            [length]="dataSource?.data?.length ?? 0" 
+            [length]="dataSource?.data?.length ?? 0"
             [pageSize]="defaultPageSize"
             [pageSizeOptions]="paginationSizes"
             aria-label="Select page of tables"
@@ -161,10 +161,7 @@
 
       <!-- header -->
       <tr mat-header-row *matHeaderRowDef="['header']; sticky: true"></tr>
-      <tr
-        mat-header-row
-        *matHeaderRowDef="displayedColumns; sticky: true"
-      ></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
 
       <!-- body -->
       <tr

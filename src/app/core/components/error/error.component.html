@@ -1,1 +1,20 @@
-<p>error works!</p>
+<div class="content-scrollable">
+  <div class="container">
+    <img class="logo" src="../../../../assets/icons/not-found.svg" />
+    <h2>Oops!!!</h2>
+    <span class="error">Error 404 - Page Not Found</span>
+    <br />
+    <span>We can't find what you are looking for.</span>
+    <br />
+    <form #errorForm="ngForm">
+      <button mat-flat-button color="accent" (click)="goHome()">Go Home</button>
+    </form>
+
+    <br /><br /><br />
+
+    <span
+      >The link you followed is probably broken, or the page has been
+      removed.</span
+    >
+  </div>
+</div>

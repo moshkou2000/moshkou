@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { IServices } from '../../services/services.service';
 
 @Component({
   selector: 'app-error',
   templateUrl: './error.component.html',
-  styleUrls: ['./error.component.scss']
+  styleUrls: ['./error.component.scss'],
 })
 export class ErrorComponent implements OnInit {
+  constructor(private service: IServices) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  goHome(): void {
+    this.service.navigate(['/']);
   }
-
 }

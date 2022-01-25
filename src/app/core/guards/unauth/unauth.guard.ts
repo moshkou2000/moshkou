@@ -23,14 +23,6 @@ export class UnauthGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (Util.isSessionExpired()) {
-      console.log(
-        '::guard',
-        Util.getViewStates()?.state,
-        Util.getViewStates().isNone,
-        Util.getUser(),
-        route.routeConfig?.path
-      );
-
       if (Util.getViewStates().isNone) {
         if (
           route.routeConfig?.path === 'login' ||
@@ -50,20 +42,22 @@ export class UnauthGuard implements CanActivate {
           if (Util.getUser()?.email !== undefined) return true;
           Util.clear();
         }
-        return this.service.navigate(['/registration']);
+        return this.service.navigate(['/confirmation']);
       } else if (Util.getViewStates().isAttemption) {
         if (route.routeConfig?.path === 'attemption') {
           if (Util.getUser()?.email !== undefined) return true;
           Util.clear();
         }
-        return this.service.navigate(['/login']);
+        return this.service.navigate(['/attemption']);
       } else if (Util.getViewStates().isExpiration) {
         if (route.routeConfig?.path === 'expiration') {
-          if (Util.isSessionExpired()) return true;
+          if (Util.isSessionExpired()) {
+            return true;
+          }
+          Util.clear();
         }
-        return this.service.navigate(['/login']);
+        return this.service.navigate(['/expiration']);
       } else {
-        console.log(85, Util.getViewStates());
         return true;
       }
     }

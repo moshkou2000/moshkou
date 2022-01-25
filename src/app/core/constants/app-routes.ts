@@ -52,6 +52,12 @@ export const APP_ROUTES: Routes = [
     data: {},
   },
   {
+    path: 'help',
+    loadChildren: () =>
+      import('../components/help/help.module').then((m) => m.HelpModule),
+    data: {},
+  },
+  {
     path: 'login',
     loadChildren: () =>
       import('../components/login/login.module').then((m) => m.LoginModule),

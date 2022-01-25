@@ -14,6 +14,7 @@ import {
 } from '../arguments/arguments';
 import { INITIIAL_ROUTE } from '../constants/app-routes';
 import { BREADCRUMBS } from '../constants/breadcrumbs';
+import { CONSTANT_NUMBER } from '../constants/constant_number';
 import { CONSTANT_REGEXP } from '../constants/constant_regexp';
 import { KEY } from '../constants/key';
 import { MAINNAV_ITEMS } from '../constants/mainnav_items';
@@ -131,7 +132,10 @@ export class Util {
   static setViewStates(value: ViewStates): void {
     localStorage.setItem(
       KEY.viewStates,
-      JSON.stringify({ k: ViewStates[value], v: new Date().getTime() + 455664 })
+      JSON.stringify({
+        k: ViewStates[value],
+        v: new Date().getTime() + CONSTANT_NUMBER.viewStatesExpiration,
+      })
     );
   }
 

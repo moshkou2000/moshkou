@@ -1,4 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
+import { Location } from '@angular/common';
 import {
   NavigationEnd,
   NavigationError,
@@ -18,6 +19,7 @@ export class Services implements IServices, OnDestroy {
 
   constructor(
     private router: Router,
+    private location: Location,
     private userService: UserService,
     private sampleService: SampleService
   ) {}
@@ -55,6 +57,11 @@ export class Services implements IServices, OnDestroy {
         if (args.navigationError) args.navigationError(event);
       }
     });
+  }
+
+  // It will basically change the url, without change in route of application
+  go(route: string): void {
+    this.location.go(route);
   }
 
   getCurrentNavigationExtras(): any | undefined {
@@ -117,6 +124,7 @@ export class Services implements IServices, OnDestroy {
 export abstract class IServices {
   abstract navigate(route: string[], data?: any): Promise<boolean>;
   abstract navigateByUrl(route: string, data?: any): Promise<boolean>;
+  abstract go(route: string): void;
   abstract navigation(args: NavigationArguments): void;
   abstract getCurrentNavigationExtras(): any | undefined;
 

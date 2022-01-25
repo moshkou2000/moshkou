@@ -43,5 +43,3 @@ export class AttemptionComponent implements OnInit {
       });
   }
 }
-
-/////////// todo => Util.setViewStates(ViewStates.verification);
