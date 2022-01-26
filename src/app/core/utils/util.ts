@@ -1,6 +1,5 @@
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { BottomSheetComponent } from 'src/app/shared/bottom-sheet/bottom-sheet.component';
 import { IToolbarButton } from 'src/app/shared/datatable/datatable-toolbar/datatable-toolbar.interface';
 import { SnackbarComponent } from 'src/app/shared/snackbar/snackbar.component';
@@ -9,7 +8,6 @@ import { ViewStatesModel } from 'src/app/shared/view-states/view-states.model';
 import {
   DialogArguments,
   SnackbarArguments,
-  TimerArguments,
   UserArguments,
 } from '../arguments/arguments';
 import { INITIIAL_ROUTE } from '../constants/app-routes';
@@ -198,14 +196,27 @@ export class Util {
   // open Dialog
   // dialog: from view
   static openDialog(args: DialogArguments): MatDialogRef<any, any> {
+    const dialogWidth: number = args.width ?? 250;
+    if (args.position) {
+      const wWidth: number = window.innerWidth;
+      // const wHeight: number = window.innerHeight;
+      const x: number = args.position[0];
+      // const y: number = args.position[1];
+      if (x + dialogWidth > wWidth) {
+        args.position[0] = dialogWidth - (wWidth - x);
+      }
+    }
+
     const dialogRef: MatDialogRef<any, any> = args.dialog.open(args.component, {
       disableClose: args.disableClose ?? true,
-      width: `${args.width ?? 250}px`,
+      width: `${dialogWidth}px`,
       data: args.data,
-      position: {
-        left: '10px',
-        top: '10px',
-      },
+      position: args.position
+        ? {
+            left: `${args.position[0]}px`,
+            top: `${args.position[1]}px`,
+          }
+        : undefined,
     });
     dialogRef.afterClosed().subscribe(() => {
       if (args.onClosed) args.onClosed();
@@ -247,6 +258,21 @@ export class Util {
         a.children?.forEach((b) => (b.selected = false));
       }
     });
+  }
+
+  /*
+    properties
+  */
+
+  static getPosition(
+    element: HTMLElement | undefined | null
+  ): number[] | undefined {
+    if (element) {
+      var top = element.getBoundingClientRect().top + window.scrollY;
+      var left = element.getBoundingClientRect().left + window.scrollX;
+      return [top, left];
+    }
+    return;
   }
 
   /*

@@ -27,6 +27,8 @@ import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
 import { ViewStatesModel } from 'src/app/shared/view-states/view-states.model';
 import { environment } from 'src/environments/environment';
 import { Util } from 'src/app/core/utils/util';
+import { StyleUtils } from '@angular/flex-layout';
+import { EventArguments } from 'src/app/core/arguments/arguments';
 
 @Component({
   selector: 'app-planning',
@@ -175,11 +177,12 @@ export class PlanningComponent implements OnInit, OnDestroy {
     column action buttons
   */
   // delete
-  onDeleteItem(event: /*DataModel*/ any): void {
+  onDeleteItem(args: EventArguments): void {
     let that: any = this;
     const dialogRef = Util.openDialog({
       dialog: this.dialog,
       component: ConfirmationComponent,
+      position: args.position,
       data: {
         title: 'Delete Records',
         message:
@@ -219,10 +222,11 @@ export class PlanningComponent implements OnInit, OnDestroy {
   }
 
   // edit
-  onEditItem(event: /*DataModel*/ any): void {
+  onEditItem(args: EventArguments): void {
     const dialogRef = Util.openDialog({
       dialog: this.dialog,
       component: ConfirmationComponent,
+      position: args.position,
       data: {
         title: 'Edit Records',
         message:
@@ -244,7 +248,7 @@ export class PlanningComponent implements OnInit, OnDestroy {
         },
       },
       onClosed: () => {
-        console.log('onEditItem dialog onClosed', event);
+        console.log('onEditItem dialog onClosed', args);
       },
     });
   }

@@ -15,6 +15,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDrawer } from '@angular/material/sidenav';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { EventArguments } from 'src/app/core/arguments/arguments';
 import { ViewStatesModel } from '../view-states/view-states.model';
 import { DatatableToolbarModel } from './datatable-toolbar/datatable-toolbar.model';
 
@@ -45,16 +46,11 @@ export class DatatableComponent
   @Input() paginationSizes: number[] = [];
   @Input() defaultPageSize: number = 0;
 
-  @Output() onButtonClick = new EventEmitter();
-  @Output() onSearchKeyup = new EventEmitter();
-  @Output() onSortClick = new EventEmitter();
-  @Output() onDeleteItem = new EventEmitter();
-  @Output() onEditItem = new EventEmitter();
-
-  //
-  // TODO: set arrPopularity for dataSource
-  //
-  arrPopularity: number[] = [0, 0, 0, 0, 0];
+  @Output() onButtonClick = new EventEmitter<any>();
+  @Output() onSearchKeyup = new EventEmitter<string>();
+  @Output() onSortClick = new EventEmitter<any>();
+  @Output() onDeleteItem = new EventEmitter<EventArguments>();
+  @Output() onEditItem = new EventEmitter<EventArguments>();
 
   get expandedItems(): boolean {
     return this.dataSource?.data?.every((d) => d.expanded) === true;
@@ -65,9 +61,7 @@ export class DatatableComponent
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {
-    this.setPopularity(3.3);
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     if (this.paginator) this.dataSource.paginator = this.paginator;
@@ -80,17 +74,6 @@ export class DatatableComponent
   }
 
   ngOnDestroy(): void {}
-
-  setPopularity(popularity: number): void {
-    let i = 0;
-    for (; i < popularity; i++) {
-      this.arrPopularity[i] = 1;
-    }
-    const intPopularity = Math.ceil(popularity);
-    if (popularity !== intPopularity) {
-      this.arrPopularity[i - 1] = 2;
-    }
-  }
 
   /*
     datatable
@@ -125,12 +108,12 @@ export class DatatableComponent
     column action buttons
   */
   // delete
-  deleteItem(item?: /*DataModel*/ any): void {
-    this.onDeleteItem.emit(item);
+  deleteItem(item?: /*DataModel*/ any, event?: any): void {
+    this.onDeleteItem.emit({ data: item, position: [event.x, event.y] });
   }
 
   // edit
-  editItem(item?: /*DataModel*/ any): void {
-    this.onEditItem.emit(item);
+  editItem(item?: /*DataModel*/ any, event?: any): void {
+    this.onEditItem.emit({ data: item, position: [event.x, event.y] });
   }
 }

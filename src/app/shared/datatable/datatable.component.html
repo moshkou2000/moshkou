@@ -90,9 +90,7 @@
       <ng-container matColumnDef="popularity">
         <th mat-header-cell *matHeaderCellDef>Popularity</th>
         <td mat-cell *matCellDef="let element">
-          <mat-icon *ngFor="let p of arrPopularity" class="gold-color">
-            {{ p === 1 ? "star" : p === 2 ? "star_half" : "star_outline" }}
-          </mat-icon>
+          <app-star-rating [value]="element.number"></app-star-rating>
         </td>
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>
@@ -116,14 +114,14 @@
             mat-flat-button
             mat-icon-button
             class="error-color"
-            (click)="deleteItem(element)"
+            (click)="deleteItem(element, $event)"
           >
             <mat-icon>delete</mat-icon></button
           ><button
             mat-flat-button
             mat-icon-button
             class="info-color"
-            (click)="editItem(element)"
+            (click)="editItem(element, $event)"
           >
             <mat-icon>edit</mat-icon>
           </button>

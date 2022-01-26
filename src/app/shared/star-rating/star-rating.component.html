@@ -1,1 +1,3 @@
-<p>star-rating works!</p>
+<mat-icon *ngFor="let p of arrPopularity" class="gold-color">
+  {{ p === 1 ? "star" : p === 2 ? "star_half" : "star_outline" }}
+</mat-icon>

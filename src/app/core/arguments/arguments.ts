@@ -73,6 +73,7 @@ export type DialogArguments = {
   data?: any;
   onClosed?: Function;
   element?: ElementRef;
+  position?: number[];
 };
 
 export type SnackbarArguments = {
@@ -106,4 +107,11 @@ export type UserArguments = {
   about_me?: string | undefined;
   createdAt?: string | undefined;
   updatedAt?: string | undefined;
+};
+
+export type EventArguments = {
+  event?: any;
+  data?: any;
+  element?: HTMLElement;
+  position?: number[];
 };

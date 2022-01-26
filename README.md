@@ -77,6 +77,10 @@ https://www.airbnb.com/s/homes?refinement_paths%5B%5D=%2Fhomes&date_picker_type=
 - https://material.io/design/color/the-color-system.html#tools-for-picking-colors
 - https://material.io/resources/color/#!/?view.left=1&view.right=1&primary.color=1c39bb
 
+## position
+
+Util.openDialog > manage position if outside of page
+
 ## localization
 
 ⬜️ adding localization
@@ -84,10 +88,6 @@ https://www.airbnb.com/s/homes?refinement_paths%5B%5D=%2Fhomes&date_picker_type=
 ## typography
 
 ⬜️ implimenting typography
-
-## create star-rating component / directive
-
-⬜️ implimenting star-rating
 
 ## sample usage of sidenav-info
 
