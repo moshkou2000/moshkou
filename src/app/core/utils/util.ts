@@ -20,6 +20,7 @@ import { SIDENAV_ITEMS } from '../constants/sidenav_items';
 import { IBreadcrumb } from '../interfaces/ibreadcrumb';
 import { NavItemModel } from '../models/navitem.model';
 import { UserModel } from '../models/user.model';
+import { IServices } from '../services/services.service';
 
 /*
   Util
@@ -110,7 +111,6 @@ export class Util {
   }
 
   // ViewStates
-  static viewStates: ViewStatesModel | undefined;
   static getViewStates(): ViewStatesModel {
     try {
       const item: string | undefined | null = localStorage.getItem(
@@ -127,6 +127,7 @@ export class Util {
     } catch {}
     return new ViewStatesModel({ state: ViewStates.none });
   }
+
   static setViewStates(value: ViewStates): void {
     localStorage.setItem(
       KEY.viewStates,
@@ -195,32 +196,91 @@ export class Util {
 
   // open Dialog
   // dialog: from view
-  static openDialog(args: DialogArguments): MatDialogRef<any, any> {
-    const dialogWidth: number = args.width ?? 250;
-    if (args.position) {
+  // service: to update the dialog position on window size change
+  private static minDialogWidth: number = 250;
+  private static minDialogHeight: number = 200;
+  public static dialogMargin: number = 56;
+  private static getDialogPosition(position: number[], minWidth: number) {
+    if (position) {
       const wWidth: number = window.innerWidth;
-      // const wHeight: number = window.innerHeight;
-      const x: number = args.position[0];
-      // const y: number = args.position[1];
-      if (x + dialogWidth > wWidth) {
-        args.position[0] = dialogWidth - (wWidth - x);
+      const wHeight: number = window.innerHeight;
+      let top: number = position[1];
+      let left: number = position[0];
+
+      if (left + minWidth > wWidth) {
+        left = wWidth - minWidth - Util.dialogMargin;
       }
+      if (top + Util.minDialogHeight > wHeight) {
+        top = wHeight - Util.minDialogHeight - Util.dialogMargin;
+      }
+
+      if (left < wWidth / 2) {
+        return {
+          left: `${position[0]}px`,
+          top: `${top}px`,
+        };
+      }
+
+      const right: number = wWidth - minWidth - left;
+      return {
+        right: `${right}px`,
+        top: `${top}px`,
+      };
+    }
+    return;
+  }
+  static openDialog(
+    args: DialogArguments,
+    service?: IServices
+  ): MatDialogRef<any, any> {
+    const originalPosition: any | undefined = args.position;
+    const minDialogWidth: number = args.width ?? Util.minDialogWidth;
+    let dialogWidth: string | undefined;
+    let dialogPosition: any | undefined;
+    let panelClass: string | undefined;
+    const screen = service?.getScreenSize();
+    screen?.setScreenMode();
+
+    // set dialogWidth & dialogPosition
+    if (screen?.isSmall || screen?.isMobile || screen?.isTablet) {
+      dialogWidth = undefined;
+      dialogPosition = {
+        bottom: `${Util.dialogMargin}px`,
+      };
+    } else {
+      dialogWidth = `${minDialogWidth}px`;
+      dialogPosition = Util.getDialogPosition(originalPosition, minDialogWidth);
     }
 
+    // dialog
     const dialogRef: MatDialogRef<any, any> = args.dialog.open(args.component, {
       disableClose: args.disableClose ?? true,
-      width: `${dialogWidth}px`,
       data: args.data,
-      position: args.position
-        ? {
-            left: `${args.position[0]}px`,
-            top: `${args.position[1]}px`,
-          }
-        : undefined,
+      width: dialogWidth,
+      position: dialogPosition,
     });
     dialogRef.afterClosed().subscribe(() => {
       if (args.onClosed) args.onClosed();
     });
+
+    // on screen change
+    service?.getScreen().subscribe((screen) => {
+      if (screen?.isSmall || screen?.isMobile || screen?.isTablet) {
+        dialogWidth = undefined;
+        dialogPosition = {
+          bottom: `${Util.dialogMargin}px`,
+        };
+      } else {
+        dialogWidth = `${minDialogWidth}px`;
+        dialogPosition = Util.getDialogPosition(
+          originalPosition,
+          minDialogWidth
+        );
+      }
+      dialogRef?.updateSize(dialogWidth);
+      dialogRef?.updatePosition(dialogPosition);
+    });
+
     return dialogRef;
   }
 

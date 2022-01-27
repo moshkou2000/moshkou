@@ -1,9 +1,11 @@
 import { OnInit, Component, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { fromEvent, Observable, Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { LayoutModel } from './core/models/layout.model';
 import { NavItemModel } from './core/models/navitem.model';
+import { ScreenModel } from './core/models/screen.model';
 import { IServices } from './core/services/services.service';
 import { Util } from './core/utils/util';
 import { SidenavInfoService } from './shared/sidenav-info/sidenav-info.service';
@@ -17,8 +19,11 @@ import { SidenavService } from './shared/sidenav/sidenav.service';
 export class AppComponent implements OnInit {
   @ViewChild(MatDrawer) sidenav: MatDrawer | undefined;
 
+  screenObservable: Observable<Event> | undefined;
+  screenSubscription: Subscription | undefined;
   sidenavSubscription: Subscription | undefined;
   sidenavInfoSubscription: Subscription | undefined;
+
   isSidenavOpen: boolean = false;
   isSidenavInfoOpen: boolean = false;
 
@@ -32,6 +37,13 @@ export class AppComponent implements OnInit {
     private sidenavInfoService: SidenavInfoService,
     private service: IServices
   ) {
+    // window resize
+    this.screenObservable = fromEvent(window, 'resize');
+    this.screenSubscription = this.screenObservable
+      .pipe(debounceTime(1000))
+      .subscribe((evt) => this.service.setScreen(new ScreenModel()));
+
+    // navigation
     this.service.navigation({
       navigationEnd: (event: any) => {
         this.currentRoute = event.url.substring(1) ?? '';
@@ -71,6 +83,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
+    this.screenSubscription?.unsubscribe();
     this.sidenavSubscription?.unsubscribe();
+    this.sidenavInfoSubscription?.unsubscribe();
   }
 }

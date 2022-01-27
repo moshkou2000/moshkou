@@ -5,7 +5,7 @@ import {
   OnDestroy,
   ViewRef,
 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Sort } from '@angular/material/sort';
 import { Subscription } from 'rxjs';
@@ -27,7 +27,6 @@ import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
 import { ViewStatesModel } from 'src/app/shared/view-states/view-states.model';
 import { environment } from 'src/environments/environment';
 import { Util } from 'src/app/core/utils/util';
-import { StyleUtils } from '@angular/flex-layout';
 import { EventArguments } from 'src/app/core/arguments/arguments';
 
 @Component({
@@ -223,33 +222,36 @@ export class PlanningComponent implements OnInit, OnDestroy {
 
   // edit
   onEditItem(args: EventArguments): void {
-    const dialogRef = Util.openDialog({
-      dialog: this.dialog,
-      component: ConfirmationComponent,
-      position: args.position,
-      data: {
-        title: 'Edit Records',
-        message:
-          'This is data message, This is data message, This is data message, This is data message',
-        button1: {
-          title: 'Cancel',
-          click: function () {
-            dialogRef.close();
+    const dialogRef: MatDialogRef<any, any> = Util.openDialog(
+      {
+        dialog: this.dialog,
+        component: ConfirmationComponent,
+        position: args.position,
+        data: {
+          title: 'Edit Records',
+          message:
+            'This is data message, This is data message, This is data message, This is data message',
+          button1: {
+            title: 'Cancel',
+            click: function () {
+              dialogRef?.close();
+            },
           },
-        },
-        button2: {
-          title: 'Save',
-          click: function () {
-            // TODO: do your action
+          button2: {
+            title: 'Save',
+            click: function () {
+              // TODO: do your action
 
-            dialogRef.close();
-            // alert
+              dialogRef?.close();
+              // alert
+            },
           },
         },
+        onClosed: () => {
+          console.log('onEditItem dialog onClosed', args);
+        },
       },
-      onClosed: () => {
-        console.log('onEditItem dialog onClosed', args);
-      },
-    });
+      this.service
+    );
   }
 }

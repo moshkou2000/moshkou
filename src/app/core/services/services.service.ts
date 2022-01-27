@@ -10,6 +10,8 @@ import { Observable, Subscription } from 'rxjs';
 import { GetArguments, NavigationArguments } from '../arguments/arguments';
 import { SampleService } from './sample/sample.service';
 import { UserService } from './user/user.service';
+import { ScreenModel } from '../models/screen.model';
+import { ScreenService } from './screen/screen.service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,12 +22,27 @@ export class Services implements IServices, OnDestroy {
   constructor(
     private router: Router,
     private location: Location,
+    private screenService: ScreenService,
     private userService: UserService,
     private sampleService: SampleService
   ) {}
 
   ngOnDestroy(): void {
     this.routerSubscription?.unsubscribe();
+  }
+
+  /* 
+    Screen
+  */
+
+  setScreen(screen: ScreenModel): void {
+    this.screenService.set(screen);
+  }
+  getScreen(): Observable<ScreenModel> {
+    return this.screenService.get();
+  }
+  getScreenSize(): ScreenModel {
+    return this.screenService.getSize();
   }
 
   /* 
@@ -122,6 +139,10 @@ export class Services implements IServices, OnDestroy {
 }
 
 export abstract class IServices {
+  abstract setScreen(screen: ScreenModel): void;
+  abstract getScreen(): Observable<ScreenModel>;
+  abstract getScreenSize(): ScreenModel;
+
   abstract navigate(route: string[], data?: any): Promise<boolean>;
   abstract navigateByUrl(route: string, data?: any): Promise<boolean>;
   abstract go(route: string): void;
