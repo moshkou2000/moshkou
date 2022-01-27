@@ -1,28 +1,33 @@
 export class ConfirmationModel {
   public title: string;
   public message: string;
-  public button1?: ConfirmationButtonModel;
-  public button2?: ConfirmationButtonModel;
+  public icon?: string;
+  public imageIcon?: string;
+  public buttons?: ConfirmationButtonModel[];
 
   constructor(
     title: string,
     message: string,
-    button1?: ConfirmationButtonModel,
-    button2?: ConfirmationButtonModel
+    icon: string,
+    imageIcon: string,
+    buttons?: ConfirmationButtonModel[]
   ) {
     this.title = title;
     this.message = message;
-    this.button1 = button1;
-    this.button2 = button2;
+    this.icon = icon;
+    this.imageIcon = imageIcon;
+    this.buttons = buttons;
   }
 }
 
 export class ConfirmationButtonModel {
   public title: string = '';
   public click: any;
+  public bgClass?: string;
 
-  constructor(title: string, click: any) {
+  constructor(title: string, click: any, bgClass?: string) {
     this.title = title;
     this.click = click;
+    this.bgClass = bgClass;
   }
 }

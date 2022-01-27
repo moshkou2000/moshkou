@@ -14,32 +14,26 @@
     background-color: $color-light-2;
     color: $color-dark-3;
 
+    mat-icon,
+    img {
+      margin-top: 18px;
+      width: 64px;
+      height: 64px;
+      font-size: 56px;
+    }
+
     .mat-dialog-title {
-      margin: 12px 16px 0px 16px !important;
+      margin: 8px 16px 0px 16px !important;
       text-align: center !important;
       line-height: 1.2 !important;
       color: $color-dark-2;
     }
 
-    .mat-dialog-actions {
-      margin-bottom: 0 !important;
-      padding: 0 !important;
-      border-radius: 0 !important;
-      min-height: 0 !important;
-
-      button {
-        border: 0;
-        line-height: 48px !important;
-        flex: 1 !important;
-        border-radius: 0 !important;
-        margin: 0 !important;
-        border-top: 1px solid #c2c2c2;
-        color: $default;
-        outline: none;
-      }
-
-      button:nth-child(2) {
-        border-left: 1px solid #c2c2c2;
+    .mat-dialog-buttons {
+      display: grid;
+      margin: 0 16px 16px 16px;
+      button:first-child {
+        margin-bottom: 8px;
       }
     }
 

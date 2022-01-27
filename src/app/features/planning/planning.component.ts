@@ -181,37 +181,40 @@ export class PlanningComponent implements OnInit, OnDestroy {
     const dialogRef = Util.openDialog({
       dialog: this.dialog,
       component: ConfirmationComponent,
-      position: args.position,
+      // position: args.position,
       data: {
+        imageIcon: '../../../assets/icons/facebook.svg',
         title: 'Delete Records',
         message:
           'This is data message, This is data message, This is data message, This is data message',
-        button1: {
-          title: 'Cancel',
-          click: function () {
-            dialogRef.close();
-          },
-        },
-        button2: {
-          title: 'Delete',
-          click: function () {
-            // TODO: do your action
-            Util.openSnackbar({
-              snackbar: that.snackbar,
-              duration: 399000,
-              data: {
-                message: 'This snakbar message.',
-                action: 'Undo',
-                actionClick: () => {
-                  console.log('SettingsComponent.Snackbar.clicked');
+        buttons: [
+          {
+            title: 'Delete',
+            bgClass: 'error-bg',
+            click: function () {
+              // TODO: do your action
+              Util.openSnackbar({
+                snackbar: that.snackbar,
+                duration: 399000,
+                data: {
+                  message: 'This snakbar message.',
+                  action: 'Undo',
+                  actionClick: () => {
+                    console.log('SettingsComponent.Snackbar.clicked');
+                  },
                 },
-              },
-            });
+              });
 
-            dialogRef.close();
-            // alert
+              dialogRef.close();
+            },
           },
-        },
+          {
+            title: 'Cancel',
+            click: function () {
+              dialogRef.close();
+            },
+          },
+        ],
       },
       onClosed: () => {
         console.log('onDeleteItem dialog onClosed', event);
@@ -228,24 +231,26 @@ export class PlanningComponent implements OnInit, OnDestroy {
         component: ConfirmationComponent,
         position: args.position,
         data: {
+          icon: 'menu',
           title: 'Edit Records',
           message:
             'This is data message, This is data message, This is data message, This is data message',
-          button1: {
-            title: 'Cancel',
-            click: function () {
-              dialogRef?.close();
+          buttons: [
+            {
+              title: 'Save',
+              bgClass: 'info-bg',
+              click: function () {
+                // TODO: do your actio
+                dialogRef?.close();
+              },
             },
-          },
-          button2: {
-            title: 'Save',
-            click: function () {
-              // TODO: do your action
-
-              dialogRef?.close();
-              // alert
+            {
+              title: 'Cancel',
+              click: function () {
+                dialogRef?.close();
+              },
             },
-          },
+          ],
         },
         onClosed: () => {
           console.log('onEditItem dialog onClosed', args);

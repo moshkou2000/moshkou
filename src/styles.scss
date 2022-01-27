@@ -67,8 +67,8 @@ body {
   background
 */
 .default-bg {
-  background: $default;
-  color: #fff;
+  background: $color-dark-6;
+  color: $color-dark-3;
 }
 .info-bg {
   background: $info;
@@ -85,10 +85,6 @@ body {
 .warning-bg {
   background: $warning;
   color: $color-dark-1;
-}
-.default-bg {
-  background: $default;
-  color: #fff;
 }
 
 /*

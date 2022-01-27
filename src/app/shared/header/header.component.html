@@ -8,10 +8,7 @@
     >
       <mat-icon>menu</mat-icon>
     </button>
-    <img
-      class="logo"
-      src="assets/logo.png"
-    />
+    <img class="logo" src="assets/logo.png" />
     <div class="title animate" style="cursor: pointer">
       <span>M</span><span>O</span><span>S</span><span>H</span><span>K</span
       ><span>O</span><span>U</span>
@@ -20,13 +17,13 @@
     <div class="breadcrumbs">
       <div>
         <div
-          *ngFor="let crumb of breadcrumbs?.parents!"
+          *ngFor="let crumb of breadcrumbs?.parents!; last as isLast"
           class="breadcrumb mat-small"
         >
-          <a [routerLink]="crumb.link" ng-show="!$last">{{
+          <a [routerLink]="crumb.link" ng-show="isLast">{{
             crumb.label | uppercase
           }}</a>
-          <mat-icon ng-show="!$last" class="next" aria-label="heart icon"
+          <mat-icon ng-show="!isLast" class="next" aria-label="heart icon"
             >chevron_right</mat-icon
           >
         </div>
