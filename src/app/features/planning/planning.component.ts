@@ -4,6 +4,7 @@ import {
   OnInit,
   OnDestroy,
   ViewRef,
+  ViewChild,
 } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -70,12 +71,8 @@ export class PlanningComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.notificationOptionSubscription) {
-      this.notificationOptionSubscription.unsubscribe();
-    }
-    if (this.dataSubscription) {
-      this.dataSubscription.unsubscribe();
-    }
+    this.notificationOptionSubscription?.unsubscribe();
+    this.dataSubscription?.unsubscribe();
   }
 
   getData() {
@@ -87,15 +84,17 @@ export class PlanningComponent implements OnInit, OnDestroy {
 
   // toolbar buttons click
   onButtonClick(event: any) {
-    !environment.production && console.log('::toolbarButtonClick', event);
+    this.toolbar.toolbarButton = this.toolbar.getButton(event);
     switch (event) {
       case TOOLBAR_BUTTONS_NAME.ADD:
+        this.service.setInfoSidenav({ flag: true });
         break;
       case TOOLBAR_BUTTONS_NAME.EDIT:
         break;
       case TOOLBAR_BUTTONS_NAME.DELETE:
         break;
       case TOOLBAR_BUTTONS_NAME.FILTER:
+        this.service.setInfoSidenav({ flag: true });
         break;
       case TOOLBAR_BUTTONS_NAME.REPORTS:
         break;
@@ -109,9 +108,6 @@ export class PlanningComponent implements OnInit, OnDestroy {
       case TOOLBAR_BUTTONS_NAME.UPDATE:
         break;
     }
-
-    // this.sidenav?.open();
-    // this.sidenav?.close();
   }
 
   // search
@@ -139,11 +135,8 @@ export class PlanningComponent implements OnInit, OnDestroy {
           console.log('user clicked notification button ', option);
 
         if (option) {
-          // TODO: it has clicked
-          if (option.data === 2) {
-            // it is an example
-            this.removeNotification();
-          } else {
+          // TODO: set the condition
+          if (option.data > 0) {
             Util.openSnackbar({
               snackbar: this.snackbar,
               duration: 399000,
@@ -151,6 +144,7 @@ export class PlanningComponent implements OnInit, OnDestroy {
                 message: 'This snakbar message.',
                 action: 'Undo',
                 actionClick: () => {
+                  this.removeNotification();
                   console.log('SettingsComponent.Snackbar.clicked');
                 },
               },
@@ -178,49 +172,51 @@ export class PlanningComponent implements OnInit, OnDestroy {
   // delete
   onDeleteItem(args: EventArguments): void {
     let that: any = this;
-    const dialogRef = Util.openDialog({
-      dialog: this.dialog,
-      component: ConfirmationComponent,
-      // position: args.position,
-      data: {
-        imageIcon: '../../../assets/icons/facebook.svg',
-        title: 'Delete Records',
-        message:
-          'This is data message, This is data message, This is data message, This is data message',
-        buttons: [
-          {
-            title: 'Delete',
-            bgClass: 'error-bg',
-            click: function () {
-              // TODO: do your action
-              Util.openSnackbar({
-                snackbar: that.snackbar,
-                duration: 399000,
-                data: {
-                  message: 'This snakbar message.',
-                  action: 'Undo',
-                  actionClick: () => {
-                    console.log('SettingsComponent.Snackbar.clicked');
+    const dialogRef = Util.openDialog(
+      {
+        dialog: this.dialog,
+        component: ConfirmationComponent,
+        data: {
+          icon: 'delete',
+          title: 'Delete Records',
+          message:
+            'This is data message, This is data message, This is data message, This is data message',
+          buttons: [
+            {
+              title: 'Delete',
+              bgClass: 'error-bg',
+              click: function () {
+                // TODO: do your action
+                Util.openSnackbar({
+                  snackbar: that.snackbar,
+                  duration: 399000,
+                  data: {
+                    message: 'This snakbar message.',
+                    action: 'Undo',
+                    actionClick: () => {
+                      console.log('SettingsComponent.Snackbar.clicked');
+                    },
                   },
-                },
-              });
+                });
 
-              dialogRef.close();
+                dialogRef.close();
+              },
             },
-          },
-          {
-            title: 'Cancel',
-            click: function () {
-              dialogRef.close();
+            {
+              title: 'Cancel',
+              click: function () {
+                dialogRef.close();
+              },
             },
-          },
-        ],
+          ],
+        },
+        onClosed: () => {
+          console.log('onDeleteItem dialog onClosed', event);
+          that = null;
+        },
       },
-      onClosed: () => {
-        console.log('onDeleteItem dialog onClosed', event);
-        that = null;
-      },
-    });
+      this.service
+    );
   }
 
   // edit
@@ -229,9 +225,9 @@ export class PlanningComponent implements OnInit, OnDestroy {
       {
         dialog: this.dialog,
         component: ConfirmationComponent,
-        position: args.position,
+        // position: args.position,
         data: {
-          icon: 'menu',
+          imageIcon: '../../../assets/icons/facebook.svg',
           title: 'Edit Records',
           message:
             'This is data message, This is data message, This is data message, This is data message',

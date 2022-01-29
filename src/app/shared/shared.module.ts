@@ -19,7 +19,6 @@ import { NotificationComponent } from './notification/notification.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { SidenavInfoComponent } from './sidenav-info/sidenav-info.component';
 import { ViewStatesComponent } from './view-states/view-states.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
@@ -35,7 +34,6 @@ import { TimerComponent } from './timer/timer.component';
     MainnavComponent,
     NotificationComponent,
     SidenavComponent,
-    SidenavInfoComponent,
     StarRatingComponent,
     TimerComponent,
     ViewStatesComponent,
@@ -65,7 +63,6 @@ import { TimerComponent } from './timer/timer.component';
     MatSidenavModule,
     NotificationComponent,
     SidenavComponent,
-    SidenavInfoComponent,
     StarRatingComponent,
     TimerComponent,
     ViewStatesComponent,

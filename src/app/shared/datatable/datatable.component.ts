@@ -15,7 +15,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDrawer } from '@angular/material/sidenav';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { EventArguments } from 'src/app/core/arguments/arguments';
+import { Subscription } from 'rxjs';
+import {
+  EventArguments,
+  SidenavArguments,
+} from 'src/app/core/arguments/arguments';
+import { Services } from 'src/app/core/services/services.service';
 import { ViewStatesModel } from '../view-states/view-states.model';
 import { DatatableToolbarModel } from './datatable-toolbar/datatable-toolbar.model';
 
@@ -31,8 +36,6 @@ import { DatatableToolbarModel } from './datatable-toolbar/datatable-toolbar.mod
 export class DatatableComponent
   implements OnInit, AfterViewInit, OnDestroy, OnChanges
 {
-  public dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
-
   @ViewChild(MatDrawer) sidenav: MatDrawer | undefined;
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   @ViewChild(MatSort) sort: MatSort | undefined;
@@ -52,6 +55,11 @@ export class DatatableComponent
   @Output() onDeleteItem = new EventEmitter<EventArguments>();
   @Output() onEditItem = new EventEmitter<EventArguments>();
 
+  public dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
+
+  private isSidenavInfoOpen: boolean = false;
+  private infoSidenavSubscription: Subscription | undefined;
+
   get expandedItems(): boolean {
     return this.dataSource?.data?.every((d) => d.expanded) === true;
   }
@@ -59,7 +67,16 @@ export class DatatableComponent
     this.dataSource?.data?.forEach((d) => (d.expanded = value));
   }
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private service: Services) {
+    // sidenav
+    this.infoSidenavSubscription = this.service
+      .getInfoSidenav()
+      .subscribe((args?: SidenavArguments) => {
+        this.isSidenavInfoOpen = args?.flag ?? !this.isSidenavInfoOpen;
+        if (this.isSidenavInfoOpen) this.sidenav?.open();
+        else this.sidenav?.close();
+      });
+  }
 
   ngOnInit(): void {}
 
@@ -73,7 +90,9 @@ export class DatatableComponent
     if (this.sort) this.dataSource.sort = this.sort;
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.infoSidenavSubscription?.unsubscribe();
+  }
 
   /*
     datatable
@@ -106,14 +125,16 @@ export class DatatableComponent
     body
     each row
     column action buttons
+    item: DataModel
+    position: [x, y]
   */
   // delete
-  deleteItem(item?: /*DataModel*/ any, event?: any): void {
+  deleteItem(item?: any, event?: any): void {
     this.onDeleteItem.emit({ data: item, position: [event.x, event.y] });
   }
 
   // edit
-  editItem(item?: /*DataModel*/ any, event?: any): void {
+  editItem(item?: any, event?: any): void {
     this.onEditItem.emit({ data: item, position: [event.x, event.y] });
   }
 }

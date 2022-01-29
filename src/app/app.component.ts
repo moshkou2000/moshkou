@@ -1,6 +1,6 @@
 import { OnInit, Component, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { LayoutModel } from './core/models/layout.model';
@@ -8,8 +8,6 @@ import { NavItemModel } from './core/models/navitem.model';
 import { ScreenModel } from './core/models/screen.model';
 import { IServices } from './core/services/services.service';
 import { Util } from './core/utils/util';
-import { SidenavInfoService } from './shared/sidenav-info/sidenav-info.service';
-import { SidenavService } from './shared/sidenav/sidenav.service';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +23,6 @@ export class AppComponent implements OnInit {
   sidenavInfoSubscription: Subscription | undefined;
 
   isSidenavOpen: boolean = false;
-  isSidenavInfoOpen: boolean = false;
 
   layout: LayoutModel = new LayoutModel();
   sidenavItems?: NavItemModel[] = Util.getSidenavItems();
@@ -33,15 +30,13 @@ export class AppComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private sidenavService: SidenavService,
-    private sidenavInfoService: SidenavInfoService,
     private service: IServices
   ) {
     // window resize
     this.screenObservable = fromEvent(window, 'resize');
     this.screenSubscription = this.screenObservable
       .pipe(debounceTime(1000))
-      .subscribe((evt) => this.service.setScreen(new ScreenModel()));
+      .subscribe(() => this.service.setScreen(new ScreenModel()));
 
     // navigation
     this.service.navigation({
@@ -62,22 +57,13 @@ export class AppComponent implements OnInit {
     });
 
     // sidenav
-    this.sidenavSubscription = this.sidenavService
-      .get()
+    this.sidenavSubscription = this.service
+      .getSidenav()
       .subscribe((flag?: boolean) => {
         this.isSidenavOpen = flag ?? !this.isSidenavOpen;
         if (this.isSidenavOpen) this.sidenav?.open();
         else this.sidenav?.close();
       });
-
-    // sidenav-info
-    // this.sidenavInfoSubscription = this.sidenavInfoService
-    //   .get()
-    //   .subscribe((flag?: boolean) => {
-    //     this.isSidenavInfoOpen = flag ?? !this.isSidenavInfoOpen;
-    //     if (this.isSidenavInfoOpen) this.sidenavInfo?.open();
-    //     else this.sidenavInfo?.close();
-    //   });
   }
 
   ngOnInit(): void {}

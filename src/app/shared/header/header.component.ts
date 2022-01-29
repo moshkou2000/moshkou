@@ -7,7 +7,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { IBreadcrumb } from 'src/app/core/interfaces/ibreadcrumb';
-import { SidenavService } from '../sidenav/sidenav.service';
+import { SidenavService } from 'src/app/core/services/sidenav/sidenav.service';
 import { Util } from 'src/app/core/utils/util';
 import { IServices } from 'src/app/core/services/services.service';
 

@@ -21,6 +21,7 @@ import { CdkDetailRowDirective } from './datatable-detail-row/datatable-detail-r
 import { DatatableComponent } from './datatable.component';
 import { DatatableToolbarComponent } from './datatable-toolbar/datatable-toolbar.component';
 import { DatatableDetailRowComponent } from './datatable-detail-row/datatable-detail-row.component';
+import { DatatableFilterComponent } from './datatable-filter/datatable-filter.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DatatableDetailRowComponent } from './datatable-detail-row/datatable-de
     DatatableComponent,
     DatatableToolbarComponent,
     DatatableDetailRowComponent,
+    DatatableFilterComponent,
   ],
   imports: [
     CommonModule,
@@ -54,6 +56,7 @@ import { DatatableDetailRowComponent } from './datatable-detail-row/datatable-de
     DatatableComponent,
     DatatableToolbarComponent,
     DatatableDetailRowComponent,
+    DatatableFilterComponent,
   ],
 })
 export class DatatableModule {}

@@ -1,13 +1,20 @@
-<app-datatable 
-    [toolbar]="toolbar" 
-    [data]="data" 
-    [viewStates]="viewStates" 
-    [displayedColumns]="displayedColumns" 
-    [paginationSizes]="paginationSizes"
-    [defaultPageSize]="defaultPageSize"
-    (onButtonClick)="onButtonClick($event)"
-    (onSearchKeyup)="onSearchKeyup($event)"
-    (onSortClick)="onSortClick($event)"
-    (onDeleteItem)="onDeleteItem($event)"
-    (onEditItem)="onEditItem($event)">
+<app-datatable
+  [toolbar]="toolbar"
+  [data]="data"
+  [viewStates]="viewStates"
+  [displayedColumns]="displayedColumns"
+  [paginationSizes]="paginationSizes"
+  [defaultPageSize]="defaultPageSize"
+  (onButtonClick)="onButtonClick($event)"
+  (onSearchKeyup)="onSearchKeyup($event)"
+  (onSortClick)="onSortClick($event)"
+  (onDeleteItem)="onDeleteItem($event)"
+  (onEditItem)="onEditItem($event)"
+>
+  <div *ngIf="toolbar.isFilter">
+    <!-- TODO: create form including bottom bottuns -->
+  </div>
+  <div *ngIf="toolbar.isAdd">
+    <!-- TODO: create form including bottom bottuns -->
+  </div>
 </app-datatable>

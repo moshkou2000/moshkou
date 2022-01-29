@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class SidenavInfoService {
+export class SidenavService {
   private subject = new Subject<boolean>();
 
   constructor() {}
@@ -15,9 +15,5 @@ export class SidenavInfoService {
 
   get(): Observable<boolean> {
     return this.subject.asObservable();
-  }
-
-  remove(): void {
-    this.subject.next();
   }
 }

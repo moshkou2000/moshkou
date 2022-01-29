@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { SidenavService } from '../../sidenav/sidenav.service';
+import { SidenavService } from 'src/app/core/services/sidenav/sidenav.service';
 import { DatatableToolbarModel } from './datatable-toolbar.model';
 import { CONSTANT_STRINIG } from 'src/app/core/constants/constant_string';
 import { Util } from 'src/app/core/utils/util';

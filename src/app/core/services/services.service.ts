@@ -7,11 +7,17 @@ import {
   Router,
 } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { GetArguments, NavigationArguments } from '../arguments/arguments';
+import {
+  GetArguments,
+  NavigationArguments,
+  SidenavArguments,
+} from '../arguments/arguments';
 import { SampleService } from './sample/sample.service';
 import { UserService } from './user/user.service';
 import { ScreenModel } from '../models/screen.model';
 import { ScreenService } from './screen/screen.service';
+import { SidenavService } from './sidenav/sidenav.service';
+import { InfoSidenavService } from './infp-sidenav/info-sidenav.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +29,8 @@ export class Services implements IServices, OnDestroy {
     private router: Router,
     private location: Location,
     private screenService: ScreenService,
+    private sidenavService: SidenavService,
+    private infoSidenavService: InfoSidenavService,
     private userService: UserService,
     private sampleService: SampleService
   ) {}
@@ -34,7 +42,6 @@ export class Services implements IServices, OnDestroy {
   /* 
     Screen
   */
-
   setScreen(screen: ScreenModel): void {
     this.screenService.set(screen);
   }
@@ -43,6 +50,22 @@ export class Services implements IServices, OnDestroy {
   }
   getScreenSize(): ScreenModel {
     return this.screenService.getSize();
+  }
+
+  /* 
+    Sidenav & Info sidenav
+  */
+  setSidenav(flag?: boolean): void {
+    this.sidenavService.set(flag);
+  }
+  getSidenav(): Observable<boolean> {
+    return this.sidenavService.get();
+  }
+  setInfoSidenav(args?: SidenavArguments): void {
+    this.infoSidenavService.set(args);
+  }
+  getInfoSidenav(): Observable<SidenavArguments> {
+    return this.infoSidenavService.get();
   }
 
   /* 
@@ -142,6 +165,11 @@ export abstract class IServices {
   abstract setScreen(screen: ScreenModel): void;
   abstract getScreen(): Observable<ScreenModel>;
   abstract getScreenSize(): ScreenModel;
+
+  abstract setSidenav(flag?: boolean): void;
+  abstract getSidenav(): Observable<boolean>;
+  abstract setInfoSidenav(args?: SidenavArguments): void;
+  abstract getInfoSidenav(): Observable<SidenavArguments>;
 
   abstract navigate(route: string[], data?: any): Promise<boolean>;
   abstract navigateByUrl(route: string, data?: any): Promise<boolean>;

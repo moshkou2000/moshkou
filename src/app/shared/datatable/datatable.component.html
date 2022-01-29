@@ -11,11 +11,28 @@
   <mat-drawer
     #sidenav
     id="main-sidenav-info"
-    mode="side"
+    mode="over"
     disableClose="true"
     position="end"
   >
-    <app-sidenav-info></app-sidenav-info>
+    <!-- info-sidenav header -->
+    <div class="infoSidenav">
+      <div class="header">
+        <mat-icon>{{ toolbar?.toolbarButton?.icon }}</mat-icon>
+        <span>{{ toolbar?.toolbarButton?.name }}</span>
+        <button
+          mat-icon-button
+          aria-label="icon-button"
+          class="closeInfoSidenav"
+          (click)="sidenav?.close()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div class="content">
+        <ng-content></ng-content>
+      </div>
+    </div>
   </mat-drawer>
   <div class="container">
     <table

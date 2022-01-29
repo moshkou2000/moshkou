@@ -32,6 +32,7 @@ export type DatatableToolbarArguments = {
   hasSearch?: boolean;
   hasFullscreen?: boolean;
   isFullscreen?: boolean;
+  toolbarButton?: IToolbarButton;
   toolbarButtons?: IToolbarButton[];
   toolbarButtonsName?: IToolbarButtonsName;
 };
@@ -114,4 +115,10 @@ export type EventArguments = {
   data?: any;
   element?: HTMLElement;
   position?: number[];
+};
+
+export type SidenavArguments = {
+  flag?: boolean;
+  event?: string;
+  data?: any;
 };

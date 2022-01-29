@@ -237,7 +237,6 @@ export class Util {
     const minDialogWidth: number = args.width ?? Util.minDialogWidth;
     let dialogWidth: string | undefined;
     let dialogPosition: any | undefined;
-    let panelClass: string | undefined;
     const screen = service?.getScreenSize();
     screen?.setScreenMode();
 
