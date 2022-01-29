@@ -40,6 +40,7 @@ export const APP_ROUTES: Routes = [
       import('../components/settings/settings.module').then(
         (m) => m.SettingsModule
       ),
+    canActivate: [AuthGuard],
     data: {
       hasHeader: true,
       hasMainnav: true,
