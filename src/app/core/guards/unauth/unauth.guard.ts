@@ -23,14 +23,11 @@ export class UnauthGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (Util.isSessionExpired()) {
-      if (Util.getViewStates().isNone) {
-        if (
-          route.routeConfig?.path === 'login' ||
-          route.routeConfig?.path === 'registration'
-        ) {
+      if (Util.getViewStates().isLogin || Util.getViewStates().isRegistration) {
+        if (route.routeConfig?.path === '') {
           return true;
         }
-        return this.service.navigate(['/login']);
+        return this.service.navigate(['']);
       } else if (Util.getViewStates().isVerification) {
         if (route.routeConfig?.path === 'verification') {
           if (Util.getUser()?.email !== undefined) return true;

@@ -2,14 +2,34 @@ import { Routes } from '@angular/router';
 import { AuthGuard } from '../guards/auth/auth.guard';
 import { UnauthGuard } from '../guards/unauth/unauth.guard';
 
-export const INITIIAL_ROUTE: string = '/home';
+export const INITIIAL_ROUTE: string = '/login';
 
 export const APP_ROUTES: Routes = [
   {
     path: '',
-    redirectTo: INITIIAL_ROUTE,
+    // redirectTo: INITIIAL_ROUTE,
     pathMatch: 'full',
+    loadChildren: () =>
+      import('../components/auth/auth.module').then((m) => m.AuthModule),
+    canActivate: [UnauthGuard],
+    data: {},
   },
+  // {
+  //   path: 'login',
+  //   loadChildren: () =>
+  //     import('../components/login/login.module').then((m) => m.LoginModule),
+  //   canActivate: [UnauthGuard],
+  //   data: {},
+  // },
+  // {
+  //   path: 'registration',
+  //   loadChildren: () =>
+  //     import('../components/registration/registration.module').then(
+  //       (m) => m.RegistrationModule
+  //     ),
+  //   canActivate: [UnauthGuard],
+  //   data: {},
+  // },
   {
     path: 'home',
     loadChildren: () =>
@@ -56,22 +76,6 @@ export const APP_ROUTES: Routes = [
     path: 'help',
     loadChildren: () =>
       import('../components/help/help.module').then((m) => m.HelpModule),
-    data: {},
-  },
-  {
-    path: 'login',
-    loadChildren: () =>
-      import('../components/login/login.module').then((m) => m.LoginModule),
-    canActivate: [UnauthGuard],
-    data: {},
-  },
-  {
-    path: 'registration',
-    loadChildren: () =>
-      import('../components/registration/registration.module').then(
-        (m) => m.RegistrationModule
-      ),
-    canActivate: [UnauthGuard],
     data: {},
   },
   {

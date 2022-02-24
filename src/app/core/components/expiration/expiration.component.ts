@@ -17,7 +17,7 @@ export class ExpirationComponent implements OnInit {
   ngOnInit(): void {}
 
   login(): void {
-    Util.setViewStates(ViewStates.none);
-    this.service.navigate(['/login']);
+    Util.setViewStates(ViewStates.login);
+    this.service.navigate(['']);
   }
 }

@@ -6,23 +6,26 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { SocialLoginModule } from 'angularx-social-login';
 
-import { RegistrationRoutingModule } from './registration-routing.module';
-import { RegistrationComponent } from './registration.component';
+import { LoginComponent } from './login/login.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { AuthComponent } from './auth.component';
+import { AuthRoutingModule } from './auth-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    RegistrationRoutingModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatInputModule,
+    MatButtonModule,
     MatDividerModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    AuthRoutingModule,
+    ReactiveFormsModule,
+    SocialLoginModule,
   ],
-  declarations: [RegistrationComponent],
+  declarations: [AuthComponent, LoginComponent, RegistrationComponent],
 })
-export class RegistrationModule {}
+export class AuthModule {}

@@ -51,7 +51,7 @@ export class VerificationComponent implements OnInit {
           );
           Util.setViewStates(ViewStates.none);
           setTimeout(() => {
-            this.service.navigate(['']);
+            this.service.navigate(['/home']);
           }, 400);
         } else {
           // TODO: remove this line when the backend is ready
@@ -71,7 +71,7 @@ export class VerificationComponent implements OnInit {
           );
           Util.setViewStates(ViewStates.none);
           setTimeout(() => {
-            this.service.navigate(['']);
+            this.service.navigate(['/home']);
           }, 400);
 
           this.error = data.body.message;

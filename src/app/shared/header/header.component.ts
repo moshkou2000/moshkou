@@ -10,6 +10,7 @@ import { IBreadcrumb } from 'src/app/core/interfaces/ibreadcrumb';
 import { SidenavService } from 'src/app/core/services/sidenav/sidenav.service';
 import { Util } from 'src/app/core/utils/util';
 import { IServices } from 'src/app/core/services/services.service';
+import { ViewStates } from '../view-states/view-states.enum';
 
 @Component({
   selector: 'app-header',

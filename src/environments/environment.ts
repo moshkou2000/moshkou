@@ -7,6 +7,8 @@ export const environment = {
   app_prefix: 'hn1363_',
   app_key: 'cbsdnbhd',
   base_url: 'http://localhost:3000/api/',
+  auth_client_ID:
+    '787744988670-rbhesg3mqgoop5pmdgvlontj3leikhne.apps.googleusercontent.com',
 };
 
 /*

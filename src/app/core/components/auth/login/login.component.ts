@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  GoogleLoginProvider,
+  SocialAuthService,
+  SocialUser,
+} from 'angularx-social-login';
 import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
-import { ResponseModel } from '../../models/response.model';
-import { UserModel } from '../../models/user.model';
-import { IServices } from '../../services/services.service';
-import { Util } from '../../utils/util';
+import { environment } from 'src/environments/environment';
+import { ResponseModel } from '../../../models/response.model';
+import { UserModel } from '../../../models/user.model';
+import { IServices } from '../../../services/services.service';
+import { Util } from '../../../utils/util';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +22,10 @@ export class LoginComponent implements OnInit {
   disabled: boolean = false;
   disabledForm: boolean = false;
 
-  constructor(private service: IServices) {}
+  constructor(
+    private service: IServices,
+    private authService: SocialAuthService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -50,8 +59,38 @@ export class LoginComponent implements OnInit {
       });
   }
   loginWithTwitter(): void {}
-  loginWithGoogle(): void {}
+  loginWithGoogle(): void {
+    this.authService
+      .signIn(GoogleLoginProvider.PROVIDER_ID, {
+        scope: 'profile email',
+      })
+      .then((value: SocialUser) => {
+        Util.setUser(
+          new UserModel({
+            _id: value.id,
+            token: value.authToken,
+            email: value.email,
+            name: value.name,
+            picture: value.photoUrl,
+            phone: 'user_phone',
+            gender: 'male',
+            dob: '04.06.1984',
+            about_me: 'user_about_me',
+            createdAt: '2021-10-27T08:25:11.803Z',
+            updatedAt: '2021-10-27T08:25:11.803Z',
+          })
+        );
+        Util.setViewStates(ViewStates.none);
+        setTimeout(() => {
+          this.service.navigate(['/home']);
+        }, 400);
+      })
+      .catch((reason: any) => {
+        this.error = reason.error;
+      });
+  }
   register(): void {
-    this.service.navigate(['/registration']);
+    Util.setViewStates(ViewStates.registration);
+    this.service.navigate(['']);
   }
 }

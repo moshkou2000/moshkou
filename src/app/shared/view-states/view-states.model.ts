@@ -53,6 +53,12 @@ export class ViewStatesModel {
   get isVerification(): boolean {
     return this.state === ViewStates.verification;
   }
+  get isRegistration(): boolean {
+    return this.state === ViewStates.registration;
+  }
+  get isLogin(): boolean {
+    return this.state === ViewStates.login;
+  }
 
   constructor(args?: ViewStatesArguments) {
     if (args?.state !== undefined && args.state !== null)

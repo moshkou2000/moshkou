@@ -13,6 +13,7 @@ import { ResponseModel } from '../../models/response.model';
 import { Temp } from '../../temp/temp';
 import { Util } from '../../utils/util';
 import { IServices } from '../../services/services.service';
+import { ViewStates } from 'src/app/shared/view-states/view-states.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -41,7 +42,8 @@ export class BaseInterceptor implements HttpInterceptor {
             data: 'The authentication session has expired. please Sign in again.',
           });
           Util.clear();
-          this.service.navigate(['/login']);
+          Util.setViewStates(ViewStates.login);
+          this.service.navigate(['']);
         }
 
         return throwError(new ResponseModel(error));

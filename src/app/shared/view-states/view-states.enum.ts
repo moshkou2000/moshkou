@@ -13,4 +13,6 @@ export enum ViewStates {
   confirmation,
   expiration,
   verification,
+  registration,
+  login,
 }
