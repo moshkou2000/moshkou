@@ -9,6 +9,15 @@ export const environment = {
   base_url: 'http://localhost:3000/api/',
   auth_client_ID:
     '787744988670-rbhesg3mqgoop5pmdgvlontj3leikhne.apps.googleusercontent.com',
+  firebase: {
+    apiKey: '',
+    authDomain: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: '',
+    appId: '',
+    measurementId: '',
+  },
 };
 
 /*

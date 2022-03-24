@@ -6,7 +6,8 @@ import {
   NavigationExtras,
   Router,
 } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { DeviceDetectorService } from 'ngx-device-detector';
 import {
   GetArguments,
   NavigationArguments,
@@ -18,6 +19,15 @@ import { ScreenModel } from '../models/screen.model';
 import { ScreenService } from './screen/screen.service';
 import { SidenavService } from './sidenav/sidenav.service';
 import { InfoSidenavService } from './infp-sidenav/info-sidenav.service';
+import {
+  getMessaging,
+  getToken,
+  MessagePayload,
+  onMessage,
+} from 'firebase/messaging';
+import { FirebaseService } from './firebase-messaging/firebase.service';
+import { initializeApp } from 'firebase/app';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -28,15 +38,37 @@ export class Services implements IServices, OnDestroy {
   constructor(
     private router: Router,
     private location: Location,
+    private deviceService: DeviceDetectorService,
+    private firebaseService: FirebaseService,
     private screenService: ScreenService,
     private sidenavService: SidenavService,
     private infoSidenavService: InfoSidenavService,
     private userService: UserService,
     private sampleService: SampleService
-  ) {}
+  ) {
+    this.firebaseService.init();
+    // const messaging = getMessaging();
+    // onMessage(messaging, (payload: MessagePayload) => {
+    //   console.log('onMessage:', payload);
+    // });
+  }
 
   ngOnDestroy(): void {
     this.routerSubscription?.unsubscribe();
+  }
+
+  /*
+    Firebase
+  */
+  firebaseMessage(): BehaviorSubject<MessagePayload> {
+    return this.firebaseService.message;
+  }
+
+  /*
+    Device
+  */
+  getDevice(): DeviceDetectorService {
+    return this.deviceService;
   }
 
   /* 
@@ -162,6 +194,10 @@ export class Services implements IServices, OnDestroy {
 }
 
 export abstract class IServices {
+  abstract firebaseMessage(): BehaviorSubject<MessagePayload>;
+
+  abstract getDevice(): DeviceDetectorService;
+
   abstract setScreen(screen: ScreenModel): void;
   abstract getScreen(): Observable<ScreenModel>;
   abstract getScreenSize(): ScreenModel;

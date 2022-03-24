@@ -14,10 +14,11 @@ import { JwtInterceptor } from './core/interceptor/jwt/jwt.interceptor';
 import { BaseInterceptor } from './core/interceptor/base/base.interceptor';
 import { Services, IServices } from './core/services/services.service';
 import {
-  GoogleLoginProvider,
   SocialAuthServiceConfig,
+  GoogleLoginProvider,
 } from 'angularx-social-login';
 import { environment } from 'src/environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent, ConfirmationComponent, SnackbarComponent],
@@ -31,6 +32,12 @@ import { environment } from 'src/environments/environment';
     MatIconModule,
     MatSnackBarModule,
     SharedModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     {

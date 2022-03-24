@@ -108,3 +108,12 @@ https://www.airbnb.com/s/homes?refinement_paths%5B%5D=%2Fhomes&date_picker_type=
         delete: boolean,
     }]}
 ```
+
+## Firebase
+
+npm install firebase.
+
+- config `manifest.json` & `firebase-messaging-sw.js`
+- [console.firebase](https://console.firebase.google.com/project/moshkou/notification)
+- [nofification in angular](https://zweck.ioweb-push-notifications-in-angular-and-firebase/)
+- [push-notifications](https://developers.google.com/web/fundamentals/push-notifications/common-notification-patterns?authuser=0#precise)
